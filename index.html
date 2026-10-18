@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ==========================================================================
+   CHALLENGERS CARD MAKER - ARQUITECTURA DEL DOCUMENTO HTML5
+   ==========================================================================
+   Punto de entrada principal de la aplicación web cliente para la visualización,
+   personalización, gestión e impresión en alta definición (PDF/PNG) de cartas
+   y expansiones temáticas para el juego de mesa Challengers!.
+
+   PRINCIPIOS DE DISEÑO Y ACCESIBILIDAD:
+   - Estructura semántica HTML5 (header, aside, main, nav, section, footer).
+   - Accesibilidad WAI-ARIA (roles 'dialog', 'tab', 'tablist', atributos 'aria-hidden',
+     'aria-selected', 'aria-label' y textos descriptivos en botones interactivos).
+   - Enlace bidireccional con app.js (selectores únicos por ID, atributos data-*).
+   - Integración con el motor de impresión vectorial y CSS 3D (style.css).
+
+   MAPA ESTRUCTURAL DEL DOM:
+   1. <head>: Metadatos de codificación, responsive viewport, favicons, fuentes
+      Google Fonts (Outfit y Cinzel) y hoja de estilos unificada (style.css).
+   2. <header class="app-header">: Barra superior con control de panel lateral,
+      identidad de marca, buscador reactivo y botones de acción global.
+   3. <div class="app-layout">: Disposición principal con telón móvil, barra lateral
+      de filtros facetados (<aside class="filters-sidebar">) y área principal (<main>).
+   4. <main class="main-content">:
+      - Pantalla de bienvenida y carga ZIP (#zipUploadScreen): Soporta arrastrar y
+        soltar (drag & drop), selección de archivos y catálogo de mazos predefinidos.
+      - Galería de facciones (#factionsWrapper): Riel de marcapáginas verticales
+        (#factionBookmarksBar) y contenedor de cuadrícula de cartas (#cardsGrid).
+   5. <footer class="app-footer">: Pie de página accesible con enlaces al repositorio
+      oficial en GitHub, ficha de BoardGameGeek, aviso legal y retorno superior.
+   6. Diálogos Modales Accesibles (role="dialog"):
+      - #cardModal: Inspección 3D y vista detallada de cartas con navegación.
+      - #printModal: Generador avanzado de PDF e impresión A4 (63.5 x 88 mm y tiras).
+      - #printArea: Contenedor técnico oculto para el motor nativo @media print.
+      - #zipManageModal: Gestor de baraja activa, biblioteca y mantenimiento.
+      - #templateGuideModal: Guía técnica completa del esquema JSON para creadores.
+      - #deckInfoModal: Ficha editorial y desglose estadístico del mazo activo.
+      - #disclaimerModal: Aviso legal, exención de responsabilidad y marcas.
+      - #globalLoadingModal: Barra de progreso en tiempo real para descompresión ZIP.
+   7. Scripts externos (JSZip, jsPDF, html2canvas) y controlador principal (app.js).
+   ========================================================================== -->
+
+<head>
+  <!-- Metadatos de codificación y visualización adaptativa (Mobile Responsive) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challengers Card Maker</title>
+  <meta name="description"
+    content="Challengers Card Maker - Diseña, visualiza e imprime cartas y expansiones para Challengers!.">
+
+  <!-- Iconos de aplicación (Favicon y accesos directos táctiles para móviles) -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="images/deck_logo.png">
+
+  <!-- Optimización de carga tipográfica: Preconexión a Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías oficiales: 'Outfit' (interfaz moderna y legible) y 'Cinzel' (titulares y números) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Cinzel:wght@700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Hoja de estilos principal con control de versión para invalidación de caché -->
+  <link rel="stylesheet" href="style.css?v=20261018_v18">
+</head>
+
+<body class="no-deck-selected">
+  <!-- ========================================================================
+       SECCIÓN 1: CABECERA PRINCIPAL (BARRA DE NAVEGACIÓN Y BÚSQUEDA INTEGRADA)
+       ========================================================================
+       Contiene la identidad de marca, el botón de menú lateral (visible en móviles),
+       el campo de búsqueda en tiempo real y los botones de acción rápida. -->
+  <header class="app-header">
+    <div class="header-container">
+      <!-- Zona izquierda: Botón de apertura de filtros móviles y logotipo de la aplicación -->
+      <div class="logo-area">
+        <!-- Botón accesible para alternar el menú lateral en pantallas táctiles y móviles -->
+        <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Filtros" title="Filtros">
+          <!-- Icono SVG tipo hamburguesa (3 líneas horizontales) -->
+          <svg class="hamburger-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+          <!-- Indicador visual (punto cian) que se muestra cuando hay filtros activos -->
+          <span class="active-filters-dot" id="activeFiltersDot" style="display: none;"></span>
+        </button>
+
+        <!-- Enlace de marca principal: Logotipo e identidad "Challengers Card Maker" -->
+        <a href="#" class="brand-link" id="brandLink" title="Challengers Card Maker">
+          <img src="images/deck_logo.png" alt="Logo" class="app-deck-logo-img" id="headerDeckLogo">
+          <span class="app-brand-title">Challengers Card Maker</span>
+        </a>
+      </div>
+
+      <!-- Zona central: Campo de búsqueda interactiva con filtrado reactivo en tiempo real -->
+      <div class="header-search-wrapper">
+        <!-- Icono decorativo de lupa vectorial -->
+        <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <!-- Entrada de texto con debounce integrado en app.js -->
+        <input type="text" id="searchInput" placeholder="Buscar por nombre, texto o efecto..." autocomplete="off"
+          spellcheck="false">
+        <!-- Botón para limpiar el texto de búsqueda con un solo clic -->
+        <button type="button" id="clearSearchBtn" class="clear-btn" title="Limpiar búsqueda"
+          style="display: none;">✕</button>
+      </div>
+
+      <!-- Zona derecha: Botones de acciones globales de la aplicación -->
+      <div class="header-actions">
+        <!-- Botón para voltear todas las cartas simultáneamente (anverso ↔ reverso) -->
+        <button type="button" id="flipAllBtn" class="header-action-btn" aria-label="Voltear todas las cartas"
+          title="Voltear todas las cartas">
+          <span>Voltear cartas</span>
+        </button>
+
+        <!-- Botón para abrir el generador de PDF e impresión (solo en escritorio) -->
+        <button type="button" id="openPrintModalBtn" class="header-action-btn header-action-btn-primary desktop-only"
+          aria-label="Imprimir cartas / PDF" title="Generador de PDF e Impresión">
+          <span>Imprimir</span>
+        </button>
+
+        <!-- Botón para abrir el modal de gestión del mazo ZIP activo -->
+        <button type="button" id="zipManagerBtn" class="header-action-btn" aria-label="Gestionar mazo de cartas (.zip)"
+          title="Cargar o cambiar mazo ZIP">
+          <span>Mazo</span>
+        </button>
+
+        <!-- Selector de idioma de la interfaz (ES, FR, EN, DE, NL, IT) -->
+        <div class="lang-selector-box">
+          <select id="langSelectDropdown" class="lang-select-dropdown" aria-label="Seleccionar idioma">
+            <option value="es" selected>ES</option>
+            <option value="fr">FR</option>
+            <option value="en">EN</option>
+            <option value="de">DE</option>
+            <option value="nl">NL</option>
+            <option value="it">IT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SECCIÓN 2: DISTRIBUCIÓN PRINCIPAL (PANEL LATERAL DE FILTROS + CONTENIDO)
+       ========================================================================
+       Estructura flex/grid que alberga el panel lateral de filtros facetados y
+       el área de contenido dinámico. -->
+  <div class="app-layout">
+    <!-- Telón de fondo semitransparente para cerrar el panel lateral en móviles al tocar fuera -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Menú lateral de filtros facetados (Sidebar Drawer accesible) -->
+    <aside class="filters-sidebar" id="filtersSidebar">
+      <!-- Cabecera del panel lateral con título y botón de restablecimiento -->
+      <div class="sidebar-header">
+        <div class="sidebar-title-box">
+          <h2 class="sidebar-title" id="txtSidebarTitle">Filtros</h2>
+        </div>
+        <div class="sidebar-header-actions">
+          <!-- Botón para limpiar todos los filtros aplicados y volver al estado inicial -->
+          <button type="button" id="resetFiltersBtn" class="sidebar-reset-btn" title="Restablecer filtros">
+            <span id="txtResetFilters">Limpiar</span>
+          </button>
+          <!-- Botón de cierre del menú lateral (versión móvil) -->
+          <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Cerrar filtros">✕</button>
+        </div>
+      </div>
+
+      <!-- Contenedor con scroll interno para los grupos de filtros -->
+      <div class="sidebar-content">
+        <!-- Indicador numérico de estadísticas: cartas visibles vs total y recuento de copias -->
+        <div class="stats-badge" id="statsCount">
+          <div class="stats-main-row">
+            <span class="count-number" id="visibleCount">221</span> / <span id="totalCount">221</span>
+            <span class="count-label" id="countLabel">cartas visibles</span>
+          </div>
+          <div class="stats-copies-pill" id="visibleCopiesCount">
+            553 copias en total
+          </div>
+        </div>
+
+        <!-- Grupo de filtro 1: Versión o Expansión del juego (Base, Beach Cup, Personalizado) -->
+        <div class="sidebar-filter-group">
+          <label class="sidebar-filter-title" id="filterGameTitle">Versión:</label>
+          <div class="game-chips" id="gameChipsContainer"></div>
+        </div>
+
+        <!-- Grupo de filtro 2: Nivel / Fase de torneo (S: Inicio, A, B, C, Entrenador, Robot) -->
+        <div class="sidebar-filter-group">
+          <label class="sidebar-filter-title" id="filterLevelTitle">Set:</label>
+          <div class="level-chips" id="levelChipsContainer"></div>
+        </div>
+
+        <!-- Grupo de filtro 3: Facciones temáticas con distintivos de color (Ciudad, Cine, Bosque, etc.) -->
+        <div class="sidebar-filter-group">
+          <label class="sidebar-filter-title" id="filterColorTitle">Facciones:</label>
+          <div class="color-chips" id="colorChipsContainer"></div>
+        </div>
+
+        <!-- Grupo de filtro 4: Nivel de fuerza base de la carta (1 al 10, ?, ∞) -->
+        <div class="sidebar-filter-group">
+          <label class="sidebar-filter-title" id="filterStrengthTitle">Fuerza:</label>
+          <div class="strength-chips" id="strengthChipsContainer"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área principal de contenido dinámico (Onboarding o Galería de cartas) -->
+    <main class="main-content">
+      <!-- ====================================================================
+           SUBSECCIÓN 2.1: PANTALLA DE BIENVENIDA Y CARGA DE MAZOS (ONBOARDING)
+           Visible cuando no hay ninguna baraja cargada en memoria.
+           ==================================================================== -->
+      <div class="zip-upload-screen" id="zipUploadScreen">
+        <div class="modal-container zip-modal-dialog zip-welcome-dialog zip-upload-card" id="zipUploadCard">
+          <!-- Cabecera de bienvenida con logotipo y texto explicativo -->
+          <div class="zip-welcome-header" id="zipWelcomeHeader">
+            <div class="zip-welcome-logo-box">
+              <img src="images/deck_logo.png" alt="Challengers Logo" class="zip-welcome-logo-top">
+            </div>
+            <h2 class="modal-title zip-welcome-title" id="zipUploadTitle">Cargar mazo de cartas</h2>
+            <p class="modal-subtitle zip-welcome-subtitle" id="zipUploadDesc">Selecciona o arrastra un archivo
+              comprimido .zip que contenga la base de datos cards.json y las imágenes del juego.</p>
+          </div>
+
+          <!-- Cuerpo interactivo de la tarjeta de carga -->
+          <div class="zip-manage-body" id="zipCardNormalContent">
+            <!-- Zona de arrastre y suelta (Drag & Drop) destacada -->
+            <div class="deck-upload-box-large" id="zipWelcomeUploadBox" role="button" tabindex="0"
+              title="Cargar archivo .zip de tu equipo">
+              <!-- Entrada de archivo nativa oculta accesible mediante eventos de teclado/ratón -->
+              <input type="file" id="zipFileInput" accept=".zip" class="zip-file-input" style="display: none;">
+              <div class="deck-upload-large-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <div class="deck-upload-large-content">
+                <strong class="deck-upload-large-title" id="zipDropText">Arrastra y suelta tu archivo .zip aquí</strong>
+                <span class="deck-upload-large-sub" id="zipDropSubtext">o haz clic para explorar en tu
+                  dispositivo</span>
+              </div>
+              <button type="button" class="btn-select-zip-large" id="zipSelectBtn">Seleccionar archivo .zip</button>
+            </div>
+
+            <!-- Catálogo de mazos comunitarios predefinidos (generado dinámicamente desde DECK_CATALOG) -->
+            <div class="zip-dialog-section">
+              <div class="deck-catalog-list">
+                <!-- Inyectado dinámicamente por la función renderCatalogList() en app.js -->
+              </div>
+            </div>
+
+            <!-- Barra de recursos y herramientas para creadores de contenido -->
+            <div class="zip-resources-bar">
+              <span class="zip-resources-label">Recursos:</span>
+              <div class="zip-resources-chips">
+                <!-- Enlace de descarga directa de la plantilla JSON de ejemplo -->
+                <a href="crearMazo/plantilla_deck.json" download="plantilla_deck.json" class="zip-resource-chip"
+                  title="Descargar plantilla JSON para crear cartas">
+                  Plantilla JSON
+                </a>
+                <!-- Botón de apertura del diálogo modal con la especificación completa -->
+                <button type="button" class="zip-resource-chip link-btn" id="btnOpenTemplateGuide"
+                  title="Ver especificación para crear mazos">
+                  Guía creadores
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Estado visual animado con barra de progreso durante la lectura del ZIP -->
+          <div class="zip-card-loading-content" id="zipCardLoadingContent" style="display: none;">
+            <div class="loading-pack-visual">
+              <img src="images/deck_logo.png" alt="Cargando mazo" class="loading-pack-animated-logo">
+            </div>
+            <h3 class="loading-pack-title" id="zipLoadingTitle">Cargando mazo...</h3>
+            <p class="loading-pack-status" id="zipProgressStatus">Leyendo cartas e ilustraciones...</p>
+            <div class="zip-progress-bar-track">
+              <div class="zip-progress-bar-fill" id="zipProgressBarFill" style="width: 0%;"></div>
+            </div>
+            <span class="loading-pack-pct" id="zipProgressPct">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SUBSECCIÓN 2.2: GALERÍA DE CARTAS Y SISTEMA DE MARCAPÁGINAS VERTICALES
+           Visible cuando hay un mazo activo cargado con cartas válidas.
+           ==================================================================== -->
+      <div class="factions-wrapper" id="factionsWrapper" style="display: none;">
+        <!-- Riel de navegación lateral con pestañas verticales tipo marcapáginas indexadas por facción -->
+        <nav class="faction-bookmarks-bar" id="factionBookmarksBar" aria-label="Facciones y Conjuntos">
+          <!-- Inyectado dinámicamente por la función renderBookmarksBar() en app.js -->
+        </nav>
+
+        <!-- Contenedor principal de cartas de la facción activa seleccionada -->
+        <div class="faction-cards-container" id="factionCardsContainer">
+          <!-- Banner cabecera de la facción activa (icono, nombre, descripción y botón de ayuda) -->
+          <div class="faction-header-banner" id="factionHeaderBanner">
+            <!-- Inyectado dinámicamente por la función renderActiveFactionBanner() en app.js -->
+          </div>
+
+          <!-- Mensaje de estado vacío cuando ningún elemento coincide con los filtros aplicados -->
+          <div id="noResultsMessage" class="no-results" style="display: none;">
+            <div class="no-results-icon">🃏🔍</div>
+            <h3 id="noResultsTitle">No se encontraron cartas</h3>
+            <p id="noResultsText">Prueba a cambiar los filtros o los términos de búsqueda.</p>
+            <button type="button" id="btnResetFromEmpty" class="action-btn">Restablecer filtros</button>
+          </div>
+
+          <!-- Cuadrícula flexible interactiva donde se renderizan las cartas en 3D -->
+          <div class="cards-grid" id="cardsGrid">
+            <!-- Elementos de carta inyectados dinámicamente por renderCards() en app.js -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================================================
+       SECCIÓN 3: PIE DE PÁGINA (BRANDING, ENLACES SOCIALES Y AVISO LEGAL)
+       ======================================================================== -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <!-- Zona izquierda: Logotipo, nombre de la aplicación y declaración comunitaria -->
+      <div class="footer-left">
+        <div class="footer-brand-box">
+          <img src="images/deck_logo.png" alt="Challengers Logo" class="footer-deck-logo">
+          <span class="footer-brand" id="txtFooterBrand">Challengers Card Maker</span>
+        </div>
+        <span class="footer-separator">·</span>
+        <span class="footer-desc" id="txtFooterDesc">Herramienta comunitaria para cartas personalizadas</span>
+      </div>
+
+      <!-- Zona derecha: Enlaces sociales accesibles, aviso legal y desplazamiento al inicio -->
+      <div class="footer-links">
+        <div class="footer-social-links">
+          <!-- Botón circular accesible: Enlace al repositorio de código abierto en GitHub -->
+          <a href="https://github.com/kr43xpo/Challengers-Card-Maker" target="_blank" rel="noopener noreferrer"
+            class="footer-icon-circle-btn" title="Código fuente del proyecto en GitHub" aria-label="GitHub">
+            <svg class="footer-social-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </a>
+          <!-- Botón circular accesible: Enlace a la ficha oficial del juego en BoardGameGeek (BGG) -->
+          <a href="https://boardgamegeek.com/boardgame/359970/challengers" target="_blank" rel="noopener noreferrer"
+            class="footer-icon-circle-btn footer-btn-bgg" title="Challengers! en BoardGameGeek" aria-label="BoardGameGeek">
+            <svg class="footer-social-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="m19.7 4.44-2.38.64L19.65 0 4.53 5.56l.83 6.67-1.4 1.34L8.12 24l8.85-3.26 3.07-7.22-1.32-1.27.98-7.81Z" />
+            </svg>
+          </a>
+        </div>
+        <!-- Botón para abrir el diálogo modal de descargo de responsabilidad y aviso legal -->
+        <button type="button" class="footer-link-btn" id="footerBtnDisclaimer">Disclaimer</button>
+        <!-- Botón para realizar scroll suave directo hacia la parte superior del documento -->
+        <button type="button" class="footer-link-btn" id="footerBtnScrollTop">Volver arriba ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SECCIÓN 4: DIÁLOGOS MODALES INTERACTIVOS (WAI-ARIA ROLE="DIALOG")
+       ======================================================================== -->
+
+  <!-- MODAL 4.1: DETALLE E INSPECCIÓN 3D DE CARTA (CARD MODAL) -->
+  <div class="modal-backdrop" id="cardModal" style="display: none;" aria-hidden="true" role="dialog">
+    <div class="modal-container">
+      <!-- Botón de cierre en esquina superior derecha -->
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar">✕</button>
+
+      <!-- Botones de navegación entre cartas (anterior / siguiente) -->
+      <button type="button" class="modal-nav-btn prev" id="modalPrevBtn" title="Anterior">‹</button>
+      <button type="button" class="modal-nav-btn next" id="modalNextBtn" title="Siguiente">›</button>
+
+      <!-- Contenedor del cuerpo del modal con renderizado interactivo en alta definición -->
+      <div class="modal-body" id="modalBody">
+        <!-- Inyectado dinámicamente por la función openCardDetailModal() en app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4.2: SUITE DE GENERACIÓN DE PDF E IMPRESIÓN OFICIAL (PRINT MODAL) -->
+  <div class="modal-backdrop" id="printModal" style="display: none;" aria-hidden="true" role="dialog">
+    <div class="modal-container print-modal-container">
+      <!-- Botón de cierre del modal de impresión -->
+      <button type="button" class="modal-close-btn" id="printModalCloseBtn" aria-label="Cerrar modal">✕</button>
+
+      <!-- Cabecera limpia con especificaciones físicas (63.5 x 88 mm) y métricas de producción -->
+      <header class="print-modal-header">
+        <div class="print-modal-header-left">
+          <h2 class="print-modal-title" id="printModalTitle">Impresión y Exportación</h2>
+          <div class="print-modal-specs-line">
+            <span id="printCalcDimensionsLabel" class="print-specs-prefix">Especificaciones:</span>
+            <span id="printCalcDimensionsDesc" class="print-specs-val">63.5 × 88 mm · Margen blanco 4 mm · Corte recto ·
+              9 cartas por hoja</span>
+          </div>
+        </div>
+
+        <div class="print-modal-header-right">
+          <!-- Selector de idioma específico para los textos de las cartas impresas -->
+          <div class="print-header-lang-wrapper">
+            <select id="selectPrintLang" class="print-header-lang-dropdown" aria-label="Idioma de impresión">
+              <option value="es" selected>Español (ES)</option>
+              <option value="fr">Français (FR)</option>
+              <option value="en">English (EN)</option>
+              <option value="de">Deutsch (DE)</option>
+              <option value="nl">Nederlands (NL)</option>
+              <option value="it">Italiano (IT)</option>
+            </select>
+          </div>
+
+          <!-- Métricas de cálculo de tirada en tiempo real: tipos únicos, cartas físicas y hojas A4 -->
+          <div class="print-header-metrics-text">
+            <div class="print-metric-text-row">
+              <span class="metric-text-label"><span id="printMetricUniqueLabel">Cartas únicas</span>:</span>
+              <strong class="metric-text-val" id="printCalcUnique">0 tipos</strong>
+            </div>
+            <div class="print-metric-text-row highlight">
+              <span class="metric-text-label"><span id="printMetricCardsLabel">Copias a imprimir</span>:</span>
+              <strong class="metric-text-val" id="printCalcCards">0 cartas físicas</strong>
+            </div>
+            <div class="print-metric-text-row">
+              <span class="metric-text-label"><span id="printMetricPagesLabel">Hojas A4</span>:</span>
+              <strong class="metric-text-val" id="printCalcPages">0 hojas A4 (9 por hoja)</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cuadrícula del modal: Panel izquierdo de configuración y panel derecho de vista previa A4 -->
+      <div class="print-modal-grid">
+        <!-- Columna de configuración y controles -->
+        <div class="print-config-pane">
+
+          <!-- Barra de navegación por pestañas (Tabs): Selección de cartas vs Formato de salida -->
+          <div class="print-tabs-bar" role="tablist">
+            <button type="button" class="print-tab-btn active" id="printTabBtnSelection" role="tab"
+              aria-selected="true">
+              Selección de cartas
+            </button>
+            <button type="button" class="print-tab-btn" id="printTabBtnFormat" role="tab" aria-selected="false">
+              Formato de salida
+            </button>
+          </div>
+
+          <!-- Pestaña 1: Selección y distribución de copias -->
+          <div class="print-tab-pane active" id="printTabPaneSelection">
+            <section class="print-section">
+              <!-- Selector múltiple por facción con recuentos y controles rápidos -->
+              <div class="print-faction-selector-box">
+                <div class="print-faction-selector-header">
+                  <div class="print-faction-header-left">
+                    <span class="qty-preset-label" id="printFactionSelectLabel">Selección por facción:</span>
+                    <span class="print-count-pill" id="printCountPill">0 copias (0 tipos)</span>
+                  </div>
+                  <div class="print-faction-header-actions">
+                    <button type="button" class="btn-micro-chip" id="btnSelectAllFactions"
+                      title="Seleccionar todas las cartas">Todas</button>
+                    <button type="button" class="btn-micro-chip danger" id="btnDeselectAllFactions"
+                      title="Deseleccionar todas las cartas">Ninguna</button>
+                  </div>
+                </div>
+                <!-- Rejilla de chips de facción inyectada dinámicamente -->
+                <div class="print-faction-chips-grid" id="printFactionChipsGrid">
+                  <!-- Inyectado dinámicamente por renderPrintFactionChips() en app.js -->
+                </div>
+              </div>
+
+              <!-- Preajustes rápidos de distribución de copias -->
+              <div class="print-qty-presets">
+                <span class="qty-preset-label" id="printQtyDistLabel">Distribución de copias</span>
+                <div class="qty-btn-group">
+                  <button type="button" class="btn-chip active-preset" id="btnPresetOfficialDeck"
+                    title="Copias según las reglas oficiales de baraja">
+                    Copias de mazo oficial
+                  </button>
+                  <button type="button" class="btn-chip" id="btnPresetSingleCopy" title="1 copia exacta de cada carta">
+                    1 por carta
+                  </button>
+                  <button type="button" class="btn-chip" id="btnPresetAddOne" title="Sumar 1 copia a todas">+1</button>
+                  <button type="button" class="btn-chip" id="btnPresetSubOne" title="Restar 1 copia a todas">-1</button>
+                </div>
+              </div>
+
+              <!-- Desplegable acordeón para ajuste individual carta por carta -->
+              <div class="print-list-toggle-row">
+                <button type="button" class="btn-list-toggle" id="btnToggleCardList">
+                  <span><span id="printListToggleText">Desglose y ajuste individual</span> (<span
+                      id="printListCountLabel">0</span>)</span>
+                  <span id="txtListToggleArrow">▼</span>
+                </button>
+              </div>
+              <div class="print-cards-scroll-wrapper" id="printCardsListWrapper" style="display: none;">
+                <div class="print-list-toolbar">
+                  <div class="print-list-toolbar-left">
+                    <span class="print-list-filter-label" id="printListFilterLabel">Facción:</span>
+                    <select id="printListFactionFilter" class="print-list-faction-select"
+                      aria-label="Filtrar cartas por facción">
+                      <option value="all" id="printListAllFactionsOption">Todas las facciones</option>
+                    </select>
+                  </div>
+                  <div class="print-list-toolbar-right">
+                    <span id="printListFilteredCount" class="print-list-count-badge">0 cartas</span>
+                  </div>
+                </div>
+                <div class="print-cards-scroll-list" id="printCardsList">
+                  <!-- Lista con selectores numéricos inyectada dinámicamente por app.js -->
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Pestaña 2: Formato de salida, maquetación, márgenes y guías de corte -->
+          <div class="print-tab-pane" id="printTabPaneFormat" style="display: none;">
+            <section class="print-section">
+
+              <!-- Selección de tipo de maquetación (Plantilla completa, Digital original o Tiras para fundas) -->
+              <div class="form-group">
+                <label class="form-label" id="printFormLayoutLabel">Tipo de maquetación</label>
+                <div class="print-layout-options" id="printModeGroup">
+                  <!-- Opción A: Plantilla vectorial nítida en alta resolución -->
+                  <label class="layout-radio-card">
+                    <input type="radio" name="printMode" value="template" checked>
+                    <div class="radio-card-body">
+                      <div class="radio-card-header">
+                        <span class="radio-card-title" id="printLayoutTemplateTitle">Plantilla traducida</span>
+                        <span class="radio-card-badge" id="printLayoutTemplateBadge">Recomendado</span>
+                      </div>
+                      <p class="radio-card-desc" id="printLayoutTemplateDesc">Carta completa con tipografía vectorial
+                        nítida y textos en el idioma elegido.</p>
+                    </div>
+                  </label>
+                  <!-- Opción B: Arte digital tal como se visualiza en digital -->
+                  <label class="layout-radio-card">
+                    <input type="radio" name="printMode" value="bga">
+                    <div class="radio-card-body">
+                      <div class="radio-card-header">
+                        <span class="radio-card-title" id="printLayoutBgaTitle">Digital original</span>
+                      </div>
+                      <p class="radio-card-desc" id="printLayoutBgaDesc">Ilustración recortada en alta definición tal
+                        como se visualiza en digital.</p>
+                    </div>
+                  </label>
+                  <!-- Opción C: Tiras de inserción estrechas (63.5 x 27.5 mm) para fundas opacas (27 por hoja) -->
+                  <label class="layout-radio-card">
+                    <input type="radio" name="printMode" value="strips">
+                    <div class="radio-card-body">
+                      <div class="radio-card-header">
+                        <span class="radio-card-title" id="printLayoutStripsTitle">Tiras de inserción para fundas</span>
+                      </div>
+                      <p class="radio-card-desc" id="printLayoutStripsDesc">Nombre y efecto (63.5 × 27.5 mm). 27 tiras
+                        por hoja para fundas opacas.</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Configuración del margen perimetral blanco para corte seguro -->
+              <div class="form-group form-group-margin">
+                <div class="print-margin-container">
+                  <label class="clean-checkbox-row">
+                    <input type="checkbox" id="chkWhiteMargin" checked>
+                    <span class="clean-checkbox-custom"></span>
+                    <span class="clean-checkbox-text" id="printWhiteMarginText">Margen perimetral blanco</span>
+                  </label>
+                  <div class="print-margin-val-box" id="printMarginValBox">
+                    <label for="numWhiteMargin" class="print-mini-label" id="printMarginValLabel">Grosor:</label>
+                    <div class="print-margin-input-group">
+                      <input type="number" id="numWhiteMargin" min="1" max="10" step="0.5" value="4"
+                        class="print-margin-number-input" aria-label="Grosor del margen en milímetros">
+                      <span class="print-margin-unit">mm</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Opción para incluir la página de portada y resumen editorial del mazo -->
+              <div class="form-group form-group-summary-page">
+                <label class="clean-checkbox-row">
+                  <input type="checkbox" id="chkPrintSummaryPage" checked>
+                  <span class="clean-checkbox-custom"></span>
+                  <span class="clean-checkbox-text" id="txtPrintSummaryPage">Incluir primera página con portada y
+                    resumen del pack (1 hoja A4)</span>
+                </label>
+              </div>
+
+              <!-- Configuración de guías de corte (Marcas en esquinas, Cuadrícula continua o Sin guías) -->
+              <div class="form-group">
+                <label class="form-label" id="printCutGuidesLabel">Guías de corte</label>
+                <div class="print-segmented-group" id="printCutTypeGroup">
+                  <label class="segmented-option">
+                    <input type="radio" name="printCutType" value="crosses" checked>
+                    <span class="segmented-label" id="printCutCrossesLabel">Marcas en esquinas</span>
+                  </label>
+                  <label class="segmented-option">
+                    <input type="radio" name="printCutType" value="grid">
+                    <span class="segmented-label" id="printCutGridLabel">Cuadrícula continua</span>
+                  </label>
+                  <label class="segmented-option">
+                    <input type="radio" name="printCutType" value="none">
+                    <span class="segmented-label" id="printCutNoneLabel">Sin guías</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Ajustes de encuadre y escala de la ilustración de la carta -->
+              <div class="form-group">
+                <label class="form-label" id="printArtAdjustLabel">Ajuste de ilustración</label>
+                <div class="print-art-config-box">
+                  <div class="print-art-row">
+                    <label for="selectPrintArtFit" class="print-mini-label" id="printArtFitLabel">Encuadre</label>
+                    <select id="selectPrintArtFit" class="print-select-input">
+                      <option value="cover" id="optArtCover" selected>Llenar área (recorte automático)</option>
+                      <option value="contain" id="optArtContain">Ajustar al espacio (completa sin recortar)</option>
+                      <option value="fit-height" id="optArtFitHeight">Ajustar a la altura</option>
+                      <option value="fit-width" id="optArtFitWidth">Ajustar a la anchura</option>
+                    </select>
+                  </div>
+                  <div class="print-art-row">
+                    <label for="rangePrintArtScale" class="print-mini-label" id="printArtScaleLabel">Escala</label>
+                    <div class="print-scale-slider-box">
+                      <input type="range" id="rangePrintArtScale" min="50" max="130" step="5" value="100"
+                        class="print-range-input">
+                      <span id="txtPrintArtScaleVal" class="print-scale-badge">100%</span>
+                    </div>
+                  </div>
+                  <div class="print-scale-presets-row">
+                    <button type="button" class="btn-micro-chip" data-scale="75">75%</button>
+                    <button type="button" class="btn-micro-chip" data-scale="85">85%</button>
+                    <button type="button" class="btn-micro-chip active" data-scale="100">100%</button>
+                    <button type="button" class="btn-micro-chip" data-scale="115">115%</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Botones de acción: Descarga compuesta (PDF / ZIP de imágenes) e impresión directa -->
+          <div class="print-actions-pane">
+            <div class="download-compound-group" id="downloadCompoundGroup">
+              <div class="download-compound-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span id="txtCompoundDownloadLabel">Descargar:</span>
+              </div>
+              <!-- Botón principal para generar y descargar el documento PDF A4 -->
+              <button type="button" id="btnDownloadPDF" class="download-compound-btn btn-compound-pdf"
+                title="Descargar como documento PDF para imprimir">
+                <span id="txtBtnDownloadPDF">Plantilla PDF</span>
+              </button>
+              <span class="download-compound-divider"></span>
+              <!-- Botón secundario para exportar cartas individuales como imágenes PNG dentro de un ZIP -->
+              <button type="button" id="btnDownloadImages" class="download-compound-btn btn-compound-img"
+                title="Descargar cartas individuales como imágenes PNG en un archivo ZIP">
+                <span id="txtBtnDownloadImages">Cartas como imagen</span>
+              </button>
+            </div>
+            <!-- Botón para disparar el diálogo de impresión nativo del navegador (window.print) -->
+            <button type="button" id="btnPrintDirect" class="btn-print-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span id="txtBtnPrintDirect">Imprimir en navegador</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Columna de previsualización interactiva de hoja A4 en tiempo real -->
+        <div class="print-preview-pane">
+          <div class="preview-header-row">
+            <span class="preview-title" id="printPreviewTitle">Vista previa de hoja A4</span>
+            <!-- Navegación entre hojas generadas -->
+            <div class="preview-page-nav" id="previewPageNav">
+              <button type="button" id="btnPrevPage" class="preview-page-btn" disabled
+                aria-label="Página anterior">‹</button>
+              <span id="txtPreviewPage">Página 1 de 1</span>
+              <button type="button" id="btnNextPage" class="preview-page-btn" disabled
+                aria-label="Página siguiente">›</button>
+            </div>
+          </div>
+
+          <!-- Muestra ampliada de tira para fundas opacas (legibilidad instantánea a escala real) -->
+          <div class="strip-sample-preview" id="stripSamplePreview" style="display: none;">
+            <div class="strip-sample-label">
+              <span>Muestra a escala real (tira de inserción):</span>
+              <span id="stripSampleCardTitle" style="font-weight: 600; color: #0284c7;"></span>
+            </div>
+            <div class="strip-sample-card" id="stripSampleCard">
+              <!-- Renderizado a tamaño legible por renderSheetPreview() en app.js -->
+            </div>
+          </div>
+
+          <!-- Viewport escalado que simula la proporción física A4 (210 x 297 mm) -->
+          <div class="sheet-preview-viewport">
+            <div class="sheet-preview-a4" id="sheetPreviewA4">
+              <!-- Cuadrícula 3x3 de cartas renderizada dinámicamente -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4.3: CONTENEDOR TÉCNICO PARA IMPRESIÓN NATIVA (@MEDIA PRINT)
+       Oculto completamente en pantalla. Solo se puebla y procesa al invocar window.print().
+       ======================================================================== -->
+  <div id="printArea" class="print-area"></div>
+
+  <!-- ========================================================================
+       MODAL 4.4: GESTIÓN DE MAZO ZIP ACTIVO (ZIP MANAGE MODAL)
+       Permite consultar la baraja en uso, cargar otro mazo, explorar la biblioteca
+       o vaciar los datos en memoria.
+       ======================================================================== -->
+  <div class="modal-backdrop" id="zipManageModal" style="display: none;">
+    <div class="modal-container zip-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-header-text-group">
+          <h3 class="modal-title" id="zipManageModalTitle">Gestión del mazo</h3>
+          <p class="modal-subtitle" id="zipManageModalSubtitle">Información del mazo activo y opciones disponibles</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="zipManageCloseBtn" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="zip-manage-body">
+        <!-- Ficha de información del paquete actualmente cargado -->
+        <div class="zip-manage-info">
+          <img src="images/deck_logo.png" alt="Mazo" class="zip-pack-icon-img">
+          <div class="zip-pack-details">
+            <div class="zip-pack-active-badge" id="zipManageActiveBadge">
+              <span class="badge-dot"></span> <span id="txtZipManageActiveBadge">Mazo activo</span>
+            </div>
+            <div class="zip-pack-name" id="zipCurrentPackName">challengers_pack.zip</div>
+            <div class="zip-pack-meta" id="zipCurrentPackMeta">221 cartas cargadas</div>
+          </div>
+        </div>
+
+        <!-- Catálogo de mazos oficiales y de la comunidad -->
+        <div class="zip-dialog-section">
+          <div class="zip-section-header">
+            <span class="zip-dialog-section-title" id="zipManageSec1Title">Biblioteca de mazos</span>
+            <span class="zip-section-hint" id="zipManageSec1Hint">Carga directa o descarga en .ZIP</span>
+          </div>
+
+          <div class="deck-catalog-list">
+            <!-- Inyectado dinámicamente por renderCatalogList() en app.js -->
+          </div>
+        </div>
+
+        <!-- Tarjeta para importar un mazo personalizado desde el dispositivo -->
+        <div class="deck-upload-box" id="zipChangePackBtn" role="button" tabindex="0"
+          title="Cargar otro archivo .zip de tu equipo">
+          <div class="deck-upload-icon-wrapper">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <div class="deck-upload-content">
+            <strong class="deck-upload-title" id="txtBtnChangePack">Cargar otro archivo .zip de tu equipo</strong>
+            <span class="deck-upload-sub" id="txtBtnChangePackSub">Arrastra o haz clic para importar un mazo
+              personalizado</span>
+          </div>
+          <span class="deck-upload-badge-btn" id="txtBtnChangePackBadge">Examinar...</span>
+        </div>
+
+        <!-- Recursos y enlaces para diseñadores de mazos -->
+        <div class="zip-resources-bar">
+          <span class="zip-resources-label" id="txtZipResourcesLabel">Recursos:</span>
+          <div class="zip-resources-chips">
+            <a href="crearMazo/plantilla_deck.json" download="plantilla_deck.json" class="zip-resource-chip"
+              id="zipDownloadTemplateInModal" title="Descargar plantilla JSON para crear cartas">
+              Plantilla JSON
+            </a>
+            <button type="button" class="zip-resource-chip link-btn" id="btnOpenGuideFromManage"
+              title="Ver especificación para crear mazos">
+              Guía creadores
+            </button>
+          </div>
+        </div>
+
+        <!-- Zona de mantenimiento: Botón para eliminar mazo activo de memoria -->
+        <div class="zip-dialog-section danger-zone">
+          <button type="button" class="btn-dialog-danger" id="zipRemovePackBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            <span id="txtBtnRemovePack">Eliminar mazo activo y volver al inicio</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4.5: GUÍA PARA CREADORES DE MAZOS (TEMPLATE GUIDE MODAL)
+       Documentación técnica interactiva sobre el formato ZIP, esquema cards.json
+       y especificación de atributos.
+       ======================================================================== -->
+  <div class="modal-backdrop" id="templateGuideModal" style="display: none;">
+    <div class="modal-container guide-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-header-text-group">
+          <h3 class="modal-title" id="guideModalTitle">Guía de creación de mazos</h3>
+          <p class="modal-subtitle" id="guideModalSubtitle">Especificación de formato y estructura para diseñar mazos
+            compatibles con el visor</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="guideCloseBtn" aria-label="Cerrar guía">✕</button>
+      </div>
+      <div class="guide-modal-body">
+        <p class="guide-intro" id="guideModalIntro">
+          Puedes crear tu propio mazo de cartas personalizado con tus propias ilustraciones, estadísticas y efectos. El
+          visor lo interpretará de forma nativa, permitiendo voltear las cartas en 3D e imprimirlas en formato torneo
+          oficial.
+        </p>
+
+        <!-- Diagrama del árbol de archivos esperado dentro del .zip -->
+        <div class="guide-section">
+          <h4 class="guide-section-title" id="guideSec1Title">Estructura del archivo .zip</h4>
+          <pre class="guide-tree-code"><code>mi_mazo.zip/
+├── cards.json             &lt;-- Archivo principal con los datos de las cartas
+├── LEEME_INSTRUCCIONES.txt
+└── images/
+    └── art_digital/       &lt;-- Ilustraciones de las cartas (JPG, PNG, WEBP)
+        ├── art_ejemplo_1.jpg
+        ├── art_ejemplo_2.jpg
+        └── ...</code></pre>
+        </div>
+
+        <!-- Tabla técnica de definición de campos del archivo cards.json -->
+        <div class="guide-section">
+          <h4 class="guide-section-title" id="guideSec2Title">Campos de cada carta en cards.json</h4>
+          <div class="guide-table-wrapper">
+            <table class="guide-table">
+              <thead>
+                <tr>
+                  <th id="guideThField">Campo</th>
+                  <th id="guideThType">Tipo</th>
+                  <th id="guideThDesc">Valores válidos y función</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>id</code></td>
+                  <td>Número / Texto</td>
+                  <td id="guideDescId">Identificador único (ej: <code>1001</code> o <code>"carta_1"</code>).</td>
+                </tr>
+                <tr>
+                  <td><code>level</code></td>
+                  <td>Texto</td>
+                  <td id="guideDescLevel">Fase o set: <code>"S"</code> (Inicio), <code>"A"</code>, <code>"B"</code>,
+                    <code>"C"</code>, <code>"Entraîneur"</code> (Entrenador) o <code>"R"</code> (Robot).</td>
+                </tr>
+                <tr>
+                  <td><code>strength</code></td>
+                  <td>Número / Texto</td>
+                  <td id="guideDescStrength">Fuerza base: del <code>1</code> al <code>10</code>, <code>"?"</code>
+                    (fuerza variable) o <code>"∞"</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>set_id</code></td>
+                  <td>Texto</td>
+                  <td id="guideDescSetId">Facción/conjunto (ej: <code>"mi_faccion"</code>, <code>"city"</code>, etc.).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>default_copies</code></td>
+                  <td>Número</td>
+                  <td id="guideDescCopies">Número de copias físicas en la baraja (ej: <code>1</code>, <code>2</code>,
+                    <code>4</code>).</td>
+                </tr>
+                <tr>
+                  <td><code>art_image</code></td>
+                  <td>Texto</td>
+                  <td id="guideDescArt">Nombre del archivo de imagen en <code>images/art_digital/</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>es</code>, <code>en</code>, <code>fr</code></td>
+                  <td>Objeto</td>
+                  <td id="guideDescLocales">
+                    <code>name</code>: Nombre de la carta.<br>
+                    <code>text</code>: Efecto o texto explicativo de la habilidad.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Llamada a la acción (CTA) para descargar la plantilla funcional -->
+        <div class="guide-cta-box">
+          <div class="guide-cta-text" id="guideCtaText">
+            <strong>¿Quieres empezar directamente con un ejemplo funcional?</strong>
+            Descarga la plantilla con la estructura JSON básica lista para editar.
+          </div>
+          <a href="crearMazo/plantilla_deck.json" download="plantilla_deck.json" class="action-btn guide-download-btn"
+            id="guideDownloadBtn">
+            Descargar plantilla_deck.json
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4.6: RESUMEN EDITORIAL Y TRASFONDO DEL MAZO (DECK INFO MODAL)
+       Muestra las estadísticas de distribución por fase, número de copias y créditos.
+       ======================================================================== -->
+  <div class="modal-backdrop" id="deckInfoModal" style="display: none;" aria-hidden="true" role="dialog">
+    <div class="modal-container deck-info-modal-dialog">
+      <div class="modal-header deck-info-modal-header">
+        <div class="modal-header-text-group">
+          <h3 class="modal-title" id="deckInfoTitle">Información del Mazo</h3>
+          <p class="modal-subtitle" id="deckInfoSubtitle">Detalles, trasfondo y desglose de contenido</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="deckInfoCloseBtn" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="modal-body deck-info-modal-body" id="deckInfoModalBody">
+        <!-- Generado dinámicamente por la función openDeckInfoModal() en app.js -->
+      </div>
+      <div class="modal-footer deck-info-modal-footer">
+        <button type="button" class="action-btn" id="deckInfoCloseFooterBtn">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4.7: AVISO LEGAL Y CONDICIONES DE USO (DISCLAIMER MODAL)
+       Descargo de responsabilidad legal respecto a marcas registradas y derechos de autor.
+       ======================================================================== -->
+  <div class="modal-backdrop" id="disclaimerModal" style="display: none;" aria-hidden="true" role="dialog">
+    <div class="modal-container disclaimer-modal-dialog">
+      <div class="modal-header">
+        <div class="modal-header-text-group">
+          <h3 class="modal-title" id="disclaimerModalTitle">Aviso Legal y Descargo de Responsabilidad</h3>
+          <p class="modal-subtitle" id="disclaimerModalSubtitle">Condiciones de uso, exención de responsabilidad y
+            derechos de autor</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="disclaimerCloseBtn" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="modal-body disclaimer-modal-body">
+        <div class="disclaimer-callout">
+          <p id="disclaimerLead">
+            Esta web es un recurso gratuito y sin fines de lucro desarrollado de forma independiente para permitir a los
+            jugadores y creadores maquetar, visualizar e imprimir sus propias cartas personalizadas.
+          </p>
+        </div>
+
+        <div class="disclaimer-section">
+          <h4 class="disclaimer-section-title" id="disclaimerSec1Title">1. Sin distribución de mazos oficiales</h4>
+          <p class="disclaimer-text" id="disclaimerSec1Text">
+            Esta aplicación <strong>no publica, aloja ni comercializa mazos oficiales</strong> protegidos por derechos
+            de autor (como cartas originales de Challengers! o marcas comerciales como Pokémon). La plataforma funciona
+            exclusivamente como un motor de visualización local en el navegador del cliente; el usuario debe disponer y
+            cargar sus propios archivos de mazo generados para su uso privado.
+          </p>
+        </div>
+
+        <div class="disclaimer-section">
+          <h4 class="disclaimer-section-title" id="disclaimerSec2Title">2. Responsabilidad exclusiva del usuario</h4>
+          <p class="disclaimer-text" id="disclaimerSec2Text">
+            Cada usuario es el único responsable de los contenidos, imágenes, nombres, logotipos y textos que decida
+            importar, visualizar o exportar a PDF mediante esta herramienta. Los desarrolladores no se hacen
+            responsables del mal uso de la plataforma, de posibles infracciones sobre derechos de propiedad intelectual
+            derivadas de los archivos que cada usuario decida cargar, ni de la reproducción no autorizada de material
+            protegido por parte de terceros.
+          </p>
+        </div>
+
+        <div class="disclaimer-section">
+          <h4 class="disclaimer-section-title" id="disclaimerSec3Title">3. Marcas registradas y titularidad</h4>
+          <p class="disclaimer-text" id="disclaimerSec3Text">
+            Todos los nombres de juegos, ilustraciones, marcas registradas y elementos asociados pertenecen a sus
+            respectivos autores, diseñadores y titulares de derechos. Este proyecto no está patrocinado, afiliado ni
+            respaldado por ninguna editorial ni titular de marca.
+          </p>
+        </div>
+
+        <div class="disclaimer-footer-action">
+          <button type="button" class="action-btn" id="disclaimerAcceptBtn">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4.8: INDICADOR GLOBAL DE CARGA DE MAZO (GLOBAL LOADING MODAL)
+       Muestra una animación flotante de sobre y barra de progreso porcentual
+       durante la descompresión asíncrona de archivos ZIP pesados.
+       ======================================================================== -->
+  <div class="modal-backdrop" id="globalLoadingModal" style="display: none; z-index: 10000;" aria-hidden="true">
+    <div class="modal-container loading-modal-dialog">
+      <div class="loading-pack-visual">
+        <img src="images/deck_logo.png" alt="Cargando mazo" class="loading-pack-animated-logo">
+      </div>
+      <h3 class="loading-pack-title" id="globalLoadingTitle">Cargando mazo...</h3>
+      <p class="loading-pack-status" id="globalLoadingStatus">Extrayendo cartas e ilustraciones...</p>
+      <div class="zip-progress-bar-track">
+        <div class="zip-progress-bar-fill" id="globalProgressBarFill" style="width: 0%;"></div>
+      </div>
+      <span class="loading-pack-pct" id="globalLoadingPct">0%</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SECCIÓN 5: CARGA DE BIBLIOTECAS Y SCRIPT CONTROLADOR PRINCIPAL
+       ======================================================================== -->
+  <!-- JSZip: Descompresión de archivos .zip y lectura de imágenes en base64 en memoria -->
+  <script src="jszip.min.js"></script>
+  <!-- jsPDF: Motor de composición y generación de documentos PDF en formato vectorial -->
+  <script src="jspdf.umd.min.js"></script>
+  <!-- html2canvas: Rasterizado de elementos DOM para captura gráfica -->
+  <script src="html2canvas.min.js"></script>
+  <!-- app.js: Controlador modular JavaScript de toda la lógica de la aplicación -->
+  <script src="app.js?v=20261018_v16"></script>
+</body>
+
+</html>

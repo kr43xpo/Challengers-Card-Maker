@@ -1,0 +1,12 @@
+# Mazos oficiales de Challengers! 1 y 2 (propiedad editorial)
+decks-oficial/
+
+# Archivos de respaldo y temporales
+backup/
+*.bak
+*.tmp
+*temp*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

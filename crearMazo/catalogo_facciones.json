@@ -1,0 +1,2516 @@
+{
+  "city": {
+    "id": "city",
+    "name": {
+      "es": "Ciudad",
+      "en": "City",
+      "fr": "Ville"
+    },
+    "game": "both",
+    "color_hex": "#0284c7",
+    "color_border": "#38bdf8",
+    "total_cards": 46,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Reportero",
+        "text_es": "Mira las dos primeras cartas de tu mazo. Coloca una en la parte inferior del mazo y la otra en la parte superior.",
+        "name_en": "Reporter",
+        "text_en": "Look at the top two cards of your deck. Put one under your deck and the other on top."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Atleta",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Talent",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Mascota",
+        "text_es": "Esta carta tiene +1 por cada icono de set diferente que tengas en tu banquillo.",
+        "name_en": "Mascot",
+        "text_en": "This card has +1 for each different Set icon on your bench."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Perro",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Dog",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Campeona",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Champion",
+        "text_en": "Rare 2x"
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Autobús de Hinchas",
+        "text_es": "Si tienes tres o menos Trofeos, coge 2 Hinchas.",
+        "name_en": "Fan-Bus",
+        "text_en": "If you have three or fewer Trophies, take 2 fans."
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": true,
+        "name_es": "Novato",
+        "text_es": null,
+        "name_en": "Newcomer",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Atleta",
+        "text_es": null,
+        "name_en": "Talent",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": null,
+        "name_en": "Dog",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Perro",
+        "text_es": "Mira la primera carta de tu mazo. Colócala en la parte superior o inferior de tu mazo.",
+        "name_en": "Dog",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck."
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Campeona",
+        "text_es": null,
+        "name_en": "Champion",
+        "text_en": null
+      }
+    ]
+  },
+  "beach_club": {
+    "id": "beach_club",
+    "name": {
+      "es": "Club de Playa",
+      "en": "Beach Club",
+      "fr": "Plage"
+    },
+    "game": "c2",
+    "color_hex": "#0d9488",
+    "color_border": "#2dd4bf",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Niño",
+        "text_es": "Esta carta gana +4 si no hay ninguna carta con fuerza base 4 o más en tu banquillo.",
+        "name_en": "Kid",
+        "text_en": "If there is no card with base power 4 or higher on your bench, this card has +4. Rare 3x"
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Monitor de Ocio",
+        "text_es": "_Desde el banquillo:_ Tus cartas de Recluta ganan +1.",
+        "name_en": "Animateur",
+        "text_en": "From the bench: Your Newcomer cards have +1."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Novato",
+        "text_es": "_Especial:_ Esta carta comparte el mismo espacio de banquillo que las demás cartas de Novato.",
+        "name_en": "Newcomer",
+        "text_en": "Special: This card must share a seat with any Newcomer card."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Gaviota",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Seagull",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Nadadora",
+        "text_es": "Elige un espacio de tu banquillo. Esta carta gana +1 por cada carta que haya en él.",
+        "name_en": "Swimmer",
+        "text_en": "Choose a seat on your bench. This card has +1 for each card on it."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Furgoneta de Helados",
+        "text_es": "_Desde el banquillo:_ Tus cartas [Playa] ganan +1.",
+        "name_en": "Ice Cream Truck",
+        "text_en": "From the bench: Your [Beach Club]-cards have +1."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Instructora de Surf",
+        "text_es": "_Al ser seleccionada:_ Roba tres cartas de nivel A. Selecciona una de ellas y coloca las otras dos en el descarte.",
+        "name_en": "Surf Teacher",
+        "text_en": "When picked: Draw three Level- A-Cards. Pick one of them as an extra-pick and discard the others."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Mono",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Monkey",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Tormenta de arena",
+        "text_es": "Toma la carta superior del mazo de nivel C y colócala en la parte superior de tu mazo, sin mirarla.",
+        "name_en": "Sandstorm",
+        "text_en": "Put the top card from the LeveI-C- Pile on top of your deck, without looking at it."
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 5,
+        "is_starter_card": false,
+        "name_es": "Buzo",
+        "text_es": "Mira la última carta de tu mazo. Colócala en la parte superior o en la parte inferior de tu mazo.",
+        "name_en": "Diver",
+        "text_en": "Look at the bottom-most card of your deck. Put it on top of or under your deck. Common 5x"
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Cocodrilo",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Crocodile",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "fairytale_forest": {
+    "id": "fairytale_forest",
+    "name": {
+      "es": "Bosque Mágico",
+      "en": "Fairytale Forest",
+      "fr": "Contes"
+    },
+    "game": "c2",
+    "color_hex": "#15803d",
+    "color_border": "#4ade80",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Hada",
+        "text_es": "Elige un espacio de tu banquillo. Coloca todas las cartas de ese espacio de banquillo en tu reserva.",
+        "name_en": "Fairy",
+        "text_en": "Choose one seat of your bench. Put all cards from that seat on your exhaust pile."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 7,
+        "is_starter_card": false,
+        "name_es": "Enano",
+        "text_es": "_Especial:_ En lugar de ir a tu reserva, esta carta vuelve a la parte superior de tu mazo.",
+        "name_en": "Dwarf",
+        "text_en": "Special: When this card would be put on your exhaust pile, put it on top of your deck instead. Common 7x"
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Rana",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Frog",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "A",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Abuelita",
+        "text_es": "_Al ser seleccionada:_ Retira de forma permanente una carta con fuerza base 3 o más de tu mazo.",
+        "name_en": "Grandmother",
+        "text_en": "When picked: You must remove a card with base power 3 or higher from your deck permanently."
+      },
+      {
+        "level": "B",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Espejo",
+        "text_es": "_Sin captura de Bandera:_ Coloca una carta [Cuentos de hadas] de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Mirror",
+        "text_en": "No flag win: Put a card from your bench on top of your deck."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Hombre de Jengibre",
+        "text_es": "_Desde el banquillo:_ Tus cartas con fuerza base 4 ganan +1 en posesión de la bandera.",
+        "name_en": "Gingerbread Man",
+        "text_en": "From the bench: Your cards with base power 4 have +1 in flag possession."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Ciervo",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Deer",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "7",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Troll",
+        "text_es": "_Especial:_ Cuando esta carta vaya a tu banquillo, colócala ocupando dos espacios o encima de otro Trol. De lo contrario, pierdes de inmediato el enfrentamiento. Infrecuente (3 copias)",
+        "name_en": "Troll",
+        "text_en": "Special: When this card is put on your bench, place it across two seats or on another Troll. Otherwise you immediately lose this match. Rare3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Carruaje",
+        "text_es": "Elige un espacio de tu banquillo. Coloca todas las cartas de ese espacio en tu reserva.",
+        "name_en": "Carriage",
+        "text_en": "Choose one seat of your bench. Put all cards from that seat on your exhaust pile."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Unicornio",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Unicorn",
+        "text_en": "Rare 2x"
+      },
+      {
+        "level": "C",
+        "strength": "8",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Caldero",
+        "text_es": "Retira de forma permanente una carta de nivel A de tu banquillo. Infrecuente (2 copias)",
+        "name_en": "Cauldron",
+        "text_en": "Remove a Level-A-Card from your bench permanently. Rare 2x"
+      }
+    ]
+  },
+  "mountain_top": {
+    "id": "mountain_top",
+    "name": {
+      "es": "Montaña",
+      "en": "Mountain Top",
+      "fr": "Montagne"
+    },
+    "game": "c2",
+    "color_hex": "#585297",
+    "color_border": "#818cf8",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Alpinista",
+        "text_es": "Esta carta gana +2 si hay al menos una carta en la reserva de tu rival.",
+        "name_en": "Climber",
+        "text_en": "If there is at least one card in your opponent's exhaust pile, this card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cantante Tirolés",
+        "text_es": "_Sin captura de Bandera:_ Recibe 1 Hincha.",
+        "name_en": "Yodeler",
+        "text_en": "No flag win: Take 1 fan."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 5,
+        "is_starter_card": false,
+        "name_es": "Esquiador",
+        "text_es": "Coloca una carta del banquillo de tu rival en su reserva. Común5x",
+        "name_en": "Skier",
+        "text_en": "Put a card from your opponent's bench on their exhaust pile. Common 5x"
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Cabra",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Goat",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Muñeco de Nieve",
+        "text_es": "_En posesión de la Bandera:_ Esta carta gana +3.",
+        "name_en": "Snowman",
+        "text_en": "In flag possession: This card has +3."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Veterinaria",
+        "text_es": "_Desde el banquillo:_ Tus cartas con fuerza base 3 ganan +1 durante el ataque.",
+        "name_en": "Vet",
+        "text_en": "From the bench: Your cards with base power 3 have +1 during the attack."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Trineo Deportivo",
+        "text_es": "_Desde el banquillo:_ Tus cartas [Montaña] en posesión de la bandera ganan +1.",
+        "name_en": "Ice Bob",
+        "text_en": "From the bench: Your [Mountain]-cards in flag possession have +1."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Águila",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Eagle",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Yeti",
+        "text_es": "_En posesión de la Bandera:_ Recibe 1 fan por cada carta que ataque a esta carta.",
+        "name_en": "Yeti",
+        "text_en": "In flag possession: Take 1 fan for every card that attacks this card."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Mamut",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Mammoth",
+        "text_en": "Rare 2x"
+      },
+      {
+        "level": "C",
+        "strength": "11",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Zepelín",
+        "text_es": "Si hay una carta de nivel C en tu banquillo, pierdes de inmediato el enfrentamiento. Infrecuente (3 copias)",
+        "name_en": "Zeppelin",
+        "text_en": "If there is a Level-C-Card on your bench, you lose this match immediately. Rare 3x"
+      }
+    ]
+  },
+  "rainbow": {
+    "id": "rainbow",
+    "name": {
+      "es": "Arcoíris",
+      "en": "Rainbow",
+      "fr": "Arc-en-ciel"
+    },
+    "game": "c2",
+    "color_hex": "linear-gradient(180deg, #ef4444 0%, #f97316 20%, #eab308 40%, #22c55e 60%, #06b6d4 80%, #8b5cf6 100%)",
+    "color_border": "#c084fc",
+    "total_cards": 5,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Mochilero",
+        "text_es": "_Especial:_ En lugar de ir a tu banquillo, esta carta va a tu reserva. Esta carta tiene todos los iconos de set.",
+        "name_en": "Backpacker",
+        "text_en": "Special: When this card would be put on your bench, put it on your exhaust pile instead. This card has all set icons."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "DJ",
+        "text_es": "Mira la carta superior de tu mazo. Colócala en la parte superior o en la parte inferior de tu mazo. Esta carta tiene todos los iconos de set.",
+        "name_en": "Dj",
+        "text_en": "Look at the top card of your deck. Put it on top of or under your deck. This card has all set icons."
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Impostor",
+        "text_es": "Esta carta gana +1 por cada fuerza base diferente en tu banquillo. Esta carta tiene todos los iconos de set.",
+        "name_en": "Impostor",
+        "text_en": "This card has +1 for each different base power on your bench. This card has all set icons."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Estrella de Internet",
+        "text_es": "Cada bonificación de fuerza que reciba esta carta se duplica. Esta carta tiene todos los iconos de set.",
+        "name_en": "Streamer",
+        "text_en": "Double every power bonus this card receives. This card has all set icons."
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Patinadora",
+        "text_es": "Si perdiste el enfrentamiento anterior, recibe 2 Hinchas. Esta carta tiene todos los iconos de set.",
+        "name_en": "Skater",
+        "text_en": "If you Iost the previous match, take 2 fans. This card has all set icons."
+      }
+    ]
+  },
+  "secret_base": {
+    "id": "secret_base",
+    "name": {
+      "es": "Base Secreta",
+      "en": "Secret Base",
+      "fr": "Infiltration"
+    },
+    "game": "c2",
+    "color_hex": "#db2777",
+    "color_border": "#f472b6",
+    "total_cards": 10,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Ladrón",
+        "text_es": "Toma la carta superior del mazo de nivel A y colócala en tu reserva.",
+        "name_en": "Thief",
+        "text_en": "Put the top card from the Level-A- Pile on your exhaust pile."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 8,
+        "is_starter_card": false,
+        "name_es": "Zombi",
+        "text_es": "_Durante el ataque:_ Esta carta gana +1 por cada carta en tu reserva.",
+        "name_en": "Zombie",
+        "text_en": "During the attack: This card has +1 for each card in your exhaust pile. Common 8x"
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Rata",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Rat",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Ladrón de cajas fuertes",
+        "text_es": "Coloca una carta de tu reserva en la parte inferior de tu mazo.",
+        "name_en": "Safecracker",
+        "text_en": "Put a card from your exhaust pile under your deck."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Vehículo de Fuga",
+        "text_es": "Coloca hasta dos cartas [Infiltración] de tu banquillo en tu reserva.",
+        "name_en": "Getaway Vehicle",
+        "text_en": "Put up to two [Secret Base]-cards from your bench on your exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Pirata Informática",
+        "text_es": "Mira las tres primeras cartas de tu mazo. Coloca una en la parte superior de tu mazo, una en la parte inferior y una en tu reserva.",
+        "name_en": "Hacker",
+        "text_en": "Look at the top three cards of your deck. Put one under, one on the top of your deck and one on your exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Serpiente",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Snake",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Repollo mutante",
+        "text_es": "_Especial:_ En lugar de ir a tu banquillo, esta carta va a tu reserva.",
+        "name_en": "Cabbage",
+        "text_en": "Special: When this card would be put on your bench, put it on your exhaust pile instead."
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Científica",
+        "text_es": "Coloca una carta de nivel A de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Scientist",
+        "text_en": "Put a Level-A-Card from your bench on top of your deck."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Topo",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Mole",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "toy_store": {
+    "id": "toy_store",
+    "name": {
+      "es": "Juguetería",
+      "en": "Toy Store",
+      "fr": "Jouets"
+    },
+    "game": "c2",
+    "color_hex": "#84cc16",
+    "color_border": "#a3e635",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Tren de Modelismo",
+        "text_es": "_Sin captura de Bandera:_ Coloca una carta de nivel A de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Model Railway",
+        "text_en": "No flag win: Put a Level-A-Card from your bench on top of your deck."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Marioneta",
+        "text_es": "Esta carta gana +2 si hay al menos una carta debajo de ella.",
+        "name_en": "Puppet",
+        "text_en": "If there is at least one card below it, this card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Figura de acción",
+        "text_es": "_Sin captura de Bandera:_ Tu siguiente carta recibe +2.",
+        "name_en": "Action Figure",
+        "text_en": "No flag win: Your next card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Caballo Balancín",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Rocking Horse",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cochecito de Cuerda",
+        "text_es": "Puedes retirar de forma permanente una carta de tu banquillo. Si lo haces, esta carta gana +4.",
+        "name_en": "Wind Up Car",
+        "text_en": "You may remove a card from your bench permanently. If you do, this card has +4."
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Dependiente",
+        "text_es": "Si hay una carta [Juguetes/Puzzle] en tu banquillo, tu rival coloca la carta superior de su mazo en su reserva.",
+        "name_en": "Shop Clerk",
+        "text_en": "If there is a [Toy Store]-card on your bench, your opponent puts the top card of their deck on their exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Juego de Karaoke",
+        "text_es": "_Sin captura de Bandera:_ Toma la carta superior del mazo de nivel B y colócala en la parte inferior de tu mazo, sin mirarla.",
+        "name_en": "Karaoke Kit",
+        "text_en": "No flag win: Put the top card from the Level-B-Pile under your deck, without looking at it"
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Conejito",
+        "text_es": "(Sin texto)",
+        "name_en": "Bunny",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Coleccionista de Juegos",
+        "text_es": "_Sin captura de Bandera:_ Tu siguiente carta gana +6.",
+        "name_en": "Game Collector",
+        "text_en": "No flag win: Your next card has +6."
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Muñecas rusas",
+        "text_es": "_Al ser seleccionada:_ Puedes retirar de forma permanente una carta de tu mazo para seleccionar una carta adicional.",
+        "name_en": "Matryoshka",
+        "text_en": "When picked: You may remove a card from your deck permanently to pick an extra card."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Jirafa",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Giraffe",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "university": {
+    "id": "university",
+    "name": {
+      "es": "Universidad",
+      "en": "University",
+      "fr": "Université"
+    },
+    "game": "c2",
+    "color_hex": "#78350f",
+    "color_border": "#b45309",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Jugadora de Rugby",
+        "text_es": "_Durante el ataque:_ Esta carta gana +1 por cada uno de tus Hinchas, excluyendo los de tus Trofeos.",
+        "name_en": "Quarterback",
+        "text_en": "During the attack: This card has +1 for each of your fans, excluding those on Trophies."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Animador",
+        "text_es": "_Al ser seleccionada:_ Recibe 2 Hinchas.",
+        "name_en": "Cheerleader",
+        "text_en": "When picked: Take 2 fans."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cafetera",
+        "text_es": "_Desde el banquillo:_ Tus cartas [Universidad] ganan +1 durante el ataque.",
+        "name_en": "Coffee Machine",
+        "text_en": "From the bench: Your [University]-cards have +1 during the attack."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Hámster",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Hamster",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Profesora",
+        "text_es": "Si hay al menos una carta [Universidad] en tu banquillo, recibe 1 Hincha.",
+        "name_en": "Professor",
+        "text_en": "If there is at least one [University]-card on your bench, take 1 fan."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Conserje",
+        "text_es": "Puedes colocar una de las cartas con menor fuerza base de tu banquillo en tu reserva.",
+        "name_en": "Janitor",
+        "text_en": "You may put a card with the lowest base power from your bench on your exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Entrenador Personal",
+        "text_es": "Esta carta gana +1 por cada grupo de 5 Hinchas que tengas, excluyendo los de tus Trofeos.",
+        "name_en": "Personal Coach",
+        "text_en": "This card has +1 for each set of 5 fans, excluding those on Trophies."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Búho",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Owl",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Examen Final",
+        "text_es": "Esta carta gana +1 por cada carta con fuerza base 3 o menos en tu banquillo.",
+        "name_en": "Final Exam",
+        "text_en": "This card has +1 for each card with base power 3 or lower on your bench."
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Tutor",
+        "text_es": "Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte superior de tu mazo.",
+        "name_en": "Tutor",
+        "text_en": "Look through your deck. Choose any card and put it on top of your deck."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Gárgola",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Gargoyle",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "castle": {
+    "id": "castle",
+    "name": {
+      "es": "Castillo",
+      "en": "Castle",
+      "fr": "Château"
+    },
+    "game": "c1",
+    "color_hex": "#3c87be",
+    "color_border": "#67a6d8",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Bufón",
+        "text_es": "Si hay al menos una carta con fuerza básica de 1 en tu banquillo, esta carta recibe +3.",
+        "name_en": "Jester",
+        "text_en": "If there is at least one card with base power 1 on your bench, this card has +3."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Ermitaño",
+        "text_es": "Si no hay cartas de ${CASTLE} en tu banquillo, esta carta tiene +2.",
+        "name_en": "Hermit",
+        "text_en": "If there are no [Castle]-cards on your bench, this card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Mozo de Cuadra",
+        "text_es": "Esta carta recibe +1 por cada carta con fuerza básica de 3 en tu banquillo.",
+        "name_en": "Stable Boy",
+        "text_en": "This card has +1 for each card with base power 3 on your bench."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Cerdo",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Pig",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Herrero",
+        "text_es": "_Desde el banquillo:_ Tus cartas ${CASTLE} reciben +1.",
+        "name_en": "Blacksmith",
+        "text_en": "From the bench: Your [Castle]-cards have +1."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Caballero",
+        "text_es": "During the attack: This card has +1 for each Trophy of your opponent.",
+        "name_en": "Knight",
+        "text_en": "During the attack: This card has +1 for each Trophy of your opponent."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Hechicero",
+        "text_es": "Coge de tu banquillo una carta con una fuerza básica de 3 o menos y colócala en tu montón de cartas agotadas.",
+        "name_en": "Sorcerer",
+        "text_en": "You may put one card with base power 3 or lower from your bench on your exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Caballo",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Horse",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Bardo",
+        "text_es": "_Desde el banquillo:_ Tus cartas tienen +1 durante el ataque.",
+        "name_en": "Bard",
+        "text_en": "From the bench: Your cards have +1 during the attack."
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Príncipe",
+        "text_es": "_Al perder la Bandera:_ Coloca esta carta en tu montón de cartas agotadas.",
+        "name_en": "Prince",
+        "text_en": "Flag loss: Put this card on your exhaust pile."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Dragón",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Dragon",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "film_studio": {
+    "id": "film_studio",
+    "name": {
+      "es": "Estudio de Cine",
+      "en": "Film Studio",
+      "fr": "Cinéma"
+    },
+    "game": "c1",
+    "color_hex": "#70a146",
+    "color_border": "#94c868",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Maquillador",
+        "text_es": "_Desde el banquillo:_ Tus cartas con fuerza básica de 1 reciben +2 durante el ataque.",
+        "name_en": "Make-Up Artist",
+        "text_en": "From the bench: Your cards with base power 1 have +2 during the attack."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Estrella de cine",
+        "text_es": "Coloca hasta dos cartas de Novato de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Movie Star",
+        "text_en": "Put up to two Newcomer-cards from your bench on top of your deck."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Gángster",
+        "text_es": "During the attack: This card has +2.",
+        "name_en": "Gangster",
+        "text_en": "During the attack: This card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Gato",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Cat",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Vaquero",
+        "text_es": "Si esta carta entra en posesión de la Bandera, tu adversario coloca la primera carta de su mazo en su banquillo.",
+        "name_en": "Cowboy",
+        "text_en": "If this card gets in flag possession, your opponent puts the top card of their deck on their bench."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Director",
+        "text_es": "_Desde el banquillo:_ Tus cartas ${FILMSTUDIO} tienen +1 durante el ataque.",
+        "name_en": "Director",
+        "text_en": "From the bench: Your [Film]-cards have +1 during the attack."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Personaje de cómic",
+        "text_es": "_Al perder la Bandera:_ Tu siguiente carta tiene +2 durante el ataque.",
+        "name_en": "Comic Character",
+        "text_en": "Flag loss: Your next card has +2 during the attack."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "León",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Lion",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Heroína",
+        "text_es": "Si esta carta entra en posesión de la Bandera, ganas 3 Hinchas.",
+        "name_en": "Heroine",
+        "text_en": "If this card gets in flag possession, take 3 fans."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "T-rex",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "T-Rex",
+        "text_en": "Rare 2x"
+      },
+      {
+        "level": "C",
+        "strength": "10",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Villano",
+        "text_es": "Coloca la carta superior de la pila de Nivel A en la parte superior de tu mazo, sin mirarla.",
+        "name_en": "Villain",
+        "text_en": "Put the top card from the Level-A-Pile on top of your deck, without looking at it."
+      }
+    ]
+  },
+  "funfair": {
+    "id": "funfair",
+    "name": {
+      "es": "Feria",
+      "en": "Funfair",
+      "fr": "Fête Foraine"
+    },
+    "game": "c1",
+    "color_hex": "#f7b322",
+    "color_border": "#fbd065",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Payaso",
+        "text_es": "Si esta carta entra en posesión de la Bandera, ganas 2 Hinchas.",
+        "name_en": "Clown",
+        "text_en": "If this card gets in flag possession, take 2 fans."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Malabarista",
+        "text_es": "Mira las tres primeras cartas de tu mazo. Devuélvelas a la parte superior de tu mazo en el orden que quieras.",
+        "name_en": "Juggler",
+        "text_en": "Look at the top three cards of your deck. Return them in any order on top of your deck."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Vendedora",
+        "text_es": "_Desde el banquillo:_ Tus cartas ${FUNFAIR} reciben +1.",
+        "name_en": "Vendor",
+        "text_en": "From the bench: Your [Funfair]-cards have +1."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Pony",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Pony",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Mimo",
+        "text_es": "Esta carta tiene +1 por cada asiento vacío en tu banquillo.",
+        "name_en": "Mime",
+        "text_en": "This card has +1 for each empty seat on your bench."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Pirotécnico",
+        "text_es": "Si tienes una sola o ninguna carta restante en tu mazo, coge 2 Hinchas.",
+        "name_en": "Pyrotechnician",
+        "text_en": "If you have a single or no card left in your deck, take 2 fans."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Clarividente",
+        "text_es": "_Al perder la Bandera:_ Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte superior de tu mazo.",
+        "name_en": "Clairvoyant",
+        "text_en": "Flag loss: Look through your deck. Choose any card and put it on top of your deck."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Pato de goma",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Rubber Duck",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Ilusionista",
+        "text_es": "_En posesión de la Bandera:_ Esta carta recibe +1 por cada asiento vacío en tu banquillo.",
+        "name_en": "Illusionist",
+        "text_en": "In flag possession: This card has +1 for each empty seat on your bench."
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Coche de Choque",
+        "text_es": "Mira las tres primeras cartas de tu mazo. Devuélvelas a la parte superior de tu mazo en el orden que quieras.",
+        "name_en": "Bumper Car",
+        "text_en": "Look at the top three cards of your deck. Return them in any order on top of your deck."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Osito de peluche",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Teddy Bear",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "haunted_house": {
+    "id": "haunted_house",
+    "name": {
+      "es": "Casa embrujada",
+      "en": "Haunted House",
+      "fr": "Maison Hantée"
+    },
+    "game": "c1",
+    "color_hex": "#ee842e",
+    "color_border": "#f6aa6a",
+    "total_cards": 10,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Mayordomo",
+        "text_es": "Coloca hasta dos cartas de tu banquillo en tu montón de cartas agotadas.",
+        "name_en": "Butler",
+        "text_en": "Put up to two cards from your bench on your exhaust pile."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 8,
+        "is_starter_card": false,
+        "name_es": "Esqueleto",
+        "text_es": "_En posesión de la Bandera:_ Esta carta tiene +1. Común (8 copias)",
+        "name_en": "Skeleton",
+        "text_en": "In flag possession: This card has +1. Common 8x"
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Araña",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Spider",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Fantasma",
+        "text_es": "Tu oponente coloca la carta superior de su mazo en su montón de cartas agotadas.",
+        "name_en": "Ghost",
+        "text_en": "Your opponent puts the top card of their deck on their exhaust pile."
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Adolescente",
+        "text_es": "Esta carta tiene +1 por cada carta de ${HAUNTEDHOUSE} en tu banquillo.",
+        "name_en": "Teenager",
+        "text_en": "This card has +1 for each [Haunted House] card on your bench."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Nigromante",
+        "text_es": "Pon una carta con fuerza básica de 2 de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Necromancer",
+        "text_en": "Put one card with base power 2 from your bench on top of your deck."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Murciélago",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Bat",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Vampiro",
+        "text_es": "Coloca una carta de Nivel B de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Vampire",
+        "text_en": "Put one Level-B-Card from your bench on top of your deck."
+      },
+      {
+        "level": "C",
+        "strength": "5",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Aspiradora",
+        "text_es": "Coloca hasta dos cartas de tu banquillo en tu montón de cartas agotadas.",
+        "name_en": "Vacuum Cleaner",
+        "text_en": "Put up to two cards from your bench on your exhaust pile."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Hombrelobo",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Werewolf",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "outer_space": {
+    "id": "outer_space",
+    "name": {
+      "es": "Espacio exterior",
+      "en": "Outer Space",
+      "fr": "Espace"
+    },
+    "game": "c1",
+    "color_hex": "#dd3e3b",
+    "color_border": "#ec7472",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cápsula de Rescate",
+        "text_es": "_Al perder la Bandera:_ Quita esta carta. Coloca la primera carta del montón de nivel B en tu montón de cartas agotadas.",
+        "name_en": "Rescue Pod",
+        "text_en": "Flag loss: Remove this card. Put the top card from the Level-B-Pile on your exhaust pile."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cambia-formas",
+        "text_es": "_Al elegirse:_ Puedes quitar una carta de tu mazo permanentemente para elegir una carta adicional.",
+        "name_en": "Shapeshifter",
+        "text_en": "When picked: You may remove a card from your deck to pick an extra card."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "I.A.",
+        "text_es": "_Desde el banquillo:_ Tus cartas con fuerza básica de 2 reciben +1. Infrecuente (3 copias)",
+        "name_en": "A.I.",
+        "text_en": "From the bench: Your cards with base power 2 have +1. Rare 3x"
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Vaca",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Cow",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Banda",
+        "text_es": "_Desde el banquillo:_ Tus cartas ${OUTERSPACE} reciben +1.",
+        "name_en": "Band",
+        "text_en": "From the bench: Your [Space] cards have +1."
+      },
+      {
+        "level": "B",
+        "strength": "3",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "OVNI",
+        "text_es": "Coloca las dos cartas superiores de la pila de Nivel A en la parte inferior de tu mazo, sin mirarlas.",
+        "name_en": "Ufo",
+        "text_en": "Put the top two cards from the Level-A-Pile under your deck, without looking at them."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 5,
+        "is_starter_card": false,
+        "name_es": "Clones",
+        "text_es": "_Al cogerla:_ Ganas 1 Hincha. Común (5 copias)",
+        "name_en": "Clones",
+        "text_en": "When picked: Take 1 fan. Common 5x"
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Alienígena",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Alien",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Holograma",
+        "text_es": "Tu oponente coloca la carta superior de la pila de Nivel B en la parte superior de su mazo, sin mirarla.",
+        "name_en": "Hologram",
+        "text_en": "Your opponent puts the top card from the Level-B-Pile on top of their deck, without looking at it."
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Friki de la Ciencia-ficción",
+        "text_es": "_Al elegirse:_ Puedes eliminar dos cartas del conjunto ${OUTERSPACE} de tu mazo para coger una carta extra.",
+        "name_en": "Sci-Fi Geek",
+        "text_en": "When picked: You may remove two [Space]-cards from your deck to pick an extra card."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Slime",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Slime",
+        "text_en": "Rare 2x"
+      }
+    ]
+  },
+  "shipwreck": {
+    "id": "shipwreck",
+    "name": {
+      "es": "Naufragio",
+      "en": "Shipwreck",
+      "fr": "Épave"
+    },
+    "game": "c1",
+    "color_hex": "#8a318b",
+    "color_border": "#b458b5",
+    "total_cards": 11,
+    "cards": [
+      {
+        "level": "A",
+        "strength": "1",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Tritón",
+        "text_es": "Si hay al menos una carta ${SHIPWRECK} en tu banquillo, esta carta tiene +3.",
+        "name_en": "Merman",
+        "text_en": "If there is at least one [Shipwreck] card on your bench, this card has +3."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Tesoro",
+        "text_es": "_En posesión de la Bandera:_ Esta carta tiene +2.",
+        "name_en": "Treasure",
+        "text_en": "In flag possession: This card has +2."
+      },
+      {
+        "level": "A",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Marinero",
+        "text_es": "Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte inferior de tu mazo.",
+        "name_en": "Sailor",
+        "text_en": "Look through your deck. Choose any card and put it under your deck."
+      },
+      {
+        "level": "A",
+        "strength": "3",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Loro",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Parrot",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "B",
+        "strength": "2",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Cocinero",
+        "text_es": "_Desde el banquillo:_ Tu carta en posesión de la Bandera tiene +1.",
+        "name_en": "Cook",
+        "text_en": "From the bench: Your card in flag possession has +1."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Salvavidas",
+        "text_es": "Si te queda una sola carta o ninguna en tu mazo, esta carta tiene +2.",
+        "name_en": "Lifeguard",
+        "text_en": "If you have a single or no card left in your deck, this card has +2."
+      },
+      {
+        "level": "B",
+        "strength": "4",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Navegante",
+        "text_es": "_Al perder la Bandera:_ Mira las dos primeras cartas de tu mazo. Coloca una en la parte superior del mazo y la otra en la parte inferior.",
+        "name_en": "Navigator",
+        "text_en": "Flag loss: Look at the top two cards of your deck. Put one under your deck and the other on top."
+      },
+      {
+        "level": "B",
+        "strength": "5",
+        "default_copies": 3,
+        "is_starter_card": false,
+        "name_es": "Tiburón",
+        "text_es": "Infrecuente (3 copias)",
+        "name_en": "Shark",
+        "text_en": "Rare 3x"
+      },
+      {
+        "level": "C",
+        "strength": "6",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Sirena",
+        "text_es": "Puedes colocar una carta del banquillo de tu oponente en su montón de cartas agotadas.",
+        "name_en": "Siren",
+        "text_en": "You may put a card from your opponent's bench on their exhaust pile."
+      },
+      {
+        "level": "C",
+        "strength": "7",
+        "default_copies": 2,
+        "is_starter_card": false,
+        "name_es": "Kraken",
+        "text_es": "Infrecuente (2 copias)",
+        "name_en": "Kraken",
+        "text_en": "Rare 2x"
+      },
+      {
+        "level": "C",
+        "strength": "9",
+        "default_copies": 4,
+        "is_starter_card": false,
+        "name_es": "Submarino",
+        "text_es": "Pon la última carta de tu mazo en tu montón de cartas agotadas.",
+        "name_en": "Submarine",
+        "text_en": "Put the bottom-most card of your deck on your exhaust pile."
+      }
+    ]
+  },
+  "trainers": {
+    "id": "trainers",
+    "name": {
+      "es": "Entrenadores",
+      "en": "Trainers",
+      "fr": "Entraîneurs"
+    },
+    "game": "c2",
+    "color_hex": "#1e293b",
+    "color_border": "#64748b",
+    "total_cards": 16,
+    "cards": [
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Estratega",
+        "text_es": "_En cada fase de Planificación:_ Roba 6 cartas en vez de 5. Si perdiste el combate anterior, ganas 1 Hincha.",
+        "name_en": "Strategist",
+        "text_en": "Every Deck Phase: Draw 6 cards instead of 5. If you lost the previous match, take 1 fan.",
+        "name_fr": "STRATÈGE",
+        "text_fr": "Chaque phase Deck : Piochez 6 cartes au lieu de 5. Si vous avez perdu le match précédent, recevez 1 fan."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Urbanista",
+        "text_es": "Tus cartas ${CITY} reciben +1 durante el ataque.",
+        "name_en": "Urbanist",
+        "text_en": "Your City-cards have +1 during the attack.",
+        "name_fr": "URBANISTE",
+        "text_fr": "Vos cartes [Ville] gagnent +1 durant l'attaque."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Defensor",
+        "text_es": "Las cartas que tengas cuya fuerza básica sea 4 reciben +1 en posesión de la Bandera.",
+        "name_en": "Defender",
+        "text_en": "Your cards with base power 4 have +1 in flag possession.",
+        "name_fr": "PROTECTEUR",
+        "text_fr": "Vos cartes avec une force de base 4 gagnent +1 en possession du drapeau."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Coleccionista",
+        "text_es": "El asiento de banquillo que tengas más cerca solo puede contener una carta, que no puede ser ${CITY} ni ${RAINBOW}. Si hay una carta en ese asiento, todas las cartas que tengas con ese mismo icono de conjunto reciben +1.",
+        "name_en": "Collector",
+        "text_en": "Your closest bench seat can only hold a single card, which can't be a City or Rainbow card. If there is a card on that seat, your cards with the same Set icon have +1.",
+        "name_fr": "COLLECTIONNEUR",
+        "text_fr": "Votre espace de banc le plus près ne peut contenir qu'une seule carte, ne pouvant pas être du set [Ville] ou [Arc-en-ciel]. S'il y a une carte sur cet espace de banc, vos cartes du même set gagnent +1."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Refrescador",
+        "text_es": "El asiento de tu banquillo que tengas más cerca puede contener cartas distintas que sumen como máximo una fuerza básica total de 5. Las cartas que haya en este asiento se ignoran durante el resto del combate y no pueden verse afectadas por otros efectos.",
+        "name_en": "Chiller",
+        "text_en": "Your closest bench seat can hold different cards, up to a combined base power of 5. Cards on this seat are ignored for the rest of the match and cannot be targeted by other effects.",
+        "name_fr": "REFROIDISSEUR",
+        "text_fr": "Votre espace de banc le plus près peut contenir différentes cartes, jusqu'à une force de base combinée de 5. Les cartes sur cet espace sont ignorées pour le reste du match et ne peuvent être la cible d'aucun effet."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Luchador",
+        "text_es": "Las cartas que tengas cuya fuerza básica sea 2 reciben +1 durante el ataque.",
+        "name_en": "Fighter",
+        "text_en": "Your cards with base power 2 have +1 during the attack.",
+        "name_fr": "COMBATTANT",
+        "text_fr": "Vos cartes avec une force de base 2 gagnent +1 durant l'attaque."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "∞",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Logístico",
+        "text_es": "Tu banquillo tiene un asiento adicional. Cada uno de tus asientos solo puede contener dos cartas.",
+        "name_en": "Logistician",
+        "text_en": "Your bench has an additional seat. Each of your seats can hold only two cards.",
+        "name_fr": "LOGISTICIEN",
+        "text_fr": "Votre banc dispose d'un espace supplémentaire. Chacun de vos espaces de banc ne peut contenir que 2 cartes."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Madrugador",
+        "text_es": "_Dale la vuelta a esta carta:_ Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte superior de tu mazo.",
+        "name_en": "Early Bird",
+        "text_en": "Flip this card: Look through your deck. Choose any card and put it on top of your deck.",
+        "name_fr": "LÈVE-TÔT",
+        "text_fr": "Retourner cette carte : Regardez les cartes de votre deck. Choisissez-en une et placez-la sur le dessus de votre deck."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Borrador",
+        "text_es": "_Dale la vuelta a esta carta:_ Coloca una carta con fuerza básica de 3 o menos de tu banquillo en tu montón de cartas agotadas.",
+        "name_en": "Clearer",
+        "text_en": "Flip this card: Put one card with base power 3 or lower from your bench on your exhaust pile.",
+        "name_fr": "CORRECTEUR",
+        "text_fr": "Retourner cette carte : Placez une carte de votre banc avec une force de base 3 ou moins sur votre réserve."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Cambiador",
+        "text_es": "_Inicio de cada combate:_ Debes colocar en tu banquillo la primera carta del montón del nivel A. _Dale la vuelta a esta carta:_ Coloca una carta con fuerza básica de 4 o menos de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Changer",
+        "text_en": "Start of every Match Phase: You must put the top card from the Level-A-Pile on your bench. Flip this card: Put one card with base power 4 or lower from your bench on top of your deck.",
+        "name_fr": "ÉCHANGEUR",
+        "text_fr": "Début de chaque phase Match : Vous devez placer la carte du dessus de la pile niveau A sur votre banc. / Retourner cette carte : Placez une carte avec une force de base 4 ou moins de votre banc sur votre deck."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Fortalecedor",
+        "text_es": "_Dale la vuelta a esta carta:_ Tu última carta jugada tiene +3 durante el ataque.",
+        "name_en": "Uplifter",
+        "text_en": "Flip this card: Your most recently played card has +3 during the attack.",
+        "name_fr": "REMONTEUR",
+        "text_fr": "Retourner cette carte : Votre carte la plus récemment jouée gagne +3 durant l'attaque."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Transformador",
+        "text_es": "_Dale la vuelta a esta carta:_ Retira permanentemente de tu banquillo una carta con fuerza básica de 4 o más. Coloca la primera carta del montón de nivel B en tu montón de cartas agotadas.",
+        "name_en": "Transformer",
+        "text_en": "Flip this card: Remove a card with base power 4 or higher from your bench permanently. Put the top card from the Level-B-Pile on your exhaust pile.",
+        "name_fr": "CONVERTISSEUR",
+        "text_fr": "Retourner cette carte : Retirez de façon permanente une carte avec une force de base 4 ou plus de votre banc. Placez la carte du dessus de la pile de niveau B sur votre réserve."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Táctico",
+        "text_es": "_Inicio de cada combate:_ Mira las tres primeras cartas de tu mazo. Devuélvelas en el orden que quieras a la parte superior de tu mazo. _Dale la vuelta a esta carta:_ Repite la habilidad anterior.",
+        "name_en": "Tactician",
+        "text_en": "Start of every Match Phase: Look at the top three cards of your deck. Return them in any order on top of your deck. Flip this card: Repeat the ability above.",
+        "name_fr": "TACTICIEN",
+        "text_fr": "Début de chaque phase Match : Regardez les trois premières cartes de votre deck. Replacez-les sur le dessus de votre deck dans l'ordre de votre choix. / Retourner cette carte : Répétez l'action ci-dessus."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Organizador",
+        "text_es": "_Fase de Planificación Ronda 1:_ Ganas 2 Hinchas. _Dale la vuelta a esta carta:_ Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte inferior de tu mazo.",
+        "name_en": "Planner",
+        "text_en": "Deck Phase Round 1: Take 2 fans. Flip this card: Look through your deck. Choose any card and put it under your deck.",
+        "name_fr": "PLANIFICATEUR",
+        "text_fr": "Phase Deck de la manche 1 : Recevez 2 fans. / Retourner cette carte : Regardez les cartes de votre deck. Choisissez-en une et placez-la en dessous de votre deck."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Revitalizador",
+        "text_es": "_Inicio de cada combate:_ Debes colocar la primera carta de tu mazo en tu montón de cartas agotadas. _Dale la vuelta a esta carta:_ Coloca cualquier carta de tu montón de cartas agotadas en la parte superior de tu mazo.",
+        "name_en": "Revitalizer",
+        "text_en": "Start of every Match Phase: You must put the top card of your deck on your exhaust pile. Flip this card: Put any card from your exhaust pile on top of your deck.",
+        "name_fr": "REVITALISATEUR",
+        "text_fr": "Début de chaque phase Match : Vous devez placer la carte du dessus de votre deck sur votre réserve. / Retourner cette carte : Placez une carte de votre réserve sur le dessus de votre deck."
+      },
+      {
+        "level": "Entraîneur",
+        "strength": "⟲",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Motivador",
+        "text_es": "_Fase de Planificación Ronda 1:_ Debes eliminar permanentemente tu carta de Campeona. _Dale la vuelta a esta carta:_ Coloca una carta de nivel A de tu banquillo en la parte superior de tu mazo.",
+        "name_en": "Motivator",
+        "text_en": "Deck Phase Round 1: You must remove your Champion card permanently. Flip this card: Put one Level-A-Card from your bench on top of your deck.",
+        "name_fr": "MOTIVATEUR",
+        "text_fr": "Phase Deck de la manche 1 : Vous devez retirer de façon permanente votre carte Championne. / Retourner cette carte : Placez une carte niveau A de votre banc sur votre deck."
+      }
+    ]
+  },
+  "robot": {
+    "id": "robot",
+    "name": {
+      "es": "Robot",
+      "en": "Robot",
+      "fr": "Robot"
+    },
+    "game": "both",
+    "color_hex": "#64748b",
+    "color_border": "#94a3b8",
+    "total_cards": 24,
+    "cards": [
+      {
+        "level": "S",
+        "strength": "?",
+        "default_copies": 5,
+        "is_starter_card": false,
+        "name_es": "Cíborg",
+        "text_es": "La fuerza base de esta carta es igual al número de la ronda.",
+        "name_en": "Cyborg",
+        "text_en": "This card's base power is equal to the current round.",
+        "name_fr": "CYBORG",
+        "text_fr": "La force de base de cette carte est égale au numéro de la manche."
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Zombot",
+        "text_es": "Esta carta gana +1 por cada carta en la reserva del rival del robot.",
+        "name_en": "Zombot",
+        "text_en": "This card has +1 for each card in the exhaust pile of the robot's opponent.",
+        "name_fr": "ZOMBOT",
+        "text_fr": "Cette carte gagne +1 pour chaque carte dans la réserve de l'adversaire du robot."
+      },
+      {
+        "level": "R",
+        "strength": "5",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Animación",
+        "text_es": "_Desde el banquillo:_ Las cartas [Ciudad] del rival del robot ganan +1 durante el ataque.",
+        "name_en": "Animation",
+        "text_en": "From the bench: The [Ciudad] cards of the robot's opponent have +1 during the attack.",
+        "name_fr": "MONITRICE 2.0",
+        "text_fr": "Depuis le banc : Les cartes [Ciudad] de l'adversaire du robot gagnent +1 durant l'attaque."
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Superbot",
+        "text_es": "_Sin captura de Bandera:_ La siguiente carta del robot gana +2.",
+        "name_en": "He-Ro-Bot",
+        "text_en": "No flag win: The robot's next card has +2.",
+        "name_fr": "HÉ-RO-BOT",
+        "text_fr": "Insuffisant : La prochaine carte du robot gagne +2."
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Comprador",
+        "text_es": "_Sin captura de Bandera:_ El rival del robot coloca la carta superior de su mazo en su reserva.",
+        "name_en": "Shopper",
+        "text_en": "No flag win: The robot's opponent puts the top card of their deck on their exhaust pile.",
+        "name_fr": "ROBO-CAISSIER",
+        "text_fr": "Insuffisant : L'adversaire du robot place la carte du dessus de son deck sur sa réserve."
+      },
+      {
+        "level": "R",
+        "strength": "5",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Software",
+        "text_es": "Esta carta gana -2 si hay una carta de Recluta en el banquillo del rival del robot.",
+        "name_en": "Soft-Ware",
+        "text_en": "If there is a Newcomer on the robot's opponent's bench, this card has -2.",
+        "name_fr": "RÉTRO-BOT",
+        "text_fr": "Cette carte gagne -2 s'il y a une carte Recrue sur le banc de l'adversaire du robot."
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Marioneta de Metal",
+        "text_es": "Esta carta gana +3 si hay al menos una carta debajo de ella.",
+        "name_en": "Metal Puppet",
+        "text_en": "If there is at least one card below it, this card has +3.",
+        "name_fr": "MECA-RIONETTE",
+        "text_fr": "Cette carte gagne +3 s'il y a au moins une carte en dessous d'elle."
+      },
+      {
+        "level": "R",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "E-Squiador",
+        "text_es": "El rival del robot coloca una carta de su banquillo en su reserva.",
+        "name_en": "E-Skier",
+        "text_en": "The robot's opponent puts one card from their bench on their exhaust pile.",
+        "name_fr": "SK-I.A.",
+        "text_fr": "L'adversaire du robot place une carte de son banc sur sa réserve."
+      },
+      {
+        "level": "SOLO",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Payaso de Hierro",
+        "text_es": "Si esta carta obtiene la posesión de la bandera, el robot recibe 1 fan.",
+        "name_en": "Iron Clown",
+        "text_en": "If this card gets in flag possession, the robot takes 1 fan. SOLO",
+        "name_fr": "BORO LE CLOWN",
+        "text_fr": "Si cette carte entre en possession du drapeau, le robot reçoit 1 fan."
+      },
+      {
+        "level": "SOLO",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Demoledor de Ciudades",
+        "text_es": "El rival del robot retira de forma permanente una carta [Ciudad] de su banquillo.",
+        "name_en": "City-Buster",
+        "text_en": "The robot's opponent removes a [City]-card from their bench permanently. SOLO",
+        "name_fr": "BOT-ZILLA",
+        "text_fr": "L'adversaire du robot retire de façon permanente une carte [Ciudad] de son banc."
+      },
+      {
+        "level": "SOLO",
+        "strength": "7",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Autodetectar",
+        "text_es": "Esta carta gana -1 por cada fuerza base diferente en el banquillo del rival del robot (hasta un mínimo de 1).",
+        "name_en": "Autodetect",
+        "text_en": "This card has -1 for each different base power on the robot's opponent's bench (to a minimum of 1). SOLO",
+        "name_fr": "AUTODETECT",
+        "text_fr": "Cette carte gagne -1 pour chaque force de base différente sur le banc de l'adversaire du robot (jusqu'à un minimum de 1)."
+      },
+      {
+        "level": "S",
+        "strength": "1",
+        "default_copies": 1,
+        "is_starter_card": true,
+        "name_es": "Alfa",
+        "text_es": "",
+        "name_en": "Alpha",
+        "text_en": "",
+        "name_fr": "Alpha",
+        "text_fr": ""
+      },
+      {
+        "level": "R",
+        "strength": "1",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Fantasma Virtual",
+        "text_es": "El adversario del Robot coloca la carta superior de su mazo en su montón de cartas agotadas.",
+        "name_en": "Virtual Ghost",
+        "text_en": "The robot's opponent puts the top card of their deck on their exhaust pile.",
+        "name_fr": "Fantôme Virtuel",
+        "text_fr": "L'adversaire du robot place la carte du dessus de son deck sur sa défausse."
+      },
+      {
+        "level": "R",
+        "strength": "1",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Amigo Cíborg",
+        "text_es": "Esta carta tiene +1 por cada Cíborg en el banquillo del robot.",
+        "name_en": "Cyborg-Friend",
+        "text_en": "This card has +1 for each Cyborg on the robot's bench.",
+        "name_fr": "Ami Cyborg",
+        "text_fr": "Cette carte a +1 pour chaque Cyborg sur le banc du robot."
+      },
+      {
+        "level": "S",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Beta",
+        "text_es": "",
+        "name_en": "Beta",
+        "text_en": "",
+        "name_fr": "Béta",
+        "text_fr": ""
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Mecánica",
+        "text_es": "Esta carta tiene +1 por cada carta de nivel B en el banquillo del adversario del Robot.",
+        "name_en": "Mechanic",
+        "text_en": "This card has +1 for each Level B card on the robot opponent's bench.",
+        "name_fr": "Mécanicien",
+        "text_fr": "Cette carte a +1 pour chaque carte de Niveau B sur le banc de l'adversaire du robot."
+      },
+      {
+        "level": "S",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Perrobot",
+        "text_es": "",
+        "name_en": "Good Bot",
+        "text_en": "",
+        "name_fr": "Bon Bot",
+        "text_fr": ""
+      },
+      {
+        "level": "R",
+        "strength": "3",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Caballero-Robot",
+        "text_es": "_Durante el ataque:_ Esta carta recibe +1 por cada Trofeo del adversario del Robot.",
+        "name_en": "Robo-Knight",
+        "text_en": "_During the attack:_ This card has +1 for each Trophy of the robot's opponent.",
+        "name_fr": "Robo-Chevalier",
+        "text_fr": "_Pendant l'attaque:_ Cette carte a +1 pour chaque Trophée de l'adversaire du robot."
+      },
+      {
+        "level": "S",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Robocampeona",
+        "text_es": "",
+        "name_en": "C.H.A.M.P.",
+        "text_en": "",
+        "name_fr": "C.H.A.M.P.",
+        "text_fr": ""
+      },
+      {
+        "level": "R",
+        "strength": "4",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Dron",
+        "text_es": "El adversario del Robot coge una carta de su banquillo y la coloca en su montón de cartas agotadas.",
+        "name_en": "Drone",
+        "text_en": "The robot's opponent puts one card from their bench on their exhaust pile.",
+        "name_fr": "Drone",
+        "text_fr": "L'adversaire du robot place une carte de son banc sur sa défausse."
+      },
+      {
+        "level": "R",
+        "strength": "5",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Necromecánico",
+        "text_es": "El adversario del Robot puede coger una carta con fuerza básica de 2 de su banquillo y colocarla en la parte superior de su mazo.",
+        "name_en": "Necromech",
+        "text_en": "The robot's opponent may put one card with base power 2 from their bench on top of their deck.",
+        "name_fr": "Nécromecanicien",
+        "text_fr": "L'adversaire du robot peut placer une carte de force de base 2 de son banc sur le dessus de son deck."
+      },
+      {
+        "level": "SOLO",
+        "strength": "5",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Chatbot",
+        "text_es": "_Al perder la Bandera:_ El adversario del Robot gana 1 Hincha.",
+        "name_en": "Chatbot",
+        "text_en": "_Flag loss:_ The robot's opponent takes 1 fan.",
+        "name_fr": "Chatbot",
+        "text_fr": "_Perte du drapeau:_ L'adversaire du robot prend 1 fan."
+      },
+      {
+        "level": "SOLO",
+        "strength": "2",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Autodetector",
+        "text_es": "El adversario del Robot coloca la primera carta del montón del nivel A en la parte superior de su mazo, sin mirarla.",
+        "name_en": "Robogram",
+        "text_en": "The robot's opponent puts the top card from the Level-A-Pile on top of their deck, without looking at it.",
+        "name_fr": "Robogramme",
+        "text_fr": "L'adversaire du robot place la carte du dessus de la pile de Niveau-A sur le dessus de son deck, sans la regarder."
+      },
+      {
+        "level": "SOLO",
+        "strength": "7",
+        "default_copies": 1,
+        "is_starter_card": false,
+        "name_es": "Autocorregir",
+        "text_es": "Esta carta tiene -1 por cada icono de conjunto diferente que haya en el banquillo del adversario del Robot.",
+        "name_en": "Autocorrect",
+        "text_en": "This card has -1 for each different Set icon on the robot opponent's bench.",
+        "name_fr": "Autocorrection",
+        "text_fr": "Cette carte a -1 pour chaque icône de faction différente sur le banc de l'adversaire du robot."
+      }
+    ]
+  }
+}

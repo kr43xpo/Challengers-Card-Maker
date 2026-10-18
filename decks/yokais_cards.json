@@ -1,0 +1,327 @@
+{
+  "version": "1.0",
+  "title": "Challengers! - Expansión Yokais",
+  "description": "Mazo temático japonés de criaturas espirituales Yokai, adaptando las mecánicas oficiales de la facción Base Secreta (Infiltración).",
+  "creator": "kr43xpo",
+  "collection": "Edición Yokais",
+  "collection_name": "Edición Yokais",
+  "game": "both",
+  "sets": {
+    "yokais": {
+      "id": "yokais",
+      "name": {
+        "es": "Yokais (Base Secreta)",
+        "en": "Yokais (Secret Base)",
+        "fr": "Yokais (Infiltration)"
+      },
+      "game": "both",
+      "color_key": "yokais",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "icon_path": "icon_yokai.png"
+    }
+  },
+  "cards": [
+    {
+      "id": 200,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "S",
+      "strength": "?",
+      "default_copies": 6,
+      "is_starter_card": true,
+      "card_image": "yokai_starter_shikigami.png",
+      "art_image": "yokai_starter_shikigami.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Shikigami Inicial",
+        "text": "La fuerza base de esta carta es igual al número de la ronda."
+      },
+      "en": {
+        "name": "Starter Shikigami",
+        "text": "This card's base power is equal to the current round."
+      },
+      "fr": {
+        "name": "Shikigami Initial",
+        "text": "La force de base de cette carte est égale au numéro de la manche."
+      }
+    },
+    {
+      "id": 201,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "A",
+      "strength": "1",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_09_chochin_obake.png",
+      "art_image": "yokai_09_chochin_obake.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Chochin-obake",
+        "text": "Toma la carta superior del mazo de nivel A y colócala en tu reserva."
+      },
+      "en": {
+        "name": "Chochin-obake",
+        "text": "Put the top card from the Level-A-Pile on your exhaust pile."
+      },
+      "fr": {
+        "name": "Chochin-obake",
+        "text": "Prenez la carte du dessus de la pile niveau A et placez-la sur votre réserve."
+      }
+    },
+    {
+      "id": 202,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 8,
+      "is_starter_card": false,
+      "card_image": "yokai_08_nekomata.png",
+      "art_image": "yokai_08_nekomata.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Nekomata",
+        "text": "_Durante el ataque:_ Esta carta gana +1 por cada carta en tu reserva."
+      },
+      "en": {
+        "name": "Nekomata",
+        "text": "During the attack: This card has +1 for each card in your exhaust pile."
+      },
+      "fr": {
+        "name": "Nekomata",
+        "text": "Durant l'attaque : Cette carte gagne +1 pour chaque carte dans votre réserve."
+      }
+    },
+    {
+      "id": 203,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "yokai_04_kappa.png",
+      "art_image": "yokai_04_kappa.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Kappa",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Kappa",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Kappa",
+        "text": "Rare 3x"
+      }
+    },
+    {
+      "id": 204,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_05_bake_danuki.png",
+      "art_image": "yokai_05_bake_danuki.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Bake-danuki",
+        "text": "Coloca una carta de tu reserva en la parte inferior de tu mazo."
+      },
+      "en": {
+        "name": "Bake-danuki",
+        "text": "Put a card from your exhaust pile under your deck."
+      },
+      "fr": {
+        "name": "Bake-danuki",
+        "text": "Placez une carte de votre réserve en dessous de votre deck."
+      }
+    },
+    {
+      "id": 205,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_03_tengu.png",
+      "art_image": "yokai_03_tengu.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Tengu",
+        "text": "Coloca hasta dos cartas [Yokais] de tu banquillo en tu reserva."
+      },
+      "en": {
+        "name": "Tengu",
+        "text": "Put up to two [Yokais]-cards from your bench on your exhaust pile."
+      },
+      "fr": {
+        "name": "Tengu",
+        "text": "Placez jusqu'à deux cartes [Yokais] de votre banc sur votre réserve."
+      }
+    },
+    {
+      "id": 206,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_02_kitsune.png",
+      "art_image": "yokai_02_kitsune.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Kitsune",
+        "text": "Mira las tres primeras cartas de tu mazo. Coloca una en la parte superior de tu mazo, una en la parte inferior y una en tu reserva."
+      },
+      "en": {
+        "name": "Kitsune",
+        "text": "Look at the top three cards of your deck. Put one under, one on the top of your deck and one on your exhaust pile."
+      },
+      "fr": {
+        "name": "Kitsune",
+        "text": "Regardez les trois premières cartes de votre deck. Placez-en une au-dessus de votre deck, une en dessous, et une sur votre réserve."
+      }
+    },
+    {
+      "id": 207,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "yokai_07_jorogumo.png",
+      "art_image": "yokai_07_jorogumo.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Jorogumo",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Jorogumo",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Jorogumo",
+        "text": "Rare 3x"
+      }
+    },
+    {
+      "id": 208,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "C",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_06_yuki_onna.png",
+      "art_image": "yokai_06_yuki_onna.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Yuki-Onna",
+        "text": "_Especial:_ En lugar de ir a tu banquillo, esta carta va a tu reserva."
+      },
+      "en": {
+        "name": "Yuki-Onna",
+        "text": "Special: When this card would be put on your bench, put it on your exhaust pile instead."
+      },
+      "fr": {
+        "name": "Yuki-Onna",
+        "text": "Spécial : Au lieu d'être placée sur votre banc, cette carte est placée sur votre réserve."
+      }
+    },
+    {
+      "id": 209,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "C",
+      "strength": "5",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "yokai_01_oni.png",
+      "art_image": "yokai_01_oni.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Oni",
+        "text": "Coloca una carta de nivel A de tu banquillo en la parte superior de tu mazo."
+      },
+      "en": {
+        "name": "Oni",
+        "text": "Put a Level-A-Card from your bench on top of your deck."
+      },
+      "fr": {
+        "name": "Oni",
+        "text": "Placez une carte niveau A de votre banc sur le dessus de votre deck."
+      }
+    },
+    {
+      "id": 210,
+      "game": "both",
+      "set_id": "yokais",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "yokai_10_gashadokuro.png",
+      "art_image": "yokai_10_gashadokuro.png",
+      "icon_path": "icon_yokai.png",
+      "color_hex": "#8b5cf6",
+      "color_border": "#a78bfa",
+      "collection": "Edición Yokais",
+      "es": {
+        "name": "Gashadokuro",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Gashadokuro",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Gashadokuro",
+        "text": "Rare 2x"
+      }
+    }
+  ],
+  "author": "kr43xpo",
+  "info": {
+    "author": "kr43xpo"
+  }
+}

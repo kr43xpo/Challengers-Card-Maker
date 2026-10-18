@@ -1,0 +1,2540 @@
+{
+  "version": "3.1",
+  "title": "Challengers! - Expansión Dioses (Edición Equilibrada)",
+  "description": "Expansión mitológica y espiritual de 5 facciones perfectamente equilibradas con el juego oficial: Panteón Egipcio (Bosque Mágico), Panteón Griego (Montaña), Panteón Hindú (Club de Playa), Panteón Nórdico (Castillo / Asgard) y Figuras Cristianas (Universidad / Sabiduría).",
+  "creator": "kr43xpo",
+  "collection": "Edición Dioses",
+  "collection_name": "Edición Dioses",
+  "game": "both",
+  "info": {
+    "title": {
+      "es": "Challengers! - Expansión Dioses",
+      "en": "Challengers! - Gods Expansion",
+      "fr": "Challengers! - Extension Dieux",
+      "de": "Challengers! - Götter-Erweiterung",
+      "nl": "Challengers! - Goden Uitbreiding",
+      "it": "Challengers! - Espansione Dei"
+    },
+    "subtitle": {
+      "es": "Edición Mitológica y Espiritual Equilibrada",
+      "en": "Balanced Mythological and Spiritual Edition",
+      "fr": "Édition Mythologique et Spirituelle Équilibrée",
+      "de": "Ausgewogene mythologische und spirituelle Edition",
+      "nl": "Gebalanceerde mythologische en spirituele editie",
+      "it": "Edizione mitologica e spirituale bilanciata"
+    },
+    "author": "kr43xpo",
+    "version": "3.1",
+    "description": {
+      "es": "Expansión temática que introduce a las deidades y figuras supremas de cinco grandes tradiciones de la humanidad: Egipcia, Griega, Hindú, Nórdica y Cristiana. Ha sido concebida con absoluta rigurosidad matemática para calcar exactamente las mecánicas oficiales de Challengers!, asegurando un equilibrio competitivo inalterado.",
+      "en": "Thematic expansion introducing supreme deities and figures from five major traditions: Egyptian, Greek, Hindu, Norse, and Christian. Formulated with strict mathematical fidelity to mirror official Challengers! mechanics.",
+      "fr": "Extension thématique mettant en scène les divinités et figures de cinq grandes traditions : Égyptienne, Grecque, Hindoue, Nordique et Chrétienne.",
+      "de": "Thematische Erweiterung mit Gottheiten und Gestalten aus fünf großen Traditionen: Ägyptisch, Griechisch, Hindu, Nordisch und Christlich. Mathematisch exakt an offizielle Mechaniken angepasst.",
+      "nl": "Thematische uitbreiding met goden en figuren uit vijf grote tradities: Egyptisch, Grieks, Hindoe, Noors en Christelijk. Wiskundig perfect afgestemd op officiële spelmechanica.",
+      "it": "Espansione tematica con divinità e figure di cinque grandi tradizioni: Egizia, Greca, Indù, Norrena e Cristiana. Progettata con rigorosa fedeltà matematica alle meccaniche ufficiali."
+    },
+    "lore": {
+      "es": "A lo largo de los siglos, los pueblos han alzado la mirada en busca de guía, justicia y trascendencia: desde el solemne pesaje del corazón en el Duat egipcio y el fragor de los rayos en la cumbre del Olimpo, pasando por la danza cósmica de las deidades védicas y el coraje inquebrantable de los guerreros de Asgard frente al destino del Ragnarök, hasta la devoción y esperanza de las sagradas escrituras. En el torneo de Challengers!, estos cinco reinos miden su supremacía bandera en mano sin distorsionar las leyes fundamentales del juego.",
+      "en": "Across millennia, humanity looked upward in reverence: from the solemn weighing of the heart in the Egyptian Duat and thunderous decrees on Mount Olympus, through the cosmic harmony of Vedic deities and the valor of Asgard facing Ragnarök, to the devotion of biblical scripture.",
+      "fr": "À travers les âges, les peuples ont levé les yeux vers le ciel : du jugement solennel dans le Douat égyptien et la foudre de l'Olympe, à la danse cosmique védique et la vaillance d'Asgard face au Ragnarök, jusqu'à la dévotion des récits bibliques.",
+      "de": "Jahrtausende blickte die Menschheit nach oben: Vom Seelenwiegen im ägyptischen Duat und dem Donner auf dem Olymp, über den kosmischen Tanz der vedischen Götter und den Mut Asgards vor Ragnarök, bis zur Hingabe biblischer Schriften.",
+      "nl": "Eeuwenlang keek de mensheid omhoog: Van het wegen van het hart in het Egyptische Duaat en de donder op de Olympus, tot de kosmische dans der Veda's en de moed van Asgard tegen Ragnarök, tot de toewijding in de Schriften.",
+      "it": "Attraverso i millenni, l'umanità ha cercato guida: Dalla pesatura del cuore nel Duat egizio e i fulmini dell'Olimpo, alla danza cosmica vedica e il valore di Asgard di fronte al Ragnarök, fino alla devozione delle sacre scritture."
+    },
+    "balance_notes": {
+      "es": "Cada facción está compuesta por 11 cartas únicas (4 de Nivel A, 4 de Nivel B y 3 de Nivel C) y exactamente 40 copias físicas en total (200 copias en el mazo global). Los niveles, fuerzas base y textos de reglas son idénticos a los de sus facciones oficiales de referencia.",
+      "en": "Each faction features 11 unique cards (4 Level-A, 4 Level-B, 3 Level-C) and exactly 40 playable copies (200 copies total across the pack). Levels, base power and rules strictly replicate reference official sets.",
+      "fr": "Chaque faction comprend 11 cartes uniques (4 Niveau A, 4 Niveau B, 3 Niveau C) et exactement 40 exemplaires (200 cartes au total).",
+      "de": "Jede Fraktion enthält 11 einzigartige Karten (4 Stufe A, 4 Stufe B, 3 Stufe C) und genau 40 physische Exemplare (insgesamt 200 Karten). Stufen, Basisstärken und Regeln entsprechen exakt den offiziellen Referenzfraktionen.",
+      "nl": "Elke factie bevat 11 unieke kaarten (4 Niveau A, 4 Niveau B, 3 Niveau C) en exact 40 fysieke exemplaren (200 kaarten in totaal). Niveaus, basiskrachten en regels zijn identiek aan de officiële referentiefacties.",
+      "it": "Ogni fazione include 11 carte uniche (4 Livello A, 4 Livello B, 3 Livello C) ed esattamente 40 copie fisiche (200 carte in totale). Livelli, forze base e regole replicano fedelmente le fazioni ufficiali."
+    },
+    "factions": [
+      {
+        "set_id": "dioses_egipcios",
+        "name": {
+          "es": "Panteón Egipcio (Duat)",
+          "en": "Egyptian Pantheon (Duat)",
+          "fr": "Panthéon Égyptien (Douat)",
+          "de": "Ägyptisches Pantheon (Duat)",
+          "nl": "Egyptisch Pantheon (Duaat)",
+          "it": "Pantheon Egizio (Duat)"
+        },
+        "official_base": {
+          "es": "Bosque Mágico (Challengers! 2)",
+          "en": "Fairytale Forest (Challengers! 2)",
+          "fr": "Forêt Magique (Challengers! 2)",
+          "de": "Märchenwald (Challengers! 2)",
+          "nl": "Sprookjesbos (Challengers! 2)",
+          "it": "Bosco Incantato (Challengers! 2)"
+        },
+        "color_hex": "#d97706",
+        "icon_path": "icon_dioses_egipcios.png",
+        "total_cards": 11,
+        "total_copies": 40,
+        "description": {
+          "es": "Guardianes de la eternidad y del juicio del alma. Su mecánica central es la manipulación precisa de la reserva y el retorno estratégico desde el banquillo.",
+          "en": "Guardians of eternity and soul judgment. Focuses on exhaust pile control and bench cycling.",
+          "fr": "Gardiens de l'éternité et du jugement de l'âme.",
+          "de": "Wächter der Ewigkeit und des Seelengerichts. Kernmechanik: Erschöpfungsstapel-Kontrolle und Bank-Zirkulation.",
+          "nl": "Bewakers van de eeuwigheid en het oordeel over de ziel. Focus op aflegstapelbeheer en bankcirculatie.",
+          "it": "Custodi dell'eternità e del giudizio dell'anima. Meccanica centrale: controllo della pila degli esausti e rotazione dalla panchina."
+        },
+        "levels": [
+          {
+            "level": "A",
+            "unique_cards": 4,
+            "copies": 18,
+            "detail": "Anubis (1, 4x), Osiris (2, 7x), Bastet (3, 3x), Thot (4, 4x)"
+          },
+          {
+            "level": "B",
+            "unique_cards": 4,
+            "copies": 14,
+            "detail": "Isis (1, 4x), Horus (4, 4x), Sobek (5, 3x), Seth (7, 3x)"
+          },
+          {
+            "level": "C",
+            "unique_cards": 3,
+            "copies": 8,
+            "detail": "Ra (4, 4x), Sekhmet (7, 2x), Amón-Ra (8, 2x)"
+          }
+        ]
+      },
+      {
+        "set_id": "dioses_griegos",
+        "name": {
+          "es": "Panteón Griego (Olimpo)",
+          "en": "Greek Pantheon (Olympus)",
+          "fr": "Panthéon Grec (Olympe)",
+          "de": "Griechisches Pantheon (Olymp)",
+          "nl": "Grieks Pantheon (Olympus)",
+          "it": "Pantheon Greco (Olimpo)"
+        },
+        "official_base": {
+          "es": "Montaña (Challengers! 2)",
+          "en": "Mountain Top (Challengers! 2)",
+          "fr": "Sommet de la Montagne (Challengers! 2)",
+          "de": "Berggipfel (Challengers! 2)",
+          "nl": "Bergtop (Challengers! 2)",
+          "it": "Cima della Montagna (Challengers! 2)"
+        },
+        "color_hex": "#1e40af",
+        "icon_path": "icon_dioses_griegos.png",
+        "total_cards": 11,
+        "total_copies": 40,
+        "description": {
+          "es": "Deidades del Olimpo y del inframundo. Ejercen presión agresiva desgastando el banquillo rival e incrementando su poder durante el asalto y la defensa de la bandera.",
+          "en": "Deities of Olympus and the underworld. Heavy bench disruption and combat power.",
+          "fr": "Divinités de l'Olympe et des enfers.",
+          "de": "Herrscher des Olymps und heroische Macht. Hohe Basisstärke und Druck auf die gegnerische Bank.",
+          "nl": "Heersers van Olympus en heroïsche kracht. Hoge basiskracht en druk op de bank van de tegenstander.",
+          "it": "Sovrani dell'Olimpo e potere eroico. Elevata forza base e pressione sulla panchina avversaria."
+        },
+        "levels": [
+          {
+            "level": "A",
+            "unique_cards": 4,
+            "copies": 16,
+            "detail": "Afrodita (2, 4x), Apolo (2, 4x), Hermes (3, 5x), Dioniso (3, 3x)"
+          },
+          {
+            "level": "B",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "Atenea (3, 4x), Hades (4, 4x), Hefesto (4, 4x), Ares (5, 3x)"
+          },
+          {
+            "level": "C",
+            "unique_cards": 3,
+            "copies": 9,
+            "detail": "Hera (6, 4x), Poseidón (7, 2x), Zeus (11, 3x)"
+          }
+        ]
+      },
+      {
+        "set_id": "dioses_hindu",
+        "name": {
+          "es": "Panteón Hindú (Vedas)",
+          "en": "Hindu Pantheon (Vedas)",
+          "fr": "Panthéon Hindou (Védas)",
+          "de": "Hindugötter (Veden)",
+          "nl": "Hindoeïstisch Pantheon (Veda's)",
+          "it": "Pantheon Indù (Veda)"
+        },
+        "official_base": {
+          "es": "Club de Playa (Challengers! 2)",
+          "en": "Beach Club (Challengers! 2)",
+          "fr": "Club de Plage (Challengers! 2)",
+          "de": "Strandclub (Challengers! 2)",
+          "nl": "Strandclub (Challengers! 2)",
+          "it": "Beach Club (Challengers! 2)"
+        },
+        "color_hex": "#ea580c",
+        "icon_path": "icon_dioses_hindu.png",
+        "total_cards": 11,
+        "total_copies": 40,
+        "description": {
+          "es": "Fuerzas universales de manifestación y orden cósmico. Se concentran en poblar y optimizar los espacios de banquillo y en seleccionar cartas adicionales de la pila.",
+          "en": "Universal forces of cosmic order. Emphasizes bench sharing, selection advantage and deck scoping.",
+          "fr": "Forces universelles d'ordre cosmique.",
+          "de": "Meister der Reinkarnation und Synergie. Nutzen Neulinge und das Stapeln auf Bankplätzen.",
+          "nl": "Meesters van reïncarnatie en synergie. Benutten Nieuwelingen en het stapelen van bankplekken.",
+          "it": "Maestri della reincarnazione e della sinergia. Sfruttano i Novellini e l'accumulo sui posti in panchina."
+        },
+        "levels": [
+          {
+            "level": "A",
+            "unique_cards": 4,
+            "copies": 14,
+            "detail": "Ganesha (1, 3x), Surya (2, 4x), Rama (2, 4x), Parvati (3, 3x)"
+          },
+          {
+            "level": "B",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "Saraswati (3, 4x), Kali (3, 4x), Krishna (4, 4x), Hanuman (5, 3x)"
+          },
+          {
+            "level": "C",
+            "unique_cards": 3,
+            "copies": 11,
+            "detail": "Brahma (4, 4x), Vishnu (6, 5x), Shiva (7, 2x)"
+          }
+        ]
+      },
+      {
+        "set_id": "dioses_nordicos",
+        "name": {
+          "es": "Panteón Nórdico (Asgard)",
+          "en": "Norse Pantheon (Asgard)",
+          "fr": "Panthéon Nordique (Asgard)",
+          "de": "Nordisches Pantheon (Asgard)",
+          "nl": "Noors Pantheon (Asgard)",
+          "it": "Pantheon Norreno (Asgard)"
+        },
+        "official_base": {
+          "es": "Castillo (Challengers! 1)",
+          "en": "Castle (Challengers! 1)",
+          "fr": "Château (Challengers! 1)",
+          "de": "Burg (Challengers! 1)",
+          "nl": "Kasteel (Challengers! 1)",
+          "it": "Castello (Challengers! 1)"
+        },
+        "color_hex": "#0d9488",
+        "icon_path": "icon_dioses_nordicos.png",
+        "total_cards": 11,
+        "total_copies": 40,
+        "description": {
+          "es": "Señores y guerreros de los nueve mundos. Destacan por su cohesión interna entre cartas nórdicas y su impulso combativo conforme avanza el torneo.",
+          "en": "Lords and warriors of the nine worlds. Features faction synergy and progressive trophy scaling.",
+          "fr": "Seigneurs et guerriers des neuf mondes.",
+          "de": "Krieger von Asgard und Ragnarök. Massive Boni bei Flaggenbesitz und Kampfrausch.",
+          "nl": "Krijgers van Asgard en Ragnarök. Enorme bonussen bij vlagbezit en strijdlust.",
+          "it": "Guerrieri di Asgard e del Ragnarök. Potenti bonus in possesso della bandiera e furia combattiva."
+        },
+        "levels": [
+          {
+            "level": "A",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "Heimdall (1, 4x), Baldr (2, 4x), Idunn (2, 4x), Bragi (3, 3x)"
+          },
+          {
+            "level": "B",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "Tyr (3, 4x), Freyja (3, 4x), Loki (4, 4x), Freyr (5, 3x)"
+          },
+          {
+            "level": "C",
+            "unique_cards": 3,
+            "copies": 10,
+            "detail": "Odín (4, 4x), Frigg (5, 4x), Thor (7, 2x)"
+          }
+        ]
+      },
+      {
+        "set_id": "dioses_cristianos",
+        "name": {
+          "es": "Figuras Cristianas (Cielo)",
+          "en": "Christian Figures (Heaven)",
+          "fr": "Figures Chrétiennes (Ciel)",
+          "de": "Biblische Figuren (Weisheit)",
+          "nl": "Christelijke Figuren (Wijsheid)",
+          "it": "Figure Cristiane (Saggezza)"
+        },
+        "official_base": {
+          "es": "Universidad (Challengers! 2)",
+          "en": "University (Challengers! 2)",
+          "fr": "Université (Challengers! 2)",
+          "de": "Universität (Challengers! 2)",
+          "nl": "Universiteit (Challengers! 2)",
+          "it": "Università (Challengers! 2)"
+        },
+        "color_hex": "#991b1b",
+        "icon_path": "icon_dioses_cristianos.png",
+        "total_cards": 11,
+        "total_copies": 40,
+        "description": {
+          "es": "Testimonios de devoción y sabiduría revelada. Obtienen y multiplican hinchas devotos, ganando fuerza decisiva gracias a la multitud que les acompaña.",
+          "en": "Testimonies of devotion and revealed wisdom. Scales power through Fan accumulation and deck searching.",
+          "fr": "Témoignages de dévotion et de sagesse révélée.",
+          "de": "Glaube, Ausdauer und göttliche Gunst. Sammeln von Fans und gezielte Deck-Kuration.",
+          "nl": "Geloof, volharding en goddelijke zegen. Verzamelen van fans en gerichte deckcuratie.",
+          "it": "Fede, perseveranza e grazia. Accumulo di tifosi e precisa ottimizzazione del mazzo."
+        },
+        "levels": [
+          {
+            "level": "A",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "Abraham (1, 4x), Juan el Bautista (2, 4x), María (2, 4x), María Magdalena (3, 3x)"
+          },
+          {
+            "level": "B",
+            "unique_cards": 4,
+            "copies": 15,
+            "detail": "San Agustín (3, 4x), Juan el Evangelista (4, 4x), San Pedro (4, 4x), San Pablo (5, 3x)"
+          },
+          {
+            "level": "C",
+            "unique_cards": 3,
+            "copies": 10,
+            "detail": "Rey David (3, 4x), Moisés (5, 4x), Jesús (7, 2x)"
+          }
+        ]
+      }
+    ]
+  },
+  "sets": {
+    "dioses_egipcios": {
+      "id": "dioses_egipcios",
+      "name": {
+        "es": "Dioses Egipcios (Duat)",
+        "en": "Egyptian Gods (Duat)",
+        "fr": "Dieux Égyptiens (Douat)",
+        "de": "Ägyptisches Pantheon",
+        "nl": "Egyptisch Pantheon",
+        "it": "Pantheon Egizio"
+      },
+      "game": "both",
+      "color_key": "dioses_egipcios",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "icon_path": "icon_dioses_egipcios.png"
+    },
+    "dioses_griegos": {
+      "id": "dioses_griegos",
+      "name": {
+        "es": "Dioses Griegos (Olimpo)",
+        "en": "Greek Gods (Olympus)",
+        "fr": "Dieux Grecs (Olympe)",
+        "de": "Griechisches Pantheon",
+        "nl": "Grieks Pantheon",
+        "it": "Pantheon Greco"
+      },
+      "game": "both",
+      "color_key": "dioses_griegos",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "icon_path": "icon_dioses_griegos.png"
+    },
+    "dioses_hindu": {
+      "id": "dioses_hindu",
+      "name": {
+        "es": "Dioses Hindúes (Vedas)",
+        "en": "Hindu Gods (Vedas)",
+        "fr": "Dieux Hindous (Védas)",
+        "de": "Hindugötter",
+        "nl": "Hindoeïstisch Pantheon",
+        "it": "Pantheon Indù"
+      },
+      "game": "both",
+      "color_key": "dioses_hindu",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "icon_path": "icon_dioses_hindu.png"
+    },
+    "dioses_nordicos": {
+      "id": "dioses_nordicos",
+      "name": {
+        "es": "Dioses Nórdicos (Asgard)",
+        "en": "Norse Gods (Asgard)",
+        "fr": "Dieux Nordiques (Asgard)",
+        "de": "Nordisches Pantheon",
+        "nl": "Noors Pantheon",
+        "it": "Pantheon Norreno"
+      },
+      "game": "both",
+      "color_key": "dioses_nordicos",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "icon_path": "icon_dioses_nordicos.png"
+    },
+    "dioses_cristianos": {
+      "id": "dioses_cristianos",
+      "name": {
+        "es": "Figuras Cristianas (Cielo)",
+        "en": "Christian Figures (Heaven)",
+        "fr": "Figures Chrétiennes (Ciel)",
+        "de": "Biblische Figuren",
+        "nl": "Christelijke Figuren",
+        "it": "Figure Cristiane"
+      },
+      "game": "both",
+      "color_key": "dioses_cristianos",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "icon_path": "icon_dioses_cristianos.png"
+    }
+  },
+  "cards": [
+    {
+      "id": 301,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "A",
+      "strength": "1",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_egip_anubis.jpg",
+      "art_image": "dios_egip_anubis.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Anubis",
+        "text": "Elige un espacio de tu banquillo. Coloca todas las cartas de ese espacio de banquillo en tu reserva."
+      },
+      "en": {
+        "name": "Anubis",
+        "text": "Choose a space on your bench. Put all cards from that bench space on your exhaust pile."
+      },
+      "fr": {
+        "name": "Anubis",
+        "text": "Choisissez un emplacement de votre banc. Placez toutes les cartes de cet emplacement sur votre réserve."
+      },
+      "de": {
+        "name": "Anubis",
+        "text": "Wähle einen Platz auf deiner Bank. Lege alle Karten von diesem Platz auf deinen Erschöpfungsstapel."
+      },
+      "nl": {
+        "name": "Anubis",
+        "text": "Kies een plek op je bank. Leg alle kaarten van die plek op je aflegstapel."
+      },
+      "it": {
+        "name": "Anubi",
+        "text": "Scegli un posto sulla tua panchina. Metti tutte le carte di quel posto nella tua pila degli esausti."
+      }
+    },
+    {
+      "id": 302,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 7,
+      "is_starter_card": false,
+      "card_image": "dios_egip_osiris.jpg",
+      "art_image": "dios_egip_osiris.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Osiris",
+        "text": "_Especial:_ En lugar de ir a tu reserva, esta carta vuelve a la parte superior de tu mazo."
+      },
+      "en": {
+        "name": "Osiris",
+        "text": "Special: When this card would be put on your exhaust pile, put it on top of your deck instead."
+      },
+      "fr": {
+        "name": "Osiris",
+        "text": "Spécial : Au lieu d'aller dans votre réserve, cette carte retourne sur le dessus de votre deck."
+      },
+      "de": {
+        "name": "Osiris",
+        "text": "_Spezial:_ Wenn diese Karte auf deinen Erschöpfungsstapel gelegt werden soll, lege sie stattdessen oben auf dein Deck."
+      },
+      "nl": {
+        "name": "Osiris",
+        "text": "_Speciaal:_ Wanneer deze kaart op je aflegstapel zou worden gelegd, leg deze dan in plaats daarvan bovenop je stapel."
+      },
+      "it": {
+        "name": "Osiride",
+        "text": "_Speciale:_ Quando questa carta dovrebbe andare nella tua pila degli esausti, mettila invece in cima al tuo mazzo."
+      }
+    },
+    {
+      "id": 303,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_egip_bastet.jpg",
+      "art_image": "dios_egip_bastet.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Bastet",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Bastet",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Bastet",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Bastet",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Bastet",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Bastet",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 304,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "A",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_egip_thot.jpg",
+      "art_image": "dios_egip_thot.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Thot",
+        "text": "_Al ser seleccionada:_ Retira de forma permanente una carta con fuerza base 3 o más de tu mazo."
+      },
+      "en": {
+        "name": "Thoth",
+        "text": "When selected: Permanently remove a card with base power 3 or more from your deck."
+      },
+      "fr": {
+        "name": "Thot",
+        "text": "Lors de la sélection : Retirez définitivement une carte de force de base 3 ou plus de votre deck."
+      },
+      "de": {
+        "name": "Thot",
+        "text": "_Beim Ziehen:_ Entferne dauerhaft eine Karte mit Basisstärke 3 oder mehr aus deinem Deck."
+      },
+      "nl": {
+        "name": "Thoth",
+        "text": "_Bij selectie:_ Verwijder permanent een kaart met basiskracht 3 of hoger uit je deck."
+      },
+      "it": {
+        "name": "Thot",
+        "text": "_Quando scelta:_ Rimuovi permanentemente dal tuo mazzo una carta con forza base 3 o superiore."
+      }
+    },
+    {
+      "id": 305,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "B",
+      "strength": "1",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_egip_isis.jpg",
+      "art_image": "dios_egip_isis.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Isis",
+        "text": "_Sin captura de Bandera:_ Coloca una carta [Dioses Egipcios] de tu banquillo en la parte superior de tu mazo."
+      },
+      "en": {
+        "name": "Isis",
+        "text": "No flag possession: Put an [Egyptian Gods] card from your bench on top of your deck."
+      },
+      "fr": {
+        "name": "Isis",
+        "text": "Sans possession du drapeau : Placez une carte [Dieux Égyptiens] de votre banc sur le dessus de votre deck."
+      },
+      "de": {
+        "name": "Isis",
+        "text": "_Kein Flaggenbesitz:_ Lege eine [Ägyptisches Pantheon]-Karte von deiner Bank oben auf dein Deck."
+      },
+      "nl": {
+        "name": "Isis",
+        "text": "_Geen vlagbezit:_ Leg een [Egyptisch Pantheon]-kaart van je bank bovenop je stapel."
+      },
+      "it": {
+        "name": "Iside",
+        "text": "_Senza bandiera:_ Metti una carta [Pantheon Egizio] dalla tua panchina in cima al tuo mazzo."
+      }
+    },
+    {
+      "id": 306,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_egip_horus.jpg",
+      "art_image": "dios_egip_horus.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Horus",
+        "text": "_Desde el banquillo:_ Tus cartas con fuerza base 4 ganan +1 en posesión de la bandera."
+      },
+      "en": {
+        "name": "Horus",
+        "text": "From the bench: Your cards with base power 4 have +1 in flag possession."
+      },
+      "fr": {
+        "name": "Horus",
+        "text": "Depuis le banc : Vos cartes avec une force de base de 4 gagnent +1 en possession du drapeau."
+      },
+      "de": {
+        "name": "Horus",
+        "text": "_Von der Bank:_ Deine Karten mit Basisstärke 4 erhalten +1 im Flaggenbesitz."
+      },
+      "nl": {
+        "name": "Horus",
+        "text": "_Vanaf de bank:_ Jouw kaarten met basiskracht 4 hebben +1 in vlagbezit."
+      },
+      "it": {
+        "name": "Horus",
+        "text": "_Dalla panchina:_ Le tue carte con forza base 4 hanno +1 in possesso della bandiera."
+      }
+    },
+    {
+      "id": 307,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_egip_sobek.jpg",
+      "art_image": "dios_egip_sobek.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Sobek",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Sobek",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Sobek",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Sobek",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Sobek",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Sobek",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 308,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "B",
+      "strength": "7",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_egip_seth.jpg",
+      "art_image": "dios_egip_seth.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Seth",
+        "text": "_Especial:_ Cuando esta carta vaya a tu banquillo, colócala ocupando dos espacios o encima de otro Seth. De lo contrario, pierdes de inmediato el enfrentamiento. Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Set",
+        "text": "Special: When this card goes to your bench, place it across two spaces or on top of another Set. Otherwise, you immediately lose the match. Rare 3x"
+      },
+      "fr": {
+        "name": "Seth",
+        "text": "Spécial : Quand cette carte va sur votre banc, placez-la sur deux emplacements ou sur un autre Seth. Sinon, vous perdez immédiatement le match. Rare 3x"
+      },
+      "de": {
+        "name": "Seth",
+        "text": "_Spezial:_ Wenn diese Karte auf deine Bank gelegt wird, muss sie zwei Plätze belegen oder auf einen anderen Seth gelegt werden. Andernfalls verlierst du das Duell sofort. Selten 3x"
+      },
+      "nl": {
+        "name": "Seth",
+        "text": "_Speciaal:_ Wanneer deze kaart op je bank wordt gelegd, moet deze twee plekken innemen of bovenop een andere Seth worden gelegd. Anders verlies je het duel onmiddellijk. Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Seth",
+        "text": "_Speciale:_ Quando questa carta va sulla tua panchina, deve occupare due posti o essere posizionata sopra un altro Seth. Altrimenti perdi immediatamente la sfida. Rara 3x"
+      }
+    },
+    {
+      "id": 309,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "C",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_egip_ra.jpg",
+      "art_image": "dios_egip_ra.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Ra",
+        "text": "Elige un espacio de tu banquillo. Coloca todas las cartas de ese espacio en tu reserva."
+      },
+      "en": {
+        "name": "Ra",
+        "text": "Choose a space on your bench. Put all cards from that bench space on your exhaust pile."
+      },
+      "fr": {
+        "name": "Râ",
+        "text": "Choisissez un emplacement de votre banc. Placez toutes les cartes de cet emplacement sur votre réserve."
+      },
+      "de": {
+        "name": "Ra",
+        "text": "Wähle einen Platz auf deiner Bank. Lege alle Karten von diesem Platz auf deinen Erschöpfungsstapel."
+      },
+      "nl": {
+        "name": "Ra",
+        "text": "Kies een plek op je bank. Leg alle kaarten van die plek op je aflegstapel."
+      },
+      "it": {
+        "name": "Ra",
+        "text": "Scegli un posto sulla tua panchina. Metti tutte le carte di quel posto nella tua pila degli esausti."
+      }
+    },
+    {
+      "id": 310,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_egip_sekhmet.jpg",
+      "art_image": "dios_egip_sekhmet.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Sekhmet",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Sekhmet",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Sekhmet",
+        "text": "Rare 2x"
+      },
+      "de": {
+        "name": "Sachmet",
+        "text": "Selten 2x"
+      },
+      "nl": {
+        "name": "Sekhmet",
+        "text": "Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Sekhmet",
+        "text": "Rara 2x"
+      }
+    },
+    {
+      "id": 311,
+      "game": "both",
+      "set_id": "dioses_egipcios",
+      "level": "C",
+      "strength": "8",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_egip_amon_ra.jpg",
+      "art_image": "dios_egip_amon_ra.jpg",
+      "icon_path": "icon_dioses_egipcios.png",
+      "color_hex": "#d97706",
+      "color_border": "#fbbf24",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Amón-Ra",
+        "text": "Retira de forma permanente una carta de nivel A de tu banquillo. Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Amun-Ra",
+        "text": "Permanently remove a Level-A card from your bench. Rare 2x"
+      },
+      "fr": {
+        "name": "Amon-Râ",
+        "text": "Retirez définitivement une carte niveau A de votre banc. Rare 2x"
+      },
+      "de": {
+        "name": "Amun-Ra",
+        "text": "Entferne dauerhaft eine Karte der Stufe A von deiner Bank. Selten 2x"
+      },
+      "nl": {
+        "name": "Amon-Ra",
+        "text": "Verwijder permanent een kaart van Niveau A van je bank. Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Amon-Ra",
+        "text": "Rimuovi permanentemente una carta di Livello A dalla tua panchina. Rara 2x"
+      }
+    },
+    {
+      "id": 312,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_afrodita.jpg",
+      "art_image": "dios_grie_afrodita.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Afrodita",
+        "text": "Esta carta gana +2 si hay al menos una carta en la reserva de tu rival."
+      },
+      "en": {
+        "name": "Aphrodite",
+        "text": "This card has +2 if there is at least one card on your opponent's exhaust pile."
+      },
+      "fr": {
+        "name": "Aphrodite",
+        "text": "Cette carte gagne +2 s'il y a au moins une carte dans la réserve de votre adversaire."
+      },
+      "de": {
+        "name": "Aphrodite",
+        "text": "Diese Karte erhält +2, wenn sich mindestens eine Karte auf dem Erschöpfungsstapel deines Gegners befindet."
+      },
+      "nl": {
+        "name": "Aphrodite",
+        "text": "Deze kaart krijgt +2 als er minstens één kaart op de aflegstapel van je tegenstander ligt."
+      },
+      "it": {
+        "name": "Afrodite",
+        "text": "Questa carta ha +2 se c'è almeno una carta nella pila degli esausti del tuo avversario."
+      }
+    },
+    {
+      "id": 313,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_apolo.jpg",
+      "art_image": "dios_grie_apolo.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Apolo",
+        "text": "_Sin captura de Bandera:_ Recibe 1 Hincha."
+      },
+      "en": {
+        "name": "Apollo",
+        "text": "No flag possession: Gain 1 Fan."
+      },
+      "fr": {
+        "name": "Apollon",
+        "text": "Sans possession du drapeau : Recevez 1 Fan."
+      },
+      "de": {
+        "name": "Apollo",
+        "text": "_Kein Flaggenbesitz:_ Nimm 1 Fan."
+      },
+      "nl": {
+        "name": "Apollo",
+        "text": "_Geen vlagbezit:_ Neem 1 fan."
+      },
+      "it": {
+        "name": "Apollo",
+        "text": "_Senza bandiera:_ Prendi 1 tifoso."
+      }
+    },
+    {
+      "id": 314,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 5,
+      "is_starter_card": false,
+      "card_image": "dios_grie_hermes.jpg",
+      "art_image": "dios_grie_hermes.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Hermes",
+        "text": "Coloca una carta del banquillo de tu rival en su reserva. Común (5 copias)"
+      },
+      "en": {
+        "name": "Hermes",
+        "text": "Put a card from your opponent's bench on their exhaust pile. Common 5x"
+      },
+      "fr": {
+        "name": "Hermès",
+        "text": "Placez une carte du banc de votre adversaire sur sa réserve. Commun 5x"
+      },
+      "de": {
+        "name": "Hermes",
+        "text": "Lege eine Karte von der Bank deines Gegners auf seinen Erschöpfungsstapel. Gewöhnlich 5x"
+      },
+      "nl": {
+        "name": "Hermes",
+        "text": "Leg een kaart van de bank van je tegenstander op zijn aflegstapel. Gewoon 5x"
+      },
+      "it": {
+        "name": "Hermes",
+        "text": "Metti una carta dalla panchina del tuo avversario nella sua pila degli esausti. Comune 5x"
+      }
+    },
+    {
+      "id": 315,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_grie_dioniso.jpg",
+      "art_image": "dios_grie_dioniso.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Dioniso",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Dionysus",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Dionysos",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Dionysos",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Dionysos",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Dionisio",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 316,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_atenea.jpg",
+      "art_image": "dios_grie_atenea.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Atenea",
+        "text": "_En posesión de la Bandera:_ Esta carta gana +3."
+      },
+      "en": {
+        "name": "Athena",
+        "text": "In flag possession: This card has +3."
+      },
+      "fr": {
+        "name": "Athéna",
+        "text": "En possession du drapeau : Cette carte gagne +3."
+      },
+      "de": {
+        "name": "Athene",
+        "text": "_Im Flaggenbesitz:_ Diese Karte erhält +3."
+      },
+      "nl": {
+        "name": "Athena",
+        "text": "_In vlagbezit:_ Deze kaart heeft +3."
+      },
+      "it": {
+        "name": "Atena",
+        "text": "_In possesso della bandiera:_ Questa carta ha +3."
+      }
+    },
+    {
+      "id": 317,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_hades.jpg",
+      "art_image": "dios_grie_hades.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Hades",
+        "text": "_Desde el banquillo:_ Tus cartas con fuerza base 3 ganan +1 durante el ataque."
+      },
+      "en": {
+        "name": "Hades",
+        "text": "From the bench: Your cards with base power 3 have +1 during the attack."
+      },
+      "fr": {
+        "name": "Hadès",
+        "text": "Depuis le banc : Vos cartes avec une force de base de 3 gagnent +1 durant l'attaque."
+      },
+      "de": {
+        "name": "Hades",
+        "text": "_Von der Bank:_ Deine Karten mit Basisstärke 3 erhalten +1 beim Angriff."
+      },
+      "nl": {
+        "name": "Hades",
+        "text": "_Vanaf de bank:_ Jouw kaarten met basiskracht 3 hebben +1 tijdens de aanval."
+      },
+      "it": {
+        "name": "Ade",
+        "text": "_Dalla panchina:_ Le tue carte con forza base 3 hanno +1 durante l'attacco."
+      }
+    },
+    {
+      "id": 318,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_hefesto.jpg",
+      "art_image": "dios_grie_hefesto.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Hefesto",
+        "text": "_Desde el banquillo:_ Tus cartas [Dioses Griegos] en posesión de la bandera ganan +1."
+      },
+      "en": {
+        "name": "Hephaestus",
+        "text": "From the bench: Your [Greek Gods] cards in flag possession have +1."
+      },
+      "fr": {
+        "name": "Héphaïstos",
+        "text": "Depuis le banc : Vos cartes [Dieux Grecs] en possession du drapeau gagnent +1."
+      },
+      "de": {
+        "name": "Hephaistos",
+        "text": "_Von der Bank:_ Deine [Griechisches Pantheon]-Karten im Flaggenbesitz erhalten +1."
+      },
+      "nl": {
+        "name": "Hephaistos",
+        "text": "_Vanaf de bank:_ Jouw [Grieks Pantheon]-kaarten in vlagbezit hebben +1."
+      },
+      "it": {
+        "name": "Efesto",
+        "text": "_Dalla panchina:_ Le tue carte [Pantheon Greco] in possesso della bandiera hanno +1."
+      }
+    },
+    {
+      "id": 319,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_grie_ares.jpg",
+      "art_image": "dios_grie_ares.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Ares",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Ares",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Arès",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Ares",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Ares",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Ares",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 320,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "C",
+      "strength": "6",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_grie_hera.jpg",
+      "art_image": "dios_grie_hera.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Hera",
+        "text": "_En posesión de la Bandera:_ Recibe 1 fan por cada carta que ataque a esta carta."
+      },
+      "en": {
+        "name": "Hera",
+        "text": "In flag possession: Gain 1 Fan for each card that attacks this card."
+      },
+      "fr": {
+        "name": "Héra",
+        "text": "En possession du drapeau : Recevez 1 fan pour chaque carte qui attaque cette carte."
+      },
+      "de": {
+        "name": "Hera",
+        "text": "_Im Flaggenbesitz:_ Nimm 1 Fan für jede Karte, die diese Karte angreift."
+      },
+      "nl": {
+        "name": "Hera",
+        "text": "_In vlagbezit:_ Neem 1 fan voor elke kaart die deze kaart aanvalt."
+      },
+      "it": {
+        "name": "Era",
+        "text": "_In possesso della bandiera:_ Prendi 1 tifoso per ogni carta che attacca questa carta."
+      }
+    },
+    {
+      "id": 321,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_grie_poseidon.jpg",
+      "art_image": "dios_grie_poseidon.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Poseidón",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Poseidon",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Poséidon",
+        "text": "Rare 2x"
+      },
+      "de": {
+        "name": "Poseidon",
+        "text": "Selten 2x"
+      },
+      "nl": {
+        "name": "Poseidon",
+        "text": "Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Poseidone",
+        "text": "Rara 2x"
+      }
+    },
+    {
+      "id": 322,
+      "game": "both",
+      "set_id": "dioses_griegos",
+      "level": "C",
+      "strength": "11",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_grie_zeus.jpg",
+      "art_image": "dios_grie_zeus.jpg",
+      "icon_path": "icon_dioses_griegos.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Zeus",
+        "text": "Si hay una carta de nivel C en tu banquillo, pierdes de inmediato el enfrentamiento. Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Zeus",
+        "text": "If there is a Level-C card on your bench, you immediately lose the match. Rare 3x"
+      },
+      "fr": {
+        "name": "Zeus",
+        "text": "S'il y a une carte niveau C sur votre banc, vous perdez immédiatement le match. Rare 3x"
+      },
+      "de": {
+        "name": "Zeus",
+        "text": "Wenn sich eine Karte der Stufe C auf deiner Bank befindet, verlierst du das Duell sofort. Selten 3x"
+      },
+      "nl": {
+        "name": "Zeus",
+        "text": "Als er een kaart van Niveau C op je bank ligt, verlies je het duel onmiddellijk. Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Zeus",
+        "text": "Se c'è una carta di Livello C sulla tua panchina, perdi immediatamente la sfida. Rara 3x"
+      }
+    },
+    {
+      "id": 323,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "A",
+      "strength": "1",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_ganesha.jpg",
+      "art_image": "dios_hindu_ganesha.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Ganesha",
+        "text": "Esta carta gana +4 si no hay ninguna carta con fuerza base 4 o más en tu banquillo."
+      },
+      "en": {
+        "name": "Ganesha",
+        "text": "This card has +4 if there is no card with base power 4 or more on your bench."
+      },
+      "fr": {
+        "name": "Ganesha",
+        "text": "Cette carte gagne +4 s'il n'y a aucune carte de force de base 4 ou plus sur votre banc."
+      },
+      "de": {
+        "name": "Ganesha",
+        "text": "Diese Karte erhält +4, wenn sich keine Karte mit Basisstärke 4 oder höher auf deiner Bank befindet."
+      },
+      "nl": {
+        "name": "Ganesha",
+        "text": "Deze kaart krijgt +4 als er geen kaart met basiskracht 4 of hoger op je bank ligt."
+      },
+      "it": {
+        "name": "Ganesha",
+        "text": "Questa carta ha +4 se non ci sono carte con forza base 4 o superiore sulla tua panchina."
+      }
+    },
+    {
+      "id": 324,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_surya.jpg",
+      "art_image": "dios_hindu_surya.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Surya",
+        "text": "_Desde el banquillo:_ Tus cartas de Recluta ganan +1."
+      },
+      "en": {
+        "name": "Surya",
+        "text": "From the bench: Your Rookie cards have +1."
+      },
+      "fr": {
+        "name": "Surya",
+        "text": "Depuis le banc : Vos cartes Débutant gagnent +1."
+      },
+      "de": {
+        "name": "Surya",
+        "text": "_Von der Bank:_ Deine Neuling-Karten erhalten +1."
+      },
+      "nl": {
+        "name": "Surya",
+        "text": "_Vanaf de bank:_ Jouw Nieuweling-kaarten hebben +1."
+      },
+      "it": {
+        "name": "Surya",
+        "text": "_Dalla panchina:_ Le tue carte Novellino hanno +1."
+      }
+    },
+    {
+      "id": 325,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_rama.jpg",
+      "art_image": "dios_hindu_rama.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Rama",
+        "text": "_Especial:_ Esta carta comparte el mismo espacio de banquillo que las demás cartas de Rama."
+      },
+      "en": {
+        "name": "Rama",
+        "text": "Special: This card shares the same bench space as other Rama cards."
+      },
+      "fr": {
+        "name": "Rama",
+        "text": "Spécial : Cette carte partage le même emplacement de banc que les autres cartes Rama."
+      },
+      "de": {
+        "name": "Rama",
+        "text": "_Spezial:_ Diese Karte teilt sich denselben Platz auf der Bank mit anderen Rama-Karten."
+      },
+      "nl": {
+        "name": "Rama",
+        "text": "_Speciaal:_ Deze kaart deelt dezelfde plek op de bank met andere Rama-kaarten."
+      },
+      "it": {
+        "name": "Rama",
+        "text": "_Speciale:_ Questa carta condivide lo stesso posto sulla panchina con le altre carte Rama."
+      }
+    },
+    {
+      "id": 326,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_parvati.jpg",
+      "art_image": "dios_hindu_parvati.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Parvati",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Parvati",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Parvati",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Parvati",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Parvati",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Parvati",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 327,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_saraswati.jpg",
+      "art_image": "dios_hindu_saraswati.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Saraswati",
+        "text": "Elige un espacio de tu banquillo. Esta carta gana +1 por cada carta que haya en él."
+      },
+      "en": {
+        "name": "Saraswati",
+        "text": "Choose a space on your bench. This card has +1 for each card on it."
+      },
+      "fr": {
+        "name": "Saraswati",
+        "text": "Choisissez un emplacement de votre banc. Cette carte gagne +1 pour chaque carte présente."
+      },
+      "de": {
+        "name": "Saraswati",
+        "text": "Wähle einen Platz auf deiner Bank. Diese Karte erhält +1 für jede Karte auf diesem Platz."
+      },
+      "nl": {
+        "name": "Saraswati",
+        "text": "Kies een plek op je bank. Deze kaart krijgt +1 voor elke kaart op die plek."
+      },
+      "it": {
+        "name": "Saraswati",
+        "text": "Scegli un posto sulla tua panchina. Questa carta ha +1 per ogni carta su quel posto."
+      }
+    },
+    {
+      "id": 328,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_kali.jpg",
+      "art_image": "dios_hindu_kali.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Kali",
+        "text": "_Desde el banquillo:_ Tus cartas [Dioses Hindúes] ganan +1."
+      },
+      "en": {
+        "name": "Kali",
+        "text": "From the bench: Your [Hindu Gods] cards have +1."
+      },
+      "fr": {
+        "name": "Kali",
+        "text": "Depuis le banc : Vos cartes [Dieux Hindous] gagnent +1."
+      },
+      "de": {
+        "name": "Kali",
+        "text": "_Von der Bank:_ Deine [Hindugötter]-Karten erhalten +1."
+      },
+      "nl": {
+        "name": "Kali",
+        "text": "_Vanaf de bank:_ Jouw [Hindoeïstisch Pantheon]-kaarten hebben +1."
+      },
+      "it": {
+        "name": "Kali",
+        "text": "_Dalla panchina:_ Le tue carte [Pantheon Indù] hanno +1."
+      }
+    },
+    {
+      "id": 329,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_krishna.jpg",
+      "art_image": "dios_hindu_krishna.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Krishna",
+        "text": "_Al ser seleccionada:_ Roba tres cartas de nivel A. Selecciona una de ellas y coloca las otras dos en el descarte."
+      },
+      "en": {
+        "name": "Krishna",
+        "text": "When selected: Draw three Level-A cards. Select one of them and place the other two in the discard pile."
+      },
+      "fr": {
+        "name": "Krishna",
+        "text": "Lors de la sélection : Piochez trois cartes de niveau A. Sélectionnez-en une et défaussez les deux autres."
+      },
+      "de": {
+        "name": "Krishna",
+        "text": "_Beim Ziehen:_ Ziehe drei Karten der Stufe A. Wähle eine aus und lege die anderen beiden auf den Ablagestapel."
+      },
+      "nl": {
+        "name": "Krishna",
+        "text": "_Bij selectie:_ Trek drie kaarten van Niveau A. Kies er één en leg de andere twee op de aflegstapel."
+      },
+      "it": {
+        "name": "Krishna",
+        "text": "_Quando scelta:_ Pesca tre carte di Livello A. Scegline una e metti le altre due nella pila degli scarti."
+      }
+    },
+    {
+      "id": 330,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_hanuman.jpg",
+      "art_image": "dios_hindu_hanuman.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Hanuman",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Hanuman",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Hanuman",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Hanuman",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Hanuman",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Hanuman",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 331,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "C",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_brahma.jpg",
+      "art_image": "dios_hindu_brahma.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Brahma",
+        "text": "Toma la carta superior del mazo de nivel C y colócala en la parte superior de tu mazo, sin mirarla."
+      },
+      "en": {
+        "name": "Brahma",
+        "text": "Take the top card from the Level-C pile and put it on top of your deck without looking at it."
+      },
+      "fr": {
+        "name": "Brahma",
+        "text": "Prenez la carte du dessus de la pile niveau C et placez-la sur votre deck sans la regarder."
+      },
+      "de": {
+        "name": "Brahma",
+        "text": "Nimm die oberste Karte des Stufe-C-Stapels und lege sie ungesehen oben auf dein Deck."
+      },
+      "nl": {
+        "name": "Brahma",
+        "text": "Neem de bovenste kaart van de Niveau-C-stapel en leg deze zonder te kijken bovenop je stapel."
+      },
+      "it": {
+        "name": "Brahma",
+        "text": "Prendi la prima carta della pila di Livello C e mettila in cima al tuo mazzo senza guardarla."
+      }
+    },
+    {
+      "id": 332,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "C",
+      "strength": "6",
+      "default_copies": 5,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_vishnu.jpg",
+      "art_image": "dios_hindu_vishnu.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Vishnu",
+        "text": "Mira la última carta de tu mazo. Colócala en la parte superior o en la parte inferior de tu mazo. Común (5 copias)"
+      },
+      "en": {
+        "name": "Vishnu",
+        "text": "Look at the bottom card of your deck. Put it on top or at the bottom of your deck. Common 5x"
+      },
+      "fr": {
+        "name": "Vishnou",
+        "text": "Regardez la dernière carte de votre deck. Placez-la au-dessus ou en dessous de votre deck. Commun 5x"
+      },
+      "de": {
+        "name": "Vishnu",
+        "text": "Sieh dir die unterste Karte deines Decks an. Lege sie oben auf dein Deck oder lasse sie ganz unten. Gewöhnlich 5x"
+      },
+      "nl": {
+        "name": "Vishnu",
+        "text": "Bekijk de onderste kaart van je stapel. Leg die bovenaan of laat hem onderaan je stapel liggen. Gewoon 5x"
+      },
+      "it": {
+        "name": "Visnù",
+        "text": "Guarda la carta in fondo al tuo mazzo. Mettila in cima al tuo mazzo o lasciala in fondo. Comune 5x"
+      }
+    },
+    {
+      "id": 333,
+      "game": "both",
+      "set_id": "dioses_hindu",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_hindu_shiva.jpg",
+      "art_image": "dios_hindu_shiva.jpg",
+      "icon_path": "icon_dioses_hindu.png",
+      "color_hex": "#ea580c",
+      "color_border": "#f97316",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Shiva",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Shiva",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Shiva",
+        "text": "Rare 2x"
+      },
+      "de": {
+        "name": "Shiva",
+        "text": "Selten 2x"
+      },
+      "nl": {
+        "name": "Shiva",
+        "text": "Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Siva",
+        "text": "Rara 2x"
+      }
+    },
+    {
+      "id": 334,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "A",
+      "strength": "1",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_heimdall.jpg",
+      "art_image": "dios_nord_heimdall.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Heimdall",
+        "text": "Si hay al menos una carta con fuerza base 1 en tu banquillo, esta carta gana +3."
+      },
+      "en": {
+        "name": "Heimdall",
+        "text": "If there is at least one card with base power 1 on your bench, this card has +3."
+      },
+      "fr": {
+        "name": "Heimdall",
+        "text": "S'il y a au moins une carte de force de base 1 sur votre banc, cette carte gagne +3."
+      },
+      "de": {
+        "name": "Heimdall",
+        "text": "Wenn sich mindestens eine Karte mit Basisstärke 1 auf deiner Bank befindet, erhält diese Karte +3."
+      },
+      "nl": {
+        "name": "Heimdall",
+        "text": "Als er minstens één kaart met basiskracht 1 op je bank ligt, krijgt deze kaart +3."
+      },
+      "it": {
+        "name": "Heimdall",
+        "text": "Se c'è almeno una carta con forza base 1 sulla tua panchina, questa carta ha +3."
+      }
+    },
+    {
+      "id": 335,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_baldr.jpg",
+      "art_image": "dios_nord_baldr.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Baldr",
+        "text": "Si no hay cartas [Dioses Nórdicos] en tu banquillo, esta carta gana +2."
+      },
+      "en": {
+        "name": "Baldr",
+        "text": "If there are no [Norse Gods] cards on your bench, this card has +2."
+      },
+      "fr": {
+        "name": "Baldr",
+        "text": "S'il n'y a pas de cartes [Dieux Nordiques] sur votre banc, cette carte gagne +2."
+      },
+      "de": {
+        "name": "Baldr",
+        "text": "Wenn sich keine [Nordisches Pantheon]-Karten auf deiner Bank befinden, erhält diese Karte +2."
+      },
+      "nl": {
+        "name": "Baldr",
+        "text": "Als er geen [Noors Pantheon]-kaarten op je bank liggen, krijgt deze kaart +2."
+      },
+      "it": {
+        "name": "Baldr",
+        "text": "Se non ci sono carte [Pantheon Norreno] sulla tua panchina, questa carta ha +2."
+      }
+    },
+    {
+      "id": 336,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_idunn.jpg",
+      "art_image": "dios_nord_idunn.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Idunn",
+        "text": "Esta carta gana +1 por cada carta con fuerza base 3 en tu banquillo."
+      },
+      "en": {
+        "name": "Idunn",
+        "text": "This card has +1 for each card with base power 3 on your bench."
+      },
+      "fr": {
+        "name": "Idunn",
+        "text": "Cette carte gagne +1 pour chaque carte avec une force de base de 3 sur votre banc."
+      },
+      "de": {
+        "name": "Idunn",
+        "text": "Diese Karte erhält +1 für jede Karte mit Basisstärke 3 auf deiner Bank."
+      },
+      "nl": {
+        "name": "Idunn",
+        "text": "Deze kaart krijgt +1 voor elke kaart met basiskracht 3 op je bank."
+      },
+      "it": {
+        "name": "Idunn",
+        "text": "Questa carta ha +1 per ogni carta con forza base 3 sulla tua panchina."
+      }
+    },
+    {
+      "id": 337,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_nord_bragi.jpg",
+      "art_image": "dios_nord_bragi.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Bragi",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Bragi",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Bragi",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Bragi",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Bragi",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Bragi",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 338,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_tyr.jpg",
+      "art_image": "dios_nord_tyr.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Tyr",
+        "text": "_Desde el banquillo:_ Tus cartas [Dioses Nórdicos] ganan +1."
+      },
+      "en": {
+        "name": "Tyr",
+        "text": "From the bench: Your [Norse Gods] cards have +1."
+      },
+      "fr": {
+        "name": "Tyr",
+        "text": "Depuis le banc : Vos cartes [Dieux Nordiques] gagnent +1."
+      },
+      "de": {
+        "name": "Tyr",
+        "text": "_Von der Bank:_ Deine [Nordisches Pantheon]-Karten erhalten +1."
+      },
+      "nl": {
+        "name": "Tyr",
+        "text": "_Vanaf de bank:_ Jouw [Noors Pantheon]-kaarten hebben +1."
+      },
+      "it": {
+        "name": "Tyr",
+        "text": "_Dalla panchina:_ Le tue carte [Pantheon Norreno] hanno +1."
+      }
+    },
+    {
+      "id": 339,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_freyja.jpg",
+      "art_image": "dios_nord_freyja.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Freyja",
+        "text": "_Durante el ataque:_ Esta carta gana +1 por cada Trofeo de tu rival."
+      },
+      "en": {
+        "name": "Freyja",
+        "text": "During the attack: This card has +1 for each Trophy of your opponent."
+      },
+      "fr": {
+        "name": "Freyja",
+        "text": "Durant l'attaque : Cette carte gagne +1 pour chaque Trophée de votre adversaire."
+      },
+      "de": {
+        "name": "Freyja",
+        "text": "_Beim Angriff:_ Diese Karte erhält +1 für jede Trophäe deines Gegners."
+      },
+      "nl": {
+        "name": "Freyja",
+        "text": "_Tijdens de aanval:_ Deze kaart heeft +1 voor elke trofee van je tegenstander."
+      },
+      "it": {
+        "name": "Freyja",
+        "text": "_Durante l'attacco:_ Questa carta ha +1 per ogni trofeo del tuo avversario."
+      }
+    },
+    {
+      "id": 340,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_loki.jpg",
+      "art_image": "dios_nord_loki.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Loki",
+        "text": "Puedes colocar una carta con fuerza base 3 o menos de tu banquillo en tu reserva."
+      },
+      "en": {
+        "name": "Loki",
+        "text": "You may put one card with base power 3 or lower from your bench on your exhaust pile."
+      },
+      "fr": {
+        "name": "Loki",
+        "text": "Vous pouvez placer une carte avec une force de base de 3 ou moins de votre banc sur votre réserve."
+      },
+      "de": {
+        "name": "Loki",
+        "text": "Du darfst eine Karte mit Basisstärke 3 oder weniger von deiner Bank auf deinen Erschöpfungsstapel legen."
+      },
+      "nl": {
+        "name": "Loki",
+        "text": "Je mag een kaart met basiskracht 3 of lager van je bank op je aflegstapel leggen."
+      },
+      "it": {
+        "name": "Loki",
+        "text": "Puoi mettere una carta con forza base 3 o inferiore dalla tua panchina nella tua pila degli esausti."
+      }
+    },
+    {
+      "id": 341,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_nord_freyr.jpg",
+      "art_image": "dios_nord_freyr.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Freyr",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Freyr",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Freyr",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Freyr",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Freyr",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Freyr",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 342,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "C",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_odin.jpg",
+      "art_image": "dios_nord_odin.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Odín",
+        "text": "_Desde el banquillo:_ Tus cartas ganan +1 durante el ataque."
+      },
+      "en": {
+        "name": "Odin",
+        "text": "From the bench: Your cards have +1 during the attack."
+      },
+      "fr": {
+        "name": "Odin",
+        "text": "Depuis le banc : Vos cartes gagnent +1 durant l'attaque."
+      },
+      "de": {
+        "name": "Odin",
+        "text": "_Von der Bank:_ Deine Karten erhalten +1 beim Angriff."
+      },
+      "nl": {
+        "name": "Odin",
+        "text": "_Vanaf de bank:_ Jouw kaarten hebben +1 tijdens de aanval."
+      },
+      "it": {
+        "name": "Odin",
+        "text": "_Dalla panchina:_ Le tue carte hanno +1 durante l'attacco."
+      }
+    },
+    {
+      "id": 343,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "C",
+      "strength": "5",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_nord_frigg.jpg",
+      "art_image": "dios_nord_frigg.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Frigg",
+        "text": "_Al perder la Bandera:_ Coloca esta carta en tu reserva."
+      },
+      "en": {
+        "name": "Frigg",
+        "text": "When losing the Flag: Put this card on your exhaust pile."
+      },
+      "fr": {
+        "name": "Frigg",
+        "text": "À la perte du drapeau : Placez cette carte sur votre réserve."
+      },
+      "de": {
+        "name": "Frigg",
+        "text": "_Bei Flaggenverlust:_ Lege diese Karte auf deinen Erschöpfungsstapel."
+      },
+      "nl": {
+        "name": "Frigg",
+        "text": "_Bij vlagverlies:_ Leg deze kaart op je aflegstapel."
+      },
+      "it": {
+        "name": "Frigg",
+        "text": "_Alla perdita della bandiera:_ Metti questa carta nella tua pila degli esausti."
+      }
+    },
+    {
+      "id": 344,
+      "game": "both",
+      "set_id": "dioses_nordicos",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_nord_thor.jpg",
+      "art_image": "dios_nord_thor.jpg",
+      "icon_path": "icon_dioses_nordicos.png",
+      "color_hex": "#0d9488",
+      "color_border": "#14b8a6",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Thor",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Thor",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Thor",
+        "text": "Rare 2x"
+      },
+      "de": {
+        "name": "Thor",
+        "text": "Selten 2x"
+      },
+      "nl": {
+        "name": "Thor",
+        "text": "Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Thor",
+        "text": "Rara 2x"
+      }
+    },
+    {
+      "id": 345,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "A",
+      "strength": "1",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_abraham.jpg",
+      "art_image": "dios_cris_abraham.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Abraham",
+        "text": "_Durante el ataque:_ Esta carta gana +1 por cada uno de tus Hinchas, excluyendo los de tus Trofeos."
+      },
+      "en": {
+        "name": "Abraham",
+        "text": "During the attack: This card has +1 for each of your Fans, excluding Fans from your Trophies."
+      },
+      "fr": {
+        "name": "Abraham",
+        "text": "Durant l'attaque : Cette carte gagne +1 pour chacun de vos Fans, à l'exception de ceux de vos Trophées."
+      },
+      "de": {
+        "name": "Abraham",
+        "text": "_Beim Angriff:_ Diese Karte erhält +1 für jeden deiner Fans (Trophäen nicht mitgezählt)."
+      },
+      "nl": {
+        "name": "Abraham",
+        "text": "_Tijdens de aanval:_ Deze kaart krijgt +1 voor elk van jouw fans, exclusief trofeeën."
+      },
+      "it": {
+        "name": "Abraham",
+        "text": "_Durante l'attacco:_ Questa carta ha +1 per ciascuno dei tuoi tifosi (esclusi i trofei)."
+      }
+    },
+    {
+      "id": 346,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_juan_el_bautista.jpg",
+      "art_image": "dios_cris_juan_el_bautista.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Juan el Bautista",
+        "text": "_Al ser seleccionada:_ Recibe 2 Hinchas."
+      },
+      "en": {
+        "name": "John the Baptist",
+        "text": "When selected: Gain 2 Fans."
+      },
+      "fr": {
+        "name": "Jean le Baptiste",
+        "text": "Lors de la sélection : Recevez 2 Fans."
+      },
+      "de": {
+        "name": "Johannes der Täufer",
+        "text": "_Beim Ziehen:_ Nimm 2 Fans."
+      },
+      "nl": {
+        "name": "Johannes de Doper",
+        "text": "_Bij selectie:_ Neem 2 fans."
+      },
+      "it": {
+        "name": "Giovanni Battista",
+        "text": "_Quando scelta:_ Prendi 2 tifosi."
+      }
+    },
+    {
+      "id": 347,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_maria.jpg",
+      "art_image": "dios_cris_maria.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "María",
+        "text": "_Desde el banquillo:_ Tus cartas [Figuras Cristianas] ganan +1 durante el ataque."
+      },
+      "en": {
+        "name": "Mary",
+        "text": "From the bench: Your [Christian Figures] cards have +1 during the attack."
+      },
+      "fr": {
+        "name": "Marie",
+        "text": "Depuis le banc : Vos cartes [Figures Chrétiennes] gagnent +1 durant l'attaque."
+      },
+      "de": {
+        "name": "Maria",
+        "text": "_Von der Bank:_ Deine [Biblische Figuren]-Karten erhalten +1 beim Angriff."
+      },
+      "nl": {
+        "name": "Maria",
+        "text": "_Vanaf de bank:_ Jouw [Christelijke Figuren]-kaarten hebben +1 tijdens de aanval."
+      },
+      "it": {
+        "name": "Maria",
+        "text": "_Dalla panchina:_ Le tue carte [Figure Cristiane] hanno +1 durante l'attacco."
+      }
+    },
+    {
+      "id": 348,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "A",
+      "strength": "3",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_cris_maria_magdalena.jpg",
+      "art_image": "dios_cris_maria_magdalena.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "María Magdalena",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Mary Magdalene",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Marie Madeleine",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Maria Magdalena",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Maria Magdalena",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "Maria Maddalena",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 349,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "B",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_san_agustin.jpg",
+      "art_image": "dios_cris_san_agustin.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "San Agustín",
+        "text": "Si hay al menos una carta [Figuras Cristianas] en tu banquillo, recibe 1 Hincha."
+      },
+      "en": {
+        "name": "Saint Augustine",
+        "text": "If there is at least one [Christian Figures] card on your bench, gain 1 Fan."
+      },
+      "fr": {
+        "name": "Saint Augustin",
+        "text": "S'il y a au moins une carte [Figures Chrétiennes] sur votre banc, recevez 1 Fan."
+      },
+      "de": {
+        "name": "Augustinus von Hippo",
+        "text": "Wenn sich mindestens eine [Biblische Figuren]-Karte auf deiner Bank befindet, nimm 1 Fan."
+      },
+      "nl": {
+        "name": "Augustinus",
+        "text": "Als er minstens één [Christelijke Figuren]-kaart op je bank ligt, neem 1 fan."
+      },
+      "it": {
+        "name": "Sant'Agostino",
+        "text": "Se c'è almeno una carta [Figure Cristiane] sulla tua panchina, prendi 1 tifoso."
+      }
+    },
+    {
+      "id": 350,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_juan_el_evangelista.jpg",
+      "art_image": "dios_cris_juan_el_evangelista.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Juan el Evangelista",
+        "text": "Puedes colocar una de las cartas con menor fuerza base de tu banquillo en tu reserva."
+      },
+      "en": {
+        "name": "John the Evangelist",
+        "text": "You may put one of the cards with the lowest base power from your bench on your exhaust pile."
+      },
+      "fr": {
+        "name": "Jean l'Évangéliste",
+        "text": "Vous pouvez placer l'une des cartes avec la force de base la plus basse de votre banc sur votre réserve."
+      },
+      "de": {
+        "name": "Johannes der Evangelist",
+        "text": "Du darfst eine der Karten mit der niedrigsten Basisstärke von deiner Bank auf deinen Erschöpfungsstapel legen."
+      },
+      "nl": {
+        "name": "Johannes de Evangelist",
+        "text": "Je mag een van de kaarten met de laagste basiskracht van je bank op je aflegstapel leggen."
+      },
+      "it": {
+        "name": "Giovanni Evangelista",
+        "text": "Puoi mettere una delle carte con la forza base più bassa dalla tua panchina nella tua pila degli esausti."
+      }
+    },
+    {
+      "id": 351,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "B",
+      "strength": "4",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_san_pedro.jpg",
+      "art_image": "dios_cris_san_pedro.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "San Pedro",
+        "text": "Esta carta gana +1 por cada grupo de 5 Hinchas que tengas, excluyendo los de tus Trofeos."
+      },
+      "en": {
+        "name": "Saint Peter",
+        "text": "This card has +1 for each group of 5 Fans you have, excluding Fans from your Trophies."
+      },
+      "fr": {
+        "name": "Saint Pierre",
+        "text": "Cette carte gagne +1 pour chaque groupe de 5 Fans que vous possédez, à l'exception de vos Trophées."
+      },
+      "de": {
+        "name": "Petrus",
+        "text": "Diese Karte erhält +1 für je 5 Fans, die du besitzt (Trophäen nicht mitgezählt)."
+      },
+      "nl": {
+        "name": "Petrus",
+        "text": "Deze kaart krijgt +1 voor elke set van 5 fans, exclusief trofeeën."
+      },
+      "it": {
+        "name": "San Pietro",
+        "text": "Questa carta ha +1 per ogni gruppo di 5 tifosi in tuo possesso (esclusi i trofei)."
+      }
+    },
+    {
+      "id": 352,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "B",
+      "strength": "5",
+      "default_copies": 3,
+      "is_starter_card": false,
+      "card_image": "dios_cris_san_pablo.jpg",
+      "art_image": "dios_cris_san_pablo.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "San Pablo",
+        "text": "Infrecuente (3 copias)"
+      },
+      "en": {
+        "name": "Saint Paul",
+        "text": "Rare 3x"
+      },
+      "fr": {
+        "name": "Saint Paul",
+        "text": "Rare 3x"
+      },
+      "de": {
+        "name": "Paulus",
+        "text": "Selten 3x"
+      },
+      "nl": {
+        "name": "Paulus",
+        "text": "Zeldzaam 3x"
+      },
+      "it": {
+        "name": "San Paolo",
+        "text": "Rara 3x"
+      }
+    },
+    {
+      "id": 353,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "C",
+      "strength": "3",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_rey_david.jpg",
+      "art_image": "dios_cris_rey_david.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Rey David",
+        "text": "Esta carta gana +1 por cada carta con fuerza base 3 o menos en tu banquillo."
+      },
+      "en": {
+        "name": "King David",
+        "text": "This card has +1 for each card with base power 3 or less on your bench."
+      },
+      "fr": {
+        "name": "Roi David",
+        "text": "Cette carte gagne +1 pour chaque carte avec une force de base de 3 ou moins sur votre banc."
+      },
+      "de": {
+        "name": "König David",
+        "text": "Diese Karte erhält +1 für jede Karte mit Basisstärke 3 oder weniger auf deiner Bank."
+      },
+      "nl": {
+        "name": "Koning David",
+        "text": "Deze kaart krijgt +1 voor elke kaart met basiskracht 3 of minder op je bank."
+      },
+      "it": {
+        "name": "Re Davide",
+        "text": "Questa carta ha +1 per ogni carta con forza base 3 o inferiore sulla tua panchina."
+      }
+    },
+    {
+      "id": 354,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "C",
+      "strength": "5",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "dios_cris_moises.jpg",
+      "art_image": "dios_cris_moises.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Moisés",
+        "text": "Mira todo tu mazo. Elige una carta cualquiera y colócala en la parte superior de tu mazo."
+      },
+      "en": {
+        "name": "Moses",
+        "text": "Look at your whole deck. Choose any card and put it on top of your deck."
+      },
+      "fr": {
+        "name": "Moïse",
+        "text": "Regardez tout votre deck. Choisissez n'importe quelle carte et placez-la sur le dessus de votre deck."
+      },
+      "de": {
+        "name": "Mose",
+        "text": "Durchsuche dein ganzes Deck. Wähle eine beliebige Karte und lege sie oben auf dein Deck."
+      },
+      "nl": {
+        "name": "Mozes",
+        "text": "Bekijk je hele stapel. Kies een willekeurige kaart en leg deze bovenop je stapel."
+      },
+      "it": {
+        "name": "Mosè",
+        "text": "Guarda tutto il tuo mazzo. Scegli una carta qualsiasi e mettila in cima al tuo mazzo."
+      }
+    },
+    {
+      "id": 355,
+      "game": "both",
+      "set_id": "dioses_cristianos",
+      "level": "C",
+      "strength": "7",
+      "default_copies": 2,
+      "is_starter_card": false,
+      "card_image": "dios_cris_jesus.jpg",
+      "art_image": "dios_cris_jesus.jpg",
+      "icon_path": "icon_dioses_cristianos.png",
+      "color_hex": "#991b1b",
+      "color_border": "#f59e0b",
+      "collection": "Edición Dioses",
+      "es": {
+        "name": "Jesús",
+        "text": "Infrecuente (2 copias)"
+      },
+      "en": {
+        "name": "Jesus",
+        "text": "Rare 2x"
+      },
+      "fr": {
+        "name": "Jésus",
+        "text": "Rare 2x"
+      },
+      "de": {
+        "name": "Jesus",
+        "text": "Selten 2x"
+      },
+      "nl": {
+        "name": "Jezus",
+        "text": "Zeldzaam 2x"
+      },
+      "it": {
+        "name": "Gesù",
+        "text": "Rara 2x"
+      }
+    }
+  ],
+  "author": "kr43xpo"
+}

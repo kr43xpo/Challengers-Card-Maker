@@ -1,0 +1,8176 @@
+/* ==========================================================================
+   CHALLENGERS CARD MAKER - DESIGN SYSTEM Y ARQUITECTURA VISUAL CSS
+   ==========================================================================
+   Sistema de diseño unificado, maquetación adaptativa, motor de rotación 3D
+   y estilos de impresión física para cartas y componentes de Challengers!.
+
+   ÍNDICE GENERAL DE SECCIONES:
+   ├── SECCIÓN 1: Variables globales, tokens de diseño y reseteo base
+   ├── SECCIÓN 2: Cabecera superior y buscador reactivo (.app-header)
+   ├── SECCIÓN 3: Estructura general y menú lateral desplegable (.filters-sidebar)
+   ├── SECCIÓN 4: Sistema de marcapáginas verticales por facción (.faction-bookmarks-bar)
+   ├── SECCIÓN 5: Cuadrícula de cartas y motor de perspectiva 3D (.cards-grid, .card-flipper)
+   ├── SECCIÓN 6: Simulación de apilado de copias físicas (.is-stacked, .card-stack-badge)
+   ├── SECCIÓN 7: Componente plantilla oficial de carta (réplica idéntica de torneo)
+   ├── SECCIÓN 8: Paletas cromáticas temáticas por facción (variables CSS dinámicas)
+   ├── SECCIÓN 9: Reverso fotográfico de las cartas físicas (.c-photo-card)
+   ├── SECCIÓN 10: Modal de inspección y detalle ampliado (#cardModal)
+   ├── SECCIÓN 11: Pie de página accesible y enlaces sociales (.app-footer)
+   ├── SECCIÓN 12: Modal de aviso legal y descargo de responsabilidad (#disclaimerModal)
+   ├── SECCIÓN 13: Suite de impresión y generador de documentos PDF (#printModal)
+   ├── SECCIÓN 14: Selector múltiple de facciones en el modal de impresión
+   ├── SECCIÓN 15: Componente de tiras de inserción para fundas opacas (.print-strip-card)
+   ├── SECCIÓN 16: Reglas adaptativas y responsive móvil (@media max-width: 900px)
+   ├── SECCIÓN 17: Motor de impresión nativa del navegador (@media print)
+   ├── SECCIÓN 18: Pantalla de bienvenida y carga de paquetes ZIP (.zip-upload-screen)
+   ├── SECCIÓN 19: Estado animado de descompresión y lectura de mazo (#zipCardLoadingContent)
+   ├── SECCIÓN 20: Modal de gestión del mazo activo (#zipManageModal)
+   ├── SECCIÓN 21: Modal de guía técnica para creadores (#templateGuideModal)
+   ├── SECCIÓN 22: Extras y componentes auxiliares del modal de detalle
+   ├── SECCIÓN 23: Modos de encuadre y escalado de ilustraciones sin deformación
+   ├── SECCIÓN 24: Maquetación especializada para mazos iniciales y perros de macrotorneo
+   ├── SECCIÓN 25: Modal editorial de información y resumen del mazo (#deckInfoModal)
+   └── SECCIÓN 26: Portada y hoja editorial de resumen del mazo para PDF (.deck-summary-cover)
+   ========================================================================== */
+
+/* ==========================================================================
+   SECCIÓN 1: VARIABLES GLOBALES, TOKENS DE DISEÑO Y RESETEO BASE
+   ==========================================================================
+   Define la paleta cromática central, tokens de elevación (sombras), radios de borde,
+   escalas tipográficas (Outfit y Cinzel) y transiciones cúbicas unificadas. */
+
+:root {
+  --bg-dark: #4e946c;
+  --bg-card-panel: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-hover: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --border-subtle: #cbd5e1;
+  --border-focus: #2563eb;
+  --radius-btn: 10px;
+
+  /* Faction Colors */
+  --c-gris: #64748b;
+  --c-noir: #1e293b;
+  --c-cyan: #0284c7;
+  --c-vert: #16a34a;
+  --c-violet: #7c3aed;
+  --c-multicolor: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4, #10b981);
+  --c-rose: #db2777;
+  --c-jaune: #ca8a04;
+  --c-marron: #9a3412;
+
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Cinzel', serif;
+  --shadow-card: 0 8px 20px -4px rgba(15, 23, 42, 0.16), 0 4px 8px -4px rgba(15, 23, 42, 0.1);
+  --shadow-hover: 0 16px 32px -4px rgba(15, 23, 42, 0.28), 0 8px 16px -4px rgba(37, 99, 235, 0.2);
+  --radius-card: 16px;
+  --transition-smooth: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #4e946c;
+  /* Official Challengers Tournament Park background in pure CSS */
+  background-image:
+    radial-gradient(ellipse 130% 70% at 50% 0%, rgba(180, 225, 75, 0.42) 0%, transparent 60%),
+    radial-gradient(ellipse 130% 70% at 50% 100%, rgba(180, 225, 75, 0.42) 0%, transparent 60%),
+    linear-gradient(180deg, #9abe3c 0%, #76b158 10%, #5a9e66 20%, #4e946c 32%, #428962 50%, #4e946c 68%, #5a9e66 80%, #76b158 90%, #9abe3c 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  color: var(--text-main);
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* ==========================================================================
+   SECCIÓN 2: CABECERA Y BARRA DE NAVEGACIÓN SUPERIOR (.app-header)
+   ==========================================================================
+   Barra superior fija que integra el botón de alternancia del menú lateral,
+   el logotipo de marca, el buscador reactivo en tiempo real y los accesos rápidos. */
+
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Botón de apertura del menú lateral en cabecera (icono tipo hamburguesa) */
+.sidebar-toggle-btn {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0284c7;
+}
+
+.hamburger-icon-svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  display: block;
+}
+
+.active-filters-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284c7;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.app-deck-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: block;
+}
+
+.brand-link:hover .app-deck-logo-img {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.app-brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    line-height: 1.1;
+    transition: color 0.15s ease;
+}
+
+.brand-link:hover .app-brand-title {
+    color: #0284c7;
+}
+
+.logo-subtitle {
+  font-size: 0.8rem;
+  color: #475569;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Barra de búsqueda integrada en la cabecera (escritorio y móviles) */
+.header-search-wrapper {
+  flex: 1;
+  max-width: 440px;
+  min-width: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-svg {
+  position: absolute;
+  left: 0.75rem;
+  width: 14px;
+  height: 14px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.header-search-wrapper input {
+  width: 100%;
+  height: 34px;
+  padding: 0 1.8rem 0 2.1rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.header-search-wrapper input:focus {
+  outline: none;
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.header-search-wrapper input::placeholder {
+  color: #94a3b8;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 0.55rem;
+  background: #e2e8f0;
+  border: none;
+  color: #64748b;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  transition: all 0.15s ease;
+}
+
+.clear-btn:hover {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.header-action-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  height: 34px;
+  padding: 0 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.header-action-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.header-action-btn-primary {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.header-action-btn-primary:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  color: #ffffff;
+}
+
+/* Selector de idioma moderno y compacto */
+.lang-selector-box {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0 0.35rem;
+  height: 34px;
+  transition: all 0.15s ease;
+}
+
+.lang-selector-box:hover,
+.lang-selector-box:focus-within {
+  border-color: #0284c7;
+}
+
+.lang-select-dropdown {
+  background: transparent;
+  border: none;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding: 0 0.2rem;
+}
+
+.lang-select-dropdown option {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 4px;
+}
+
+/* Oculta los controles de cartas de la barra de navegación cuando no hay mazo cargado */
+body.no-deck-selected .sidebar-toggle-btn,
+body.no-deck-selected .app-deck-logo-img,
+body.no-deck-selected .header-search-wrapper,
+body.no-deck-selected #flipAllBtn,
+body.no-deck-selected #openPrintModalBtn,
+body.no-deck-selected #zipManagerBtn,
+body.no-deck-selected .faction-bookmarks-bar,
+body.no-deck-selected .filters-sidebar,
+body.no-deck-selected .sidebar-backdrop {
+  display: none !important;
+}
+
+/* ==========================================================================
+   SECCIÓN 3: ESTRUCTURA PRINCIPAL Y MENÚ LATERAL DESPLEGABLE (.filters-sidebar)
+   ==========================================================================
+   Organiza la disposición flex/grid principal, el telón semitransparente (backdrop)
+   y el panel lateral de filtros facetados con contadores en tiempo real. */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Menú lateral desplegable tipo drawer sin alterar el flujo del contenido */
+.filters-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 325px;
+  max-width: 88vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(203, 213, 225, 0.8);
+  box-shadow: 6px 0 28px rgba(15, 23, 42, 0.22);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+.filters-sidebar.is-open {
+  transform: translateX(0);
+}
+
+.sidebar-backdrop {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.sidebar-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.15rem 0.75rem 1.15rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.98);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.sidebar-title-box {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sidebar-title-icon {
+  font-size: 1.15rem;
+}
+
+.sidebar-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sidebar-reset-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.25rem 0.6rem;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.sidebar-reset-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.sidebar-close-btn {
+  display: flex;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  color: #64748b;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.sidebar-close-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.sidebar-content {
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.sidebar-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-filter-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats-badge {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.stats-main-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.84rem;
+}
+
+.count-number {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.stats-copies-pill {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  line-height: 1.25;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 1.75rem calc(52px + 12px) 1.75rem;
+  box-sizing: border-box;
+}
+
+.game-chips,
+.color-chips,
+.level-chips,
+.strength-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.level-chips {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+}
+
+/* Botones compactos tipo chip para selección de filtros facetados */
+.chip-btn {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.chip-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.chip-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
+/* Píldoras con contador numérico dentro de cada chip */
+.chip-count-pill {
+  background: rgba(15, 23, 42, 0.08);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  margin-left: 0.25rem;
+  line-height: 1.2;
+}
+
+.chip-btn.active .chip-count-pill {
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+}
+
+/* Fases de torneo A / B / C distribuidas en una única fila horizontal */
+.level-row-abc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.level-chip-abc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42rem 0.2rem;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #1e293b;
+  cursor: pointer;
+  gap: 2px;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.level-chip-abc:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.level-chip-abc.active {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.35);
+}
+
+.level-chip-abc .level-abc-title {
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.level-chip-abc .chip-count-pill {
+  margin-left: 0;
+  font-size: 0.7rem;
+  padding: 1px 5px;
+}
+
+/* Filas para mazo inicial (S) y niveles especiales (Entrenador, Robot) */
+.level-chip-starter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.42rem 0.75rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.level-row-secondary {
+  display: flex;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.level-row-secondary .chip-btn {
+  flex: 1;
+  justify-content: space-between;
+}
+
+/* Cuadrícula de botones de facción con icono y color temático distintivo */
+.color-chips {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.faction-all-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.42rem 0.75rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.faction-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.faction-icon-btn {
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  outline: none;
+}
+
+.faction-icon-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  border-color: #94a3b8;
+  background: #f8fafc;
+  z-index: 2;
+}
+
+.faction-icon-btn.active {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 2px;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  z-index: 3;
+}
+
+.faction-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.faction-icon-btn.active .faction-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+.faction-icon-svg {
+  width: 24px;
+  height: 24px;
+  fill: #1e293b;
+  transition: fill 0.2s ease;
+  pointer-events: none;
+}
+
+.faction-icon-btn.active .faction-icon-svg {
+  fill: #ffffff;
+}
+
+.color-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.chip-icon-img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   SECCIÓN 4: SISTEMA DE MARCAPÁGINAS VERTICALES POR FACCIÓN (.faction-bookmarks-bar)
+   ==========================================================================
+   Riel de navegación vertical tipo archivador indexado por facción.
+   Las pestañas no seleccionadas se mantienen en blanco limpio y la activa
+   emerge con el color distintivo de su facción. */
+
+.factions-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+/* Riel de marcapáginas vertical dispuesto detrás del contenedor de cartas */
+.faction-bookmarks-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 1rem 0 1rem 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  /* Placed behind the cards container box */
+  margin-right: -15px;
+  /* Tucked behind the left border of the cards container */
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-shrink: 0;
+}
+
+.faction-bookmarks-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pestaña de marcapáginas individual - Estado por defecto (inactivo): Blanco limpio */
+.faction-bookmark-tab {
+  width: 50px;
+  height: 48px;
+  border-radius: 12px 0 0 12px;
+  border: 1.5px solid #cbd5e1;
+  border-right: none;
+  background: #ffffff;
+  /* Todos los botones en color blanco */
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: -3px 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  outline: none;
+}
+
+.faction-bookmark-tab:hover {
+  width: 56px;
+  transform: translateX(-6px);
+  box-shadow: -5px 3px 12px rgba(0, 0, 0, 0.14);
+  background: #f8fafc;
+  color: #0f172a;
+  z-index: 6;
+}
+
+/* Pestaña seleccionada: Se colorea únicamente al estar activa, emergiendo tras el contenedor */
+.faction-bookmark-tab.active {
+  width: 56px;
+  transform: translateX(-6px);
+  background: var(--tab-bg, #2563eb);
+  /* Se colorea sólo el seleccionado */
+  color: #ffffff;
+  filter: brightness(1.50);
+  border-color: rgba(255, 255, 255, 0.7);
+  /* box-shadow: -6px 4px 18px rgba(0, 0, 0, 0.26), -2px 0 6px rgba(0, 0, 0, 0.15); */
+  z-index: 7;
+}
+
+.faction-tab-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  pointer-events: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.faction-bookmark-tab:hover .faction-tab-icon-img {
+  transform: scale(1.1);
+}
+
+/* .faction-bookmark-tab.active .faction-tab-icon-img {
+  transform: scale(1.14);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+} */
+
+.faction-tab-icon-svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  color: #475569;
+  /* Dark/visible on white unselected tabs */
+  fill: currentColor;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.faction-bookmark-tab:hover .faction-tab-icon-svg {
+  transform: scale(1.1);
+  color: #386b47;
+}
+
+.faction-bookmark-tab.active .faction-tab-icon-svg {
+  color: #ffffff;
+  fill: currentColor;
+  transform: scale(1.12);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+}
+
+/* Contenedor principal de cartas de la facción - Fondo pastel suave de torneo */
+.faction-cards-container {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 10;
+  /* In front of bookmark tabs tucked behind it */
+  background: #D4E3BA;
+  /* Color pastel clarito tournament sage, no blanco */
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+  border: 15px solid white;
+  box-shadow: 0 16px 40px -8px rgba(18, 55, 30, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 0 2rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  box-sizing: border-box;
+
+  /* Altura adaptativa de página completa calculada descontando cabecera y pie */
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+
+  /* Desplazamiento interno fluido con comportamiento suave */
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+
+  /* Barra de desplazamiento temática personalizada para Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #8dae6b rgba(255, 255, 255, 0.45);
+}
+
+/* Barra de desplazamiento temática personalizada para navegadores WebKit */
+.faction-cards-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.faction-cards-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  margin: 10px 0;
+}
+
+.faction-cards-container::-webkit-scrollbar-thumb {
+  background: #8dae6b;
+  border-radius: 9999px;
+  border: 2px solid #D4E3BA;
+  transition: background-color 0.2s ease;
+}
+
+.faction-cards-container::-webkit-scrollbar-thumb:hover {
+  background: #4e946c;
+}
+
+.faction-cards-container::-webkit-scrollbar-thumb:active {
+  background: #386b47;
+}
+
+/* Banner cabecera de la facción activa dentro del contenedor de contenido */
+.faction-header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 0.85rem 2rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(78, 148, 108, 0.25);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  animation: bannerFadeIn 0.2s ease-out;
+
+  /* Sticky pinned banner at top of container */
+  position: sticky;
+  top: 0;
+  background: #D4E3BA;
+  z-index: 25;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0.6;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faction-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.faction-header-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faction-header-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+.faction-header-icon-svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.faction-header-icon-svg svg,
+.faction-header-icon-svg .faction-tab-icon-svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.faction-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.faction-header-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.faction-header-subtitle {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.faction-header-stats {
+  display: inline-flex;
+  align-items: baseline;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.faction-stat-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.faction-stat-item strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.faction-stat-sep {
+  color: #cbd5e1;
+  margin: 0 0.5rem;
+  user-select: none;
+}
+
+/* ==========================================================================
+   SECCIÓN 5: CUADRÍCULA DE CARTAS Y MOTOR DE PERSPECTIVA 3D (.cards-grid, .card-flipper)
+   ==========================================================================
+   Contenedor de cuadrícula adaptable y motor de rotación tridimensional sobre el eje Y.
+   Implementa aceleración por GPU (transform: preserve-3d) y animación suave. */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 1.35rem;
+  align-items: stretch;
+}
+
+/* Escala de cartas web: ~80% del tamaño original (impresión y modal permanecen al 100%) */
+.cards-grid .c-card {
+  padding: 10px 8.5px;
+}
+
+.cards-grid .c-card-header {
+  height: 38px;
+  padding: 0 37px;
+}
+
+.cards-grid .c-strength-corner {
+  width: 35px;
+  height: 35px;
+  font-size: 1.18rem;
+}
+
+.cards-grid .c-card-title {
+  font-size: 0.70rem;
+  max-height: 35px;
+  line-height: 1.12;
+}
+
+.cards-grid .c-side-tab {
+  width: 22px;
+  height: 29px;
+}
+
+.cards-grid .c-tab-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.cards-grid .c-bottom-row {
+  height: 80px;
+  min-height: 80px;
+}
+
+.cards-grid .c-bottom-row.is-trainer {
+  height: 88px;
+  min-height: 88px;
+}
+
+.cards-grid .c-effect-area {
+  padding: 5px 6px 5px 8px;
+  gap: 6px;
+}
+
+.cards-grid .c-trigger-icon {
+  font-size: 1rem;
+  width: 21px;
+  height: 21px;
+}
+
+.cards-grid .c-text-content.text-short {
+  font-size: 0.82rem;
+  line-height: 1.34;
+}
+
+.cards-grid .c-text-content.text-medium {
+  font-size: 0.74rem;
+  line-height: 1.28;
+}
+
+.cards-grid .c-text-content.text-long {
+  font-size: 0.66rem;
+  line-height: 1.22;
+}
+
+.cards-grid .c-text-content.text-xlong {
+  font-size: 0.58rem;
+  line-height: 1.16;
+}
+
+.cards-grid .c-rarity-text {
+  font-size: 0.72rem;
+}
+
+.cards-grid .c-level-tab {
+  width: 35px;
+  font-size: 1.16rem;
+}
+
+.cards-grid .c-level-tab.is-solo,
+.cards-grid .c-level-tab.is-long-level {
+  font-size: 0.62rem;
+}
+
+.cards-grid .c-starter-player-corner {
+  width: 35px;
+  min-width: 35px;
+}
+
+.cards-grid .c-starter-player-icon {
+  width: 21px;
+  height: 21px;
+}
+
+/* Animación fluida de reparto de cartas sobre el tapete */
+@keyframes cardDealEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.008);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cards-grid .card-item {
+  animation: cardDealEntrance 0.32s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--card-index, 0) * 16ms);
+}
+
+.no-results {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  border: 2px dashed rgba(78, 148, 108, 0.35);
+  box-shadow: 0 4px 16px rgba(18, 55, 30, 0.08);
+  margin: auto 0;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.no-results h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3a29;
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.action-btn {
+    background: #0f172a;
+    color: #f1f5f9;
+    border: 1px solid #1e293b;
+    padding: 0.5rem 1.15rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+    transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+    background: #1e293b;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+}
+
+/* Elemento de carta individual con perspectiva tridimensional */
+.card-item {
+  position: relative;
+  perspective: 1200px;
+  border-radius: var(--radius-card);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    filter 0.25s ease;
+  will-change: transform, opacity, filter;
+}
+
+/* Subtle focus dimming: when hovering over a card, the other cards darken slightly */
+.cards-grid:has(.card-item:hover) .card-item:not(:hover) {
+  opacity: 0.95;
+  filter: brightness(0.95) contrast(0.95);
+}
+
+.card-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  z-index: 20;
+  opacity: 1;
+  filter: brightness(1.02);
+}
+
+/* Elemento rotatorio 3D (proporción oficial de carta 63.5 x 88 mm) */
+.c-flipper {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 63.5 / 88;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-card);
+}
+
+/* Estado volteado (rotación horizontal de 180° sobre el eje Y) */
+.card-item.is-flipped .c-flipper,
+.modal-card-display.is-flipped .c-flipper {
+  transform: rotateY(180deg);
+}
+
+/* Caras anverso y reverso con ocultación de cara trasera (backface-visibility: hidden) */
+.c-front,
+.c-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-card);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.c-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.c-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+  background: #0f172a;
+}
+
+/* Interacción de carta: cursor interactivo y supresión del arrastre nativo */
+.card-item {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+.card-item img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* ==========================================================================
+   SECCIÓN 6: SIMULACIÓN DE APILADO DE COPIAS FÍSICAS (.is-stacked, .card-stack-badge)
+   ==========================================================================
+   Representa visualmente las cartas duplicadas (2x, 3x, 4x, etc.) mediante capas
+   posteriores desplazadas que se abren sutilmente en efecto acordeón al posar el cursor. */
+
+.c-card-layers-behind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.c-stacked-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 63.5 / 88;
+  background-color: #0f172a;
+  background-image: url('images/card_back.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  transform-origin: bottom left;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.c-stacked-card.is-robot {
+  background-image: url('images/card_back_robot.jpg');
+}
+
+.player-icon-img,
+.c-starter-player-icon img,
+.strip-player-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Desplazamiento en reposo: capas apiladas discretamente detrás de la carta principal */
+.c-stacked-card.layer-1 {
+  transform: translate3d(2.5px, -2px, -1px) rotate(0.6deg);
+  z-index: 4;
+}
+
+.c-stacked-card.layer-2 {
+  transform: translate3d(5px, -4px, -2px) rotate(1.2deg);
+  z-index: 3;
+}
+
+.c-stacked-card.layer-3 {
+  transform: translate3d(7.5px, -6px, -3px) rotate(1.8deg);
+  z-index: 2;
+}
+
+.c-stacked-card.layer-4 {
+  transform: translate3d(10px, -8px, -4px) rotate(2.4deg);
+  z-index: 1;
+}
+
+/* Efecto hover/focus: separación en acordeón sutil para revelar las copias físicas */
+.card-item:hover .c-stacked-card.layer-1 {
+  transform: translate3d(7px, -3px, 0) rotate(1.2deg);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.card-item:hover .c-stacked-card.layer-2 {
+  transform: translate3d(14px, -6px, 0) rotate(2.4deg);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.20);
+}
+
+.card-item:hover .c-stacked-card.layer-3 {
+  transform: translate3d(21px, -9px, 0) rotate(3.6deg);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+}
+
+.card-item:hover .c-stacked-card.layer-4 {
+  transform: translate3d(28px, -12px, 0) rotate(4.8deg);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+}
+
+/* Insignia multiplicadora sobre la pila (ej: 2x, 3x, 4x, etc.) */
+.c-stack-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 25;
+  background: rgba(15, 23, 42, 0.92);
+  color: #38bdf8;
+  font-size: 0.76rem;
+  font-weight: 900;
+  border-radius: 999px;
+  padding: 2px 7px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  font-family: var(--font-display, inherit);
+  letter-spacing: -0.02em;
+  transition: all 0.25s ease;
+}
+
+.card-item:hover .c-stack-count-badge {
+  transform: scale(1.1);
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.5);
+}
+
+/* Strict print mode: hide stacked layers and multiplier badge */
+.print-card-wrapper .c-card-layers-behind,
+.print-render-temp .c-card-layers-behind,
+.is-print-square .c-card-layers-behind,
+.print-card-wrapper .c-stack-count-badge,
+.print-render-temp .c-stack-count-badge,
+.is-print-square .c-stack-count-badge {
+  display: none !important;
+}
+
+@media print {
+
+  .c-card-layers-behind,
+  .c-stack-count-badge {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 7: COMPONENTE PLANTILLA OFICIAL DE CARTA (RÉPLICA IDÉNTICA DE TORNEO)
+   ==========================================================================
+   Estructura física y maquetación de la carta de torneo (63.5 x 88 mm).
+   Incluye margen blanco perimetral de 4 mm, cabecera con pestañas de fuerza en
+   esquinas, ilustración central con pestañas laterales, y fila inferior con
+   texto descriptivo, iconos inline y pestaña de fase/set en esquina inferior derecha. */
+
+/* Subcomponentes estructurales de la plantilla de carta oficial */
+
+.c-card {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 13px 11px;
+  /* Margen perimetral blanco auténtico de ~4 mm idéntico al juego original */
+}
+
+.c-card.no-white-margin {
+  padding: 0 !important;
+}
+
+.card-item:hover .c-card {
+  box-shadow: var(--shadow-hover);
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+/* Cabecera superior de carta - Fondo blanco limpio con pestañas angulares de color */
+.c-card-header {
+  height: 48px;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 46px;
+  /* Leave space for corner tabs */
+  flex-shrink: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+}
+
+/* Pestañas de fuerza numérica en esquinas superiores (izquierda y derecha) */
+.c-strength-corner {
+  position: absolute;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--card-color, #0284c7);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.48rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+}
+
+.c-strength-corner.left {
+  left: 0;
+  border-radius: 8px 0 8px 0;
+}
+
+.c-strength-corner.right {
+  right: 0;
+  border-radius: 0 8px 0 8px;
+}
+
+.c-card-title {
+  text-align: center;
+  font-weight: 900;
+  font-size: 0.84rem;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-height: 1.14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 44px;
+  padding: 0 2px;
+}
+
+/* Recuadro de ilustración central */
+.c-art-container {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  /* Flush with header and bottom row to form a clean column */
+  position: relative;
+  background: #f1f5f9;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-left: 1px solid rgba(0, 0, 0, 0.08); */
+  /* border-right: 1px solid rgba(0, 0, 0, 0.08); */
+}
+
+.c-art-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card-item:hover .c-art-image {
+  transform: scale(1.05);
+}
+
+/* Pestañas laterales de facción con iconos vectoriales extraídos */
+.c-side-tab {
+  position: absolute;
+  top: 14%;
+  width: 28px;
+  height: 36px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.c-side-tab.left {
+  left: 0;
+  border-radius: 0 12px 12px 0;
+  border-left: none;
+  padding: 3px 4px 3px 2px;
+}
+
+.c-side-tab.right {
+  right: 0;
+  border-radius: 12px 0 0 12px;
+  border-right: none;
+  padding: 3px 2px 3px 4px;
+}
+
+.c-tab-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fila inferior de carta: texto de efecto expandido y pestaña de fase en una línea */
+.c-bottom-row {
+  height: 100px;
+  min-height: 100px;
+  background: #ffffff;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  /* border-top: 1px solid #e2e8f0;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.c-bottom-row.is-trainer {
+  height: 110px;
+  min-height: 110px;
+}
+
+.c-effect-area {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  /* Desactivación estricta de barras de desplazamiento internas en cartas */
+}
+
+.c-bottom-row.is-trainer .c-effect-area {
+  padding: 6px 12px 6px 12px;
+}
+
+.c-trigger-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.c-text-content {
+  width: 100%;
+  color: #1e293b;
+  font-weight: 500;
+  overflow: hidden;
+  /* Desactivación estricta de barras de desplazamiento internas en cartas */
+  word-break: normal;
+  overflow-wrap: break-word;
+  display: block;
+  /* Flow text and inline icons continuously on the same line */
+  text-align: left;
+}
+
+/* Scaled font-size to fill available space nicely with clear typography */
+.c-text-content.text-short {
+  font-size: 1.02rem;
+  line-height: 1.38;
+}
+
+.c-text-content.text-medium {
+  font-size: 0.91rem;
+  line-height: 1.32;
+}
+
+.c-text-content.text-long {
+  font-size: 0.81rem;
+  line-height: 1.25;
+}
+
+.c-text-content.text-xlong {
+  font-size: 0.72rem;
+  line-height: 1.20;
+}
+
+.c-text-content strong {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.c-rarity-text {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #475569;
+  letter-spacing: 0.02em;
+}
+
+.c-empty-text {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.78rem;
+}
+
+/* Iconos tipográficos inline de facciones y términos de juego fluyendo con el texto */
+.c-inline-icon-wrap {
+  display: inline-block;
+  vertical-align: -0.22em;
+  padding: 0;
+  margin: 0 2px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.c-inline-icon {
+  width: 1.35em;
+  height: 1.35em;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+
+.print-render-temp .c-inline-icon {
+  width: 1.35em !important;
+  height: 1.35em !important;
+  vertical-align: middle !important;
+}
+
+.detail-modal-body .c-inline-icon,
+.modal-text-content .c-inline-icon {
+  width: 1.35em;
+  height: 1.35em;
+  vertical-align: middle;
+}
+
+/* Level Tab (Bottom Right Corner) */
+.c-level-tab {
+  width: 44px;
+  background: var(--card-color, #0284c7);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 12px 0;
+  flex-shrink: 0;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-body);
+}
+
+.c-level-tab.is-solo,
+.c-level-tab.is-long-level {
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  /* writing-mode: vertical-rl; */
+  /* text-orientation: upright; */
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.15;
+  padding: 4px 0;
+}
+
+/* Identificador de carta y metadatos de colección flotantes (visibles en hover) */
+.c-id-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-size: 0.64rem;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: calc(100% - 30px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  z-index: 30;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-item:hover .c-id-tag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Icono del jugador de mazo inicial en esquina inferior izquierda (réplica física) */
+.c-starter-player-corner {
+  width: 44px;
+  min-width: 44px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--card-color, #0284c7);
+  background: transparent;
+  padding: 4px;
+  z-index: 4;
+}
+
+.c-starter-player-icon {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-color, #0284c7);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+}
+
+.c-starter-player-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+
+/* ==========================================================================
+   SECCIÓN 8: PALETAS CROMÁTICAS TEMÁTICAS POR FACCIÓN (VARIABLES CSS DINÁMICAS)
+   ==========================================================================
+   Configuración de colores específicos por conjunto (Gris, Negro, Cian, Verde,
+   Violeta, Rosa, Amarillo, Marrón, Multicolor, etc.), bordes, fondos y gradientes. */
+.theme-gris,
+.theme-robot {
+  --card-color: #64748b;
+}
+
+.theme-noir,
+.theme-trainers {
+  --card-color: #1e293b;
+}
+
+.theme-cyan,
+.theme-ville,
+.theme-city {
+  --card-color: #0284c7;
+}
+
+.theme-turquoise,
+.theme-plage,
+.theme-beach_club {
+  --card-color: #0d9488;
+}
+
+.theme-vert,
+.theme-contes,
+.theme-fairytale_forest {
+  --card-color: #15803d;
+}
+
+.theme-indigo,
+.theme-montagne,
+.theme-mountain_top {
+  --card-color: #585297;
+}
+
+.theme-multicolor,
+.theme-arcenciel,
+.theme-rainbow {
+  --card-color: linear-gradient(180deg, #ef4444 0%, #f97316 20%, #eab308 40%, #22c55e 60%, #06b6d4 80%, #8b5cf6 100%);
+  --card-color-solid: #8b5cf6;
+}
+
+.theme-rose,
+.theme-magenta,
+.theme-infiltration,
+.theme-secret_base {
+  --card-color: #db2777;
+}
+
+.theme-lime,
+.theme-jouets,
+.theme-toy_store {
+  --card-color: #84cc16;
+}
+
+.theme-marron,
+.theme-universite,
+.theme-university {
+  --card-color: #78350f;
+}
+
+.theme-chateau,
+.theme-castle {
+  --card-color: #3c87be;
+}
+
+.theme-cinema,
+.theme-film_studio {
+  --card-color: #70a146;
+}
+
+.theme-foire,
+.theme-funfair {
+  --card-color: #f7b322;
+}
+
+.theme-hantee,
+.theme-haunted_house {
+  --card-color: #ee842e;
+}
+
+.theme-espace,
+.theme-outer_space {
+  --card-color: #dd3e3b;
+}
+
+.theme-epave,
+.theme-shipwreck {
+  --card-color: #8a318b;
+}
+
+/* Enhanced Rainbow Gradient for Corner Tabs & Level Tabs */
+.theme-rainbow .c-strength-corner,
+.theme-arcenciel .c-strength-corner,
+.theme-multicolor .c-strength-corner {
+  background: linear-gradient(180deg, #ef4444 0%, #f97316 20%, #eab308 40%, #22c55e 60%, #06b6d4 80%, #8b5cf6 100%) !important;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.theme-rainbow .c-level-tab,
+.theme-arcenciel .c-level-tab,
+.theme-multicolor .c-level-tab {
+  background: linear-gradient(180deg, #ef4444 0%, #f97316 20%, #eab308 40%, #22c55e 60%, #06b6d4 80%, #8b5cf6 100%) !important;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.theme-rainbow .c-stacked-card-header::before,
+.theme-rainbow .c-stacked-card-header::after,
+.theme-arcenciel .c-stacked-card-header::before,
+.theme-arcenciel .c-stacked-card-header::after,
+.theme-multicolor .c-stacked-card-header::before,
+.theme-multicolor .c-stacked-card-header::after {
+  background: linear-gradient(180deg, #ef4444 0%, #f97316 20%, #eab308 40%, #22c55e 60%, #06b6d4 80%, #8b5cf6 100%) !important;
+}
+
+.chip-btn[data-color="rainbow"].active,
+.chip-btn[data-color="multicolor"].active {
+  background: linear-gradient(135deg, #ef4444, #f97316, #eab308, #22c55e, #06b6d4, #8b5cf6) !important;
+  border-color: #c084fc !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+/* Game Expansion Badge on Card */
+.c-game-tag {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.c-game-tag.beach-cup {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+/* ==========================================================================
+   SECCIÓN 9: REVERSO FOTOGRÁFICO DE LAS CARTAS FÍSICAS (.c-photo-card)
+   ==========================================================================
+   Estilizado del reverso oficial con marco de borde, textura de alta resolución
+   y logotipo centrado para la cara trasera de la carta. */
+
+.c-photo-card {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  background: #000;
+  border-radius: var(--radius-card);
+  position: relative;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.c-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+/* ==========================================================================
+   SECCIÓN 10: MODAL DE INSPECCIÓN Y DETALLE AMPLIADO (#cardModal)
+   ==========================================================================
+   Diálogo modal emergente para examinar la carta en alta resolución con
+   posibilidad de volteo 3D, selección de idioma local y navegación previa/siguiente. */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-container {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  max-width: 950px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.18), 0 4px 16px rgba(15, 23, 42, 0.06);
+  padding: 1.75rem 2rem;
+  color: #0f172a;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.modal-nav-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.modal-nav-btn.prev {
+  left: 1rem;
+}
+
+.modal-nav-btn.next {
+  right: 1rem;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-nav-btn {
+    display: none;
+  }
+}
+
+.modal-card-display {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.modal-card-display .c-flipper {
+  aspect-ratio: 2.5 / 3.65;
+}
+
+.modal-flip-btn-row {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-flip-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 0.55rem 1.15rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.modal-flip-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.modal-card-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: #0f172a;
+}
+
+.modal-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.tag-badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tag-icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.modal-section {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.modal-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.modal-text-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1e293b;
+}
+
+/* ==========================================================================
+   SECCIÓN 11: PIE DE PÁGINA ACCESIBLE Y ENLACES SOCIALES (.app-footer)
+   ==========================================================================
+   Pie de página minimalista con identidad de marca, botones circulares de
+   redes sociales (GitHub, BGG), acceso a aviso legal y scroll al inicio. */
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1.25rem;
+  color: #64748b;
+  font-size: 0.82rem;
+  z-index: 95;
+  box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.05);
+}
+
+.footer-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-deck-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.footer-brand {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.84rem;
+}
+
+.footer-separator {
+  color: #cbd5e1;
+}
+
+.footer-desc {
+  color: #64748b;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #0284c7;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.footer-link-btn:hover {
+    color: #0369a1;
+    text-decoration: underline;
+}
+
+.footer-social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 0.25rem;
+}
+
+.footer-icon-circle-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.footer-icon-circle-btn:hover {
+    border-color: #0284c7;
+    background: #ffffff;
+    color: #0284c7;
+    transform: translateY(-1.5px);
+    box-shadow: 0 3px 8px rgba(2, 132, 199, 0.18);
+}
+
+.footer-icon-circle-btn:active {
+    transform: translateY(0);
+}
+
+.footer-icon-circle-btn.footer-btn-bgg:hover {
+    border-color: #ff5100;
+    color: #ff5100;
+    box-shadow: 0 3px 8px rgba(255, 81, 0, 0.25);
+}
+
+.footer-social-svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 0 !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+  .app-footer {
+    padding: 0.4rem 0.85rem;
+  }
+  .footer-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+  .footer-desc,
+  .footer-separator {
+    display: none;
+  }
+  .footer-brand {
+    font-size: 0.78rem;
+  }
+  .footer-deck-logo {
+    height: 18px;
+  }
+  .footer-links {
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+  .footer-link-btn {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 12: MODAL DE AVISO LEGAL Y DESCARGO DE RESPONSABILIDAD (#disclaimerModal)
+   ==========================================================================
+   Diálogo modal formal con las condiciones de uso, exención de responsabilidad
+   y protección de derechos de propiedad intelectual y marcas comerciales. */
+.disclaimer-modal-dialog {
+  max-width: 620px !important;
+  width: 95%;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+  overflow: hidden;
+}
+
+.disclaimer-modal-body {
+  padding: 1.4rem;
+  max-height: 75vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.disclaimer-callout {
+  background: #f8fafc;
+  border-left: 3px solid #0284c7;
+  padding: 0.8rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.86rem;
+  color: #1e293b;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.disclaimer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.disclaimer-section-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.disclaimer-text {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.disclaimer-text strong {
+  color: #0f172a;
+}
+
+.disclaimer-footer-action {
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.disclaimer-footer-action .action-btn {
+  padding: 0.5rem 1.4rem;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 13: SUITE DE IMPRESIÓN Y GENERADOR DE DOCUMENTOS PDF (#printModal)
+   ==========================================================================
+   Entorno de maquetación para impresión física A4. Gestiona pestañas de
+   selección de cartas, métricas de tirada, formatos de salida y vista previa. */
+
+/* Print Toolbar Button in Search Bar */
+.print-tool-btn {
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #ffffff;
+  border: 1px solid #047857;
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+  white-space: nowrap;
+}
+
+.print-tool-btn:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  transform: translateY(-1px);
+}
+
+/* Card Selection Indicators */
+.c-action-select.is-selected {
+  background: #10b981 !important;
+  border-color: #34d399 !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6) !important;
+}
+
+/* Print Modal Layout - Professional & Clean Redesign */
+.print-modal-container {
+  max-width: 1160px;
+  width: 95%;
+  height: 86vh;
+  max-height: 860px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 16px;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.22);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden;
+}
+
+.print-modal-header {
+  padding: 0.85rem 3.5rem 0.85rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.print-modal-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.print-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.print-modal-specs-line {
+  font-size: 0.76rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  line-height: 1.35;
+}
+
+.print-specs-prefix {
+  font-weight: 700;
+  color: #475569;
+}
+
+.print-specs-val {
+  color: #64748b;
+}
+
+.print-modal-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  flex-shrink: 0;
+}
+
+.print-header-lang-wrapper {
+  flex-shrink: 0;
+}
+
+.print-header-lang-dropdown {
+  padding: 0.38rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.print-header-lang-dropdown:hover,
+.print-header-lang-dropdown:focus {
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+.print-header-metrics-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 200px;
+  text-align: right;
+}
+
+.print-metric-text-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #475569;
+}
+
+.print-metric-text-row .metric-text-label {
+  font-weight: 500;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.print-metric-text-row .metric-text-val {
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.print-metric-text-row.highlight .metric-text-val {
+  color: #0284c7;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .print-modal-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem 3rem 1rem 1.25rem;
+    gap: 0.75rem;
+  }
+  .print-modal-header-right {
+    justify-content: space-between;
+  }
+}
+
+.print-modal-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 1.25rem;
+  overflow: hidden;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .print-modal-grid {
+    grid-template-columns: minmax(0, 1fr);
+    overflow-y: auto !important;
+    padding: 1rem;
+  }
+}
+
+.print-config-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* Print Navigation Tabs */
+.print-tabs-bar {
+  display: flex;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  gap: 3px;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
+.print-tab-btn {
+  flex: 1;
+  padding: 0.5rem 0.85rem;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.print-tab-btn:hover {
+  color: #0f172a;
+}
+
+.print-tab-btn.active {
+  background: #ffffff;
+  color: #0284c7;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  font-weight: 700;
+}
+
+.print-tab-pane {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+.print-tab-pane:not(.active) {
+  display: none !important;
+}
+
+.print-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.print-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.print-section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.print-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+.print-section-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.print-count-pill {
+  font-size: 0.74rem;
+  background: #f1f5f9;
+  color: #334155;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+}
+
+.print-quick-selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.btn-chip {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 0.38rem 0.72rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-chip:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.btn-chip.danger {
+  color: #b91c1c;
+  border-color: #fecaca;
+  background: #ffffff;
+}
+
+.btn-chip.danger:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+/* ==========================================================================
+   SECCIÓN 14: SELECTOR MÚLTIPLE DE FACCIONES EN EL MODAL DE IMPRESIÓN
+   ==========================================================================
+   Cuadrícula interactiva de selección de facciones con distintivos de color,
+   recuentos de copias y botones de selección rápida (Todas / Ninguna). */
+
+.print-faction-selector-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+  min-height: 140px;
+}
+
+.print-faction-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.print-faction-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.print-faction-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-micro-chip {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.22rem 0.55rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-micro-chip:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.btn-micro-chip.danger {
+  color: #b91c1c;
+  border-color: #fca5a5;
+  background: #ffffff;
+}
+
+.btn-micro-chip.danger:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.print-faction-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.35rem;
+  flex: 1 1 auto;
+  min-height: 120px;
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.2rem;
+}
+
+.print-faction-chip {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  user-select: none;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.print-faction-chip:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.print-faction-chip.is-selected {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  color: #0369a1;
+  box-shadow: 0 1px 2px rgba(2, 132, 199, 0.1);
+}
+
+.print-faction-chip.is-partial {
+  background: #fafafa;
+  border-color: #0284c7;
+  border-style: dashed;
+  color: #0284c7;
+}
+
+.print-faction-chip-left {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.print-faction-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.print-faction-chip-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.print-faction-chip-name {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.74rem;
+  color: inherit;
+}
+
+.print-faction-chip-count {
+  font-size: 0.68rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-left: auto;
+  padding-left: 0.25rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.print-faction-chip.is-selected .print-faction-chip-count {
+  color: #0284c7;
+  font-weight: 700;
+}
+
+/* Preajustes rápidos de distribución de copias en el modal de impresión */
+.print-qty-presets {
+  padding: 0.65rem 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.qty-preset-label {
+  display: block;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.qty-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.btn-chip.active-preset {
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.15);
+  font-weight: 600;
+}
+
+/* Output Metrics Grid */
+.print-calc-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.calc-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #f8fafc;
+}
+
+.calc-metric-item {
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-right: 1px solid #e2e8f0;
+}
+
+.calc-metric-item:last-child {
+  border-right: none;
+}
+
+.calc-metric-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.calc-metric-value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.calc-metric-item.highlight .calc-metric-value {
+  color: #0284c7;
+}
+
+.calc-meta-footer {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.74rem;
+  color: #64748b;
+  background: #ffffff;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.calc-meta-label {
+  font-weight: 600;
+  color: #475569;
+}
+
+.calc-meta-text {
+  color: #64748b;
+}
+
+/* Controles segmentados modernos para selector de idioma y guías de corte */
+.print-segmented-group {
+  display: flex;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  gap: 3px;
+  border: 1px solid #e2e8f0;
+}
+
+.segmented-option {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+}
+
+.segmented-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented-label {
+  display: block;
+  padding: 0.42rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.segmented-option input:checked + .segmented-label {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Tarjetas de opciones de maquetación (plantilla traducida, digital original, tiras) */
+.print-layout-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.layout-radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 9px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.layout-radio-card:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.layout-radio-card:has(input:checked) {
+  border-color: #0f172a;
+  background: #f8fafc;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.layout-radio-card input[type="radio"] {
+  margin-top: 0.2rem;
+  accent-color: #0f172a;
+  cursor: pointer;
+}
+
+.radio-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.radio-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.radio-card-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.radio-card-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+}
+
+.radio-card-desc {
+  font-size: 0.74rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Clean Checkbox */
+.clean-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.clean-checkbox-row input[type="checkbox"] {
+  accent-color: #0f172a;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.clean-checkbox-text {
+  font-size: 0.82rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Control del margen perimetral blanco con selector numérico milimétrico */
+.print-margin-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.85rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.print-margin-val-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.print-margin-val-box.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.print-margin-input-group {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 30px;
+}
+
+.print-margin-number-input {
+  width: 48px;
+  border: none;
+  padding: 0 0.35rem;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  background: transparent;
+}
+
+.print-margin-unit {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  padding-right: 0.45rem;
+  user-select: none;
+}
+
+/* Lista con desplazamiento para ajuste individual de copias carta por carta */
+.print-list-toggle-row {
+  margin-top: 0.15rem;
+}
+
+.btn-list-toggle {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.15s ease;
+}
+
+.btn-list-toggle:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.print-cards-scroll-wrapper {
+  margin-top: 0.45rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.print-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.65rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.print-list-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.print-list-filter-label {
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.76rem;
+}
+
+.print-list-faction-select {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 5px;
+  padding: 0.2rem 0.45rem;
+  font-family: inherit;
+  font-size: 0.76rem;
+  outline: none;
+  cursor: pointer;
+  max-width: 170px;
+}
+
+.print-list-count-badge {
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.print-cards-scroll-list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0.55rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.8rem;
+  gap: 0.5rem;
+}
+
+.card-qty-row:hover {
+  background: #f1f5f9;
+}
+
+.card-qty-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.card-qty-thumb-wrap {
+  position: relative;
+  width: 24px;
+  height: 33px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.card-qty-thumb {
+  width: 24px;
+  height: 33px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background: #f1f5f9;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, border-color 0.18s ease;
+  display: block;
+}
+
+.card-qty-thumb-wrap:hover .card-qty-thumb {
+  transform: scale(1.22);
+  border-color: #0284c7;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.35);
+  z-index: 5;
+}
+
+/* Popover flotante de previsualización en alta definición al posar el cursor */
+.card-thumb-hover-preview {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  animation: thumbPopIn 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes thumbPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+.hover-preview-card {
+  width: 154px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 20px 40px -6px rgba(15, 23, 42, 0.3), 0 8px 16px -4px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hover-preview-img-box {
+  width: 100%;
+  height: 175px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.hover-preview-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hover-preview-info {
+  padding: 0.5rem 0.6rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hover-preview-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-preview-tag {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  letter-spacing: 0.02em;
+}
+
+.card-qty-name {
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
+}
+
+.card-qty-default-hint {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-left: 4px;
+}
+
+.card-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.btn-qty-step {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all 0.15s ease;
+}
+
+.btn-qty-step:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.card-qty-input {
+  width: 32px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.82rem;
+  border-radius: 4px;
+  padding: 2px 0;
+}
+
+.btn-qty-delete {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.btn-qty-delete:hover {
+  color: #ef4444;
+}
+
+/* Strict Square Corners for PDF & Print Output (Cut Boundary) */
+.is-print-square,
+.c-card.is-print-square,
+.print-card-wrapper .c-card,
+.print-card-wrapper .c-photo-card,
+.print-render-temp .c-card,
+.print-render-temp .c-photo-card {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Hide card ID number and collection metadata in print & PDF outputs */
+.is-print-square .c-id-tag,
+.print-card-wrapper .c-id-tag,
+.print-render-temp .c-id-tag,
+.is-print-square .c-game-tag,
+.print-card-wrapper .c-game-tag,
+.print-render-temp .c-game-tag {
+  display: none !important;
+}
+
+/* Print Render Container & High-Resolution Quality (Exact 63.5 x 88 mm) */
+.print-render-temp {
+  width: 300px;
+  height: 415.75px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.print-render-temp .c-card {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 23px 21px !important;
+  /* Authentic ~0.5 cm white border margin on 63.5 x 88 mm card */
+  box-sizing: border-box !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.print-render-temp .c-card.no-white-margin {
+  padding: 0 !important;
+}
+
+.print-render-temp .c-strength-corner {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 1.7rem !important;
+}
+
+.print-render-temp .c-card-header {
+  height: 54px !important;
+  padding: 0 54px !important;
+}
+
+.print-render-temp .c-side-tab {
+  width: 32px !important;
+  height: 42px !important;
+}
+
+.print-render-temp .c-tab-icon {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.print-render-temp .c-bottom-row {
+  height: 114px !important;
+  min-height: 114px !important;
+}
+
+.print-render-temp .c-bottom-row.is-trainer {
+  height: 126px !important;
+  min-height: 126px !important;
+}
+
+.print-render-temp .c-starter-player-corner {
+  width: 48px !important;
+  min-width: 48px !important;
+}
+
+.print-render-temp .c-starter-player-icon {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.print-render-temp .c-level-tab {
+  width: 48px !important;
+  font-size: 1.65rem !important;
+}
+
+.print-render-temp .c-level-tab.is-solo,
+.print-render-temp .c-level-tab.is-long-level {
+  font-size: 0.82rem !important;
+  letter-spacing: 0.14em !important;
+  writing-mode: vertical-rl !important;
+  text-orientation: upright !important;
+  padding: 4px 0 !important;
+}
+
+.print-render-temp .c-text-content.text-short {
+  font-size: 1.10rem !important;
+  line-height: 1.38 !important;
+}
+
+.print-render-temp .c-text-content.text-medium {
+  font-size: 0.98rem !important;
+  line-height: 1.32 !important;
+}
+
+.print-render-temp .c-text-content.text-long {
+  font-size: 0.88rem !important;
+  line-height: 1.26 !important;
+}
+
+.print-render-temp .c-text-content.text-xlong {
+  font-size: 0.78rem !important;
+  line-height: 1.20 !important;
+}
+
+.is-print-square .c-art-container,
+.print-card-wrapper .c-art-container,
+.print-render-temp .c-art-container {
+  border-radius: 0 !important;
+}
+
+/* ==========================================================================
+   SECCIÓN 15: COMPONENTE TIRAS DE INSERCIÓN PARA FUNDAS OPACAS (.print-strip-card)
+   ==========================================================================
+   Formato ultracompacto (63.5 × 27.5 mm, 27 tiras por hoja A4) pensado para
+   insertar en fundas opacas sobre cartas existentes, optimizando tinta y papel. */
+.print-strip-card {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: #0f172a;
+  overflow: hidden;
+  position: relative;
+}
+
+.print-strip-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.strip-header-row {
+  height: 22%;
+  background: #f8fafc;
+  border-bottom: 1.5px solid #0f172a;
+}
+
+.strip-th-str {
+  width: 14%;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #0f172a;
+  padding: 0 2px;
+  vertical-align: middle;
+}
+
+.strip-th-name {
+  width: 72%;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #0f172a;
+  letter-spacing: 0.3px;
+  padding: 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.strip-th-lvl {
+  width: 14%;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #0f172a;
+  padding: 0 2px;
+  vertical-align: middle;
+}
+
+.strip-td-effect {
+  height: 78%;
+  vertical-align: top;
+  padding: 3px 6px;
+  font-size: 0.92rem;
+  line-height: 1.28;
+  color: #0f172a;
+  background: #ffffff;
+  word-break: normal;
+}
+
+.strip-td-effect.text-medium {
+  font-size: 0.85rem;
+  line-height: 1.22;
+}
+
+.strip-td-effect.text-long {
+  font-size: 0.78rem;
+  line-height: 1.18;
+}
+
+.strip-td-effect.text-xlong {
+  font-size: 0.70rem;
+  line-height: 1.14;
+}
+
+.strip-no-effect {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.82rem;
+}
+
+.strip-faction-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+.strip-player-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+}
+
+.strip-player-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Previsualización ampliada de tira de inserción para legibilidad inmediata */
+.strip-sample-preview {
+  margin-bottom: 0.85rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.strip-sample-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #475569;
+  margin-bottom: 0.45rem;
+}
+
+.strip-sample-card {
+  width: 100%;
+  height: 75px;
+  border: 1.5px solid #0f172a;
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.strip-sample-card .print-strip-card {
+  height: 100%;
+}
+
+.strip-sample-card .strip-header-row {
+  height: 25px;
+  border-bottom: 1.2px solid #0f172a;
+  background: #f8fafc;
+}
+
+.strip-sample-card .strip-th-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.strip-sample-card .strip-th-str {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.strip-sample-card .strip-th-lvl {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.strip-sample-card .strip-td-effect {
+  font-size: 0.90rem;
+  line-height: 1.25;
+  padding: 4px 8px;
+}
+
+.strip-sample-card .strip-td-effect.text-medium {
+  font-size: 0.84rem;
+}
+
+.strip-sample-card .strip-td-effect.text-long {
+  font-size: 0.77rem;
+}
+
+.strip-sample-card .strip-td-effect.text-xlong {
+  font-size: 0.70rem;
+}
+
+/* Strip Canvas Rendering Quality (300px x 132.28px for 63.5 x 28 mm) */
+.print-strip-render-temp {
+  width: 300px !important;
+  height: 132.28px !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.print-strip-render-temp .print-strip-card {
+  width: 100% !important;
+  height: 100% !important;
+  border: 1px solid #334155 !important;
+}
+
+.print-strip-render-temp .strip-header-row {
+  height: 28px !important;
+  border-bottom: 1.5px solid #0f172a !important;
+  background: #f8fafc !important;
+}
+
+.print-strip-render-temp .strip-th-str {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  width: 38px !important;
+}
+
+.print-strip-render-temp .strip-th-name {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.25px !important;
+}
+
+.print-strip-render-temp .strip-th-lvl {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  width: 38px !important;
+}
+
+.print-strip-render-temp .strip-td-effect {
+  padding: 4px 7px !important;
+  font-size: 15.5px !important;
+  line-height: 1.28 !important;
+}
+
+.print-strip-render-temp .strip-td-effect.text-medium {
+  font-size: 14px !important;
+  line-height: 1.23 !important;
+}
+
+.print-strip-render-temp .strip-td-effect.text-long {
+  font-size: 12.5px !important;
+  line-height: 1.18 !important;
+}
+
+.print-strip-render-temp .strip-td-effect.text-xlong {
+  font-size: 11.2px !important;
+  line-height: 1.14 !important;
+}
+
+.print-strip-render-temp .c-inline-icon {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.print-strip-render-temp .strip-faction-icon {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.calc-row strong {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.calc-row.subtle {
+  font-size: 0.78rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.print-lang-group,
+.print-mode-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 0.88rem;
+  user-select: none;
+}
+
+.radio-label input,
+.checkbox-label input {
+  accent-color: #2563eb;
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+}
+
+.print-actions-pane {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Grupo compuesto segmentado para descarga de PDF y ZIP de imágenes */
+.download-compound-group {
+  display: inline-flex;
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 3px 4px;
+  gap: 3px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.download-compound-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  color: #94a3b8;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.download-compound-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  margin: 0 1px;
+}
+
+.download-compound-btn {
+  flex: 0 0 auto;
+  background: transparent;
+  color: #f1f5f9;
+  border: none;
+  padding: 0.48rem 0.75rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.download-compound-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.download-compound-btn.btn-compound-pdf:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.download-compound-btn.btn-compound-img:hover {
+  background: rgba(129, 140, 248, 0.2);
+  color: #a5b4fc;
+}
+
+.download-compound-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: transparent !important;
+  color: #94a3b8 !important;
+}
+
+.btn-print-secondary {
+  flex: 0 0 auto;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 0.48rem 0.85rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.btn-print-secondary:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.btn-print-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 680px) {
+  .print-actions-pane {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Sheet Preview Pane */
+.print-preview-pane {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.preview-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.preview-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.preview-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.preview-page-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.preview-page-btn:hover:not(:disabled) {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.preview-page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.sheet-preview-viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  background: #090d16;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sheet-preview-a4 {
+  width: 250px;
+  height: 353px;
+  /* 210 x 297 A4 ratio */
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+  padding: 16px 12px 20px 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.sheet-preview-footer {
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  right: 10px;
+  height: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 5.5px;
+  color: #64748b;
+  border-top: 0.5px solid #cbd5e1;
+  padding-top: 1px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.sheet-preview-footer .preview-footer-deck {
+  font-weight: 700;
+  color: #1e293b;
+  text-align: left;
+  flex: 1 1 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sheet-preview-footer .preview-footer-web {
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+  flex: 1 1 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sheet-preview-footer .preview-footer-page {
+  font-weight: 700;
+  color: #1e293b;
+  text-align: right;
+  flex: 1 1 0;
+  white-space: nowrap;
+}
+
+.mini-preview-card {
+  background: #f8fafc;
+  border: 0.5px solid #cbd5e1;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-card-header {
+  height: 8px;
+  background: #e2e8f0;
+  font-size: 5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+  color: #0f172a;
+}
+
+.mini-card-art {
+  flex: 1;
+  background: #f1f5f9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mini-card-bottom {
+  height: 12px;
+  background: #fff;
+  border-top: 0.5px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+  font-size: 4px;
+}
+
+.mini-preview-card.empty-slot {
+  background: #f1f5f9;
+  border: 0.5px dashed #cbd5e1;
+}
+
+/* Mini Strips Preview in Sheet (27 per page: 3 x 9) */
+.sheet-preview-a4.is-strips-preview {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: repeat(9, 1fr) !important;
+  gap: 1.5px !important;
+  padding: 12px 12px !important;
+}
+
+.mini-preview-strip {
+  background: #ffffff;
+  border: 0.5px solid #94a3b8;
+  border-radius: 1px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.mini-preview-strip.empty-slot {
+  background: #f1f5f9;
+  border: 0.5px dashed #cbd5e1;
+}
+
+.mini-strip-header {
+  height: 10px;
+  background: #f8fafc;
+  border-bottom: 0.5px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+  font-size: 4.8px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.mini-strip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 68%;
+  text-transform: uppercase;
+  font-size: 4.8px;
+}
+
+.mini-strip-body {
+  flex: 1;
+  padding: 1px 2px;
+  font-size: 4.2px;
+  line-height: 1.18;
+  color: #1e293b;
+  font-weight: 600;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  background: #ffffff;
+}
+
+/* App Toast Notification */
+.app-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.app-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   SECCIÓN 16: REGLAS ADAPTATIVAS Y RESPONSIVE MÓVIL (@media max-width: 900px)
+   ==========================================================================
+   Adaptaciones para dispositivos táctiles, tablets y smartphones: menú lateral
+   en drawer deslizante, cuadrícula de 2 columnas y rediseño de modales. */
+
+@media (max-width: 900px) {
+  .header-container {
+    padding: 0.6rem 1rem;
+    gap: 0.6rem;
+  }
+
+  .main-content {
+    padding: 1rem 0.85rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Header Mobile */
+  .app-header {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .header-container {
+    padding: 0.2rem 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.6rem;
+  }
+
+  .logo-area {
+    order: 1;
+    gap: 0.45rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .sidebar-toggle-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    font-size: 1.15rem;
+  }
+
+    .app-brand-title {
+        font-size: 1.05rem;
+    }
+
+  .logo-subtitle {
+    display: none;
+  }
+
+  .header-actions {
+    order: 2;
+    gap: 0.4rem;
+    margin-left: auto;
+  }
+
+  .header-action-btn.flip-all-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    font-size: 1.1rem;
+  }
+
+  .lang-selector-box {
+    padding: 0.18rem 0.4rem 0.18rem 0.3rem;
+    gap: 0.25rem;
+  }
+
+  .lang-current-flag {
+    font-size: 1.15rem;
+  }
+
+  .lang-select-dropdown {
+    font-size: 0.8rem;
+  }
+
+  .header-search-wrapper {
+    order: 3;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin-top: 0.1rem;
+  }
+
+  .header-search-wrapper input {
+    padding: 0.45rem 2.2rem 0.45rem 2.2rem;
+    font-size: 0.84rem;
+  }
+
+  /* Hide print options on mobile entirely */
+  .desktop-only,
+  .print-tool-btn,
+  #openPrintModalBtn {
+    display: none !important;
+  }
+
+  /* App Layout & Mobile Sidebar Drawer */
+  .app-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .filters-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 320px !important;
+    max-width: 90vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 1000 !important;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25) !important;
+    background: #ffffff !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    margin-left: 0 !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .filters-sidebar.is-open {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .sidebar-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar-close-btn {
+    display: flex !important;
+  }
+
+  /* Main content on mobile */
+  .main-content {
+    padding: 0.5rem 0.4rem calc(50px + 0.5rem) 0.4rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .factions-wrapper {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.65rem !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .faction-bookmarks-bar {
+    display: grid !important;
+    grid-template-columns: repeat(9, 1fr) !important;
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 5px 4px !important;
+    gap: 4px !important;
+    z-index: 95 !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  .faction-bookmark-tab {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    padding: 2px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    transition: transform 0.15s ease, background 0.15s ease !important;
+  }
+
+  .faction-bookmark-tab:hover {
+    transform: scale(1.08) !important;
+    background: #f8fafc !important;
+  }
+
+  .faction-bookmark-tab.active {
+    transform: scale(1.08) !important;
+    background: var(--tab-bg, #2563eb) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .faction-bookmark-tab.active::after {
+    display: none !important;
+  }
+
+  .faction-bookmark-tab .faction-tab-icon-img,
+  .faction-bookmark-tab .faction-tab-icon-svg {
+    width: 22px !important;
+    height: 22px !important;
+    max-width: 82% !important;
+    max-height: 82% !important;
+    object-fit: contain !important;
+  }
+
+  .faction-cards-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    align-self: stretch !important;
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    overscroll-behavior-y: contain !important;
+    padding: 0 0.65rem 1rem 0.65rem !important;
+    border-radius: 16px !important;
+    border-width: 8px !important;
+  }
+
+  .faction-header-banner {
+    position: sticky !important;
+    top: 0 !important;
+    background: #D4E3BA !important;
+    z-index: 25 !important;
+    margin-left: -0.65rem !important;
+    margin-right: -0.65rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.65rem !important;
+    padding: 0.85rem 0.65rem 0.65rem 0.65rem !important;
+  }
+
+  .faction-header-title {
+    font-size: 1.15rem;
+  }
+
+  .faction-header-icon,
+  .faction-header-icon-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .faction-header-stats {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.76rem;
+  }
+
+  /* Mobile 2-Column Card Grid */
+  .cards-grid {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1.15rem 0.95rem !important;
+  }
+
+  .card-item {
+    border-radius: 12px;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+  }
+
+  .card-item:hover {
+    transform: none;
+  }
+
+  /* Responsive Card Scale */
+  .c-card {
+    padding: 5px 4.5px !important;
+    border-radius: 12px !important;
+  }
+
+  .c-inner {
+    border-radius: 8px !important;
+  }
+
+  .c-card-header {
+    height: 34px !important;
+    padding: 0 34px !important;
+  }
+
+  .c-strength-corner {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .c-card-title {
+    font-size: 0.68rem !important;
+    letter-spacing: -0.01em !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    line-height: 1.12 !important;
+    text-align: center !important;
+  }
+
+  .c-faction-badge {
+    width: 22px !important;
+    height: 22px !important;
+    bottom: -11px !important;
+  }
+
+  .c-art-slot {
+    min-height: 70px !important;
+  }
+
+  .c-footer-banner {
+    height: 24px !important;
+    padding: 0 4px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .c-text-content {
+    font-size: 0.69rem !important;
+    line-height: 1.24 !important;
+    padding: 3px 4px !important;
+  }
+
+  .c-text-content.text-short {
+    font-size: 0.76rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .c-text-content.text-medium {
+    font-size: 0.70rem !important;
+    line-height: 1.24 !important;
+  }
+
+  .c-text-content.text-long {
+    font-size: 0.64rem !important;
+    line-height: 1.20 !important;
+  }
+
+  .c-text-content.text-xlong {
+    font-size: 0.58rem !important;
+    line-height: 1.16 !important;
+  }
+
+  .c-text-row {
+    min-height: 52px !important;
+  }
+
+  .c-id-tag {
+    font-size: 0.54rem !important;
+    padding: 1px 6px !important;
+    bottom: 4px !important;
+  }
+
+  .c-level-tab.is-solo,
+  .c-level-tab.is-long-level {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .c-starter-player-corner {
+    width: 32px !important;
+    min-width: 32px !important;
+  }
+
+  .c-starter-player-icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+
+  /* Detail Modal Mobile */
+  .modal-backdrop {
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    padding: 1.25rem 0.85rem !important;
+    border-radius: 16px !important;
+    max-height: 94vh !important;
+  }
+
+  .modal-close-btn {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .modal-card-display {
+    max-width: 230px !important;
+  }
+
+  .modal-nav-btn {
+    display: none !important;
+  }
+
+  .modal-card-title {
+    font-size: 1.35rem !important;
+  }
+
+  /* Print Modal Mobile */
+  .print-modal-container {
+    padding: 1rem 0.75rem !important;
+    max-height: 94vh !important;
+  }
+
+  .print-modal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .print-quick-selects {
+    gap: 0.35rem;
+  }
+
+  .btn-chip {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.76rem;
+  }
+
+  .sheet-preview-viewport {
+    min-height: 260px !important;
+    padding: 8px !important;
+  }
+
+  .sheet-preview-a4 {
+    width: 190px !important;
+    height: 268px !important;
+    padding: 14px 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-subtitle {
+    display: none;
+  }
+
+    .app-brand-title {
+        font-size: 0.95rem;
+    }
+
+  .cards-grid {
+    gap: 1rem 0.8rem !important;
+  }
+
+  .chip-btn {
+    padding: 0.18rem 0.45rem;
+    font-size: 0.74rem;
+  }
+
+  .chip-icon-img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .actions-buttons-group {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .flip-all-btn span:last-child,
+  .print-tool-btn span:last-child,
+  .reset-btn span:last-child {
+    font-size: 0.7rem;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 17: MOTOR DE IMPRESIÓN NATIVA DEL NAVEGADOR (@media print)
+   ==========================================================================
+   Reglas estrictas de paginación A4 para window.print(): eliminación de
+   márgenes del navegador (@page margin: 0), cuadrícula 3x3 exacta y saltos de página. */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 6mm 9.75mm;
+  }
+
+  html,
+  body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 190.5mm !important;
+  }
+
+  body>*:not(#printArea) {
+    display: none !important;
+  }
+
+  body #printArea,
+  #printArea,
+  .print-area {
+    display: block !important;
+    width: 190.5mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .print-page {
+    width: 190.5mm !important;
+    height: 275mm !important;
+    max-height: 275mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .print-grid {
+    width: 190.5mm !important;
+    height: 264mm !important;
+    max-height: 264mm !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 63.5mm) !important;
+    grid-template-rows: repeat(3, 88mm) !important;
+    gap: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .print-sheet-footer {
+    width: 190.5mm !important;
+    height: 6.5mm !important;
+    margin-top: 3.5mm !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 7.5pt !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+    padding: 0 1mm !important;
+    border-top: 0.2mm solid #cbd5e1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .sheet-footer-deck {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-align: left !important;
+    flex: 1 1 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .sheet-footer-web {
+    font-weight: 500 !important;
+    color: #64748b !important;
+    text-align: center !important;
+    flex: 1 1 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .sheet-footer-page {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-align: right !important;
+    flex: 1 1 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .print-card-wrapper {
+    width: 63.5mm !important;
+    height: 88mm !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-card-wrapper .c-card {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5mm 4.5mm !important;
+    /* Official ~0.5 cm white border */
+    box-sizing: border-box !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .print-card-wrapper .c-card.no-white-margin {
+    padding: 0 !important;
+  }
+
+  .print-card-wrapper .c-art-container {
+    background: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-card-wrapper .c-art-image {
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-card-wrapper .c-tab-icon {
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-card-wrapper .c-photo-card {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .print-card-wrapper.empty-slot {
+    border: 0.2mm dashed #e2e8f0 !important;
+    background: transparent !important;
+  }
+
+  /* Strips Print Page (9 rows x 3 cols = 27 strips per A4 sheet) */
+  .print-page.is-strips-page {
+    height: 258mm !important;
+    max-height: 258mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .print-page.is-strips-page .print-grid {
+    height: 247.5mm !important;
+    max-height: 247.5mm !important;
+    grid-template-columns: repeat(3, 63.5mm) !important;
+    grid-template-rows: repeat(9, 27.5mm) !important;
+  }
+
+  .print-page:last-child,
+  .print-page.is-strips-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .print-strip-wrapper {
+    width: 63.5mm !important;
+    height: 27.5mm !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #ffffff !important;
+  }
+
+  .print-strip-wrapper.empty-slot {
+    border: 0.2mm dashed #cbd5e1 !important;
+    background: transparent !important;
+  }
+
+  .print-strip-wrapper .print-strip-table {
+    width: 100% !important;
+    height: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+  }
+
+  .print-strip-wrapper .strip-header-row {
+    height: 5.8mm !important;
+    border-bottom: 0.25mm solid #0f172a !important;
+    background: #f8fafc !important;
+  }
+
+  .print-strip-wrapper .strip-th-str {
+    width: 8.5mm !important;
+    font-size: 10pt !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+  }
+
+  .print-strip-wrapper .strip-th-name {
+    font-size: 9.5pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.25px !important;
+    text-align: center !important;
+    padding: 0 1.5mm !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    vertical-align: middle !important;
+  }
+
+  .print-strip-wrapper .strip-th-lvl {
+    width: 8.5mm !important;
+    font-size: 9.5pt !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+  }
+
+  .print-strip-wrapper .strip-td-effect {
+    vertical-align: top !important;
+    padding: 0.8mm 1.6mm !important;
+    font-size: 10.2pt !important;
+    line-height: 1.26 !important;
+    color: #000000 !important;
+    word-break: normal !important;
+  }
+
+  .print-strip-wrapper .strip-td-effect.text-medium {
+    font-size: 9.4pt !important;
+    line-height: 1.22 !important;
+  }
+
+  .print-strip-wrapper .strip-td-effect.text-long {
+    font-size: 8.5pt !important;
+    line-height: 1.16 !important;
+  }
+
+  .print-strip-wrapper .strip-td-effect.text-xlong {
+    font-size: 7.8pt !important;
+    line-height: 1.12 !important;
+  }
+
+  .print-strip-wrapper .c-inline-icon {
+    width: 3.8mm !important;
+    height: 3.8mm !important;
+    vertical-align: -0.6mm !important;
+  }
+
+  .print-strip-wrapper .strip-faction-icon {
+    width: 3.8mm !important;
+    height: 3.8mm !important;
+    vertical-align: -0.6mm !important;
+    margin-right: 1mm !important;
+  }
+
+  .c-id-tag,
+  .c-game-tag {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 18: PANTALLA DE BIENVENIDA Y CARGA DE PAQUETES ZIP (.zip-upload-screen)
+   ==========================================================================
+   Diseño de onboarding y bienvenida para arrastrar o seleccionar archivos ZIP,
+   con catálogo de mazos predeterminados y barra de herramientas para creadores. */
+
+/* Estilos de la tarjeta principal de carga ZIP y bienvenida */
+
+.zip-upload-screen {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 4rem 1rem;
+}
+
+.zip-welcome-dialog {
+  position: relative !important;
+  max-width: 620px !important;
+  width: 95% !important;
+  margin: 0 auto;
+  border-radius: 20px !important;
+  padding: 2.2rem 2.2rem 2.4rem 2.2rem !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+}
+
+.zip-welcome-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.zip-welcome-logo-box {
+  margin-bottom: 0.85rem;
+}
+
+.zip-welcome-logo-top {
+  width: 62px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+}
+
+.zip-welcome-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.015em;
+}
+
+.zip-welcome-subtitle {
+  font-size: 0.93rem;
+  color: #64748b;
+  margin: 0 auto;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.zip-upload-card {
+  max-width: 620px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 12px 36px -8px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  animation: bannerFadeIn 0.25s ease-out;
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zip-card-normal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.zip-welcome-dialog.is-loading-mode,
+.zip-upload-card.is-loading-mode {
+    max-width: 440px !important;
+    padding: 2.2rem 2rem !important;
+}
+
+.zip-welcome-dialog.is-loading-mode .zip-welcome-header,
+.zip-upload-card.is-loading-mode .zip-welcome-header {
+    display: none !important;
+}
+
+/* ==========================================================================
+   SECCIÓN 19: ESTADO ANIMADO DE DESCOMPRESIÓN Y CARGA DEL MAZO (#zipCardLoadingContent)
+   ==========================================================================
+   Animaciones de levitación de sobre (packFloatAndGlow), halo brillante y
+   barra de progreso con porcentaje reactivo durante la extracción asíncrona. */
+
+@keyframes packFloatAndGlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.16));
+  }
+  50% {
+    transform: translateY(-14px) rotate(-3deg) scale(1.05);
+    filter: drop-shadow(0 20px 32px rgba(2, 132, 199, 0.38));
+  }
+}
+
+.loading-pack-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  perspective: 800px;
+}
+
+.loading-pack-animated-logo {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  animation: packFloatAndGlow 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: center center;
+}
+
+.zip-card-loading-content,
+.loading-modal-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  width: 100%;
+}
+
+.loading-modal-dialog {
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.25);
+  margin: auto;
+  padding: 2.25rem 2rem;
+  position: relative;
+  animation: bannerFadeIn 0.25s ease-out;
+}
+
+.loading-pack-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.015em;
+}
+
+.loading-pack-status {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.35rem;
+  min-height: 1.4rem;
+}
+
+.zip-card-loading-content .zip-progress-bar-track,
+.loading-modal-dialog .zip-progress-bar-track {
+  width: 100%;
+  max-width: 360px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.zip-card-loading-content .zip-progress-bar-fill,
+.loading-modal-dialog .zip-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.loading-pack-pct {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.zip-upload-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.zip-upload-pack-logo {
+  height: 86px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0.65rem;
+  filter: drop-shadow(0 6px 14px rgba(15, 23, 42, 0.16));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: block;
+}
+
+.zip-upload-pack-logo:hover {
+  transform: scale(1.08) rotate(-2.5deg);
+}
+
+.zip-upload-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.zip-upload-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.45;
+  max-width: 480px;
+  margin: 0;
+}
+
+.zip-upload-desc code {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-family: monospace;
+  font-size: 0.88em;
+  color: #0f172a;
+}
+
+/* Dropzone */
+.zip-dropzone {
+  position: relative;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.zip-dropzone:hover,
+.zip-dropzone.is-dragover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.08);
+}
+
+.zip-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.zip-dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: none;
+}
+
+.zip-drop-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.zip-drop-text {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.zip-drop-subtext {
+  font-size: 0.84rem;
+  color: #64748b;
+}
+
+.zip-select-btn {
+  margin-top: 0.6rem;
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  pointer-events: auto;
+}
+
+.zip-select-btn:hover {
+  background: #0369a1;
+}
+
+/* Progress Box */
+.zip-progress-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.zip-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.zip-progress-pct {
+  color: #0284c7;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.zip-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.zip-progress-bar-fill {
+  height: 100%;
+  background: #0284c7;
+  border-radius: 9999px;
+  transition: width 0.15s ease-out;
+}
+
+/* Quick Demo Pack Option */
+.zip-demo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding-top: 0.25rem;
+}
+
+.zip-demo-hint {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.zip-demo-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.zip-demo-btn {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.zip-demo-btn:hover {
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.zip-demo-base-btn {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #bae6fd;
+}
+
+.zip-demo-base-btn:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0c4a6e;
+}
+
+.zip-demo-beach-btn {
+  background: #f0fdfa;
+  color: #0f766e;
+  border-color: #99f6e4;
+}
+
+.zip-demo-beach-btn:hover {
+  background: #ccfbf1;
+  border-color: #0d9488;
+  color: #115e59;
+}
+
+.zip-demo-pokemon-btn {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.zip-demo-pokemon-btn:hover {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+
+.zip-demo-yokais-btn {
+  background: #f5f3ff;
+  color: #6d28d9;
+  border-color: #ddd6fe;
+}
+
+.zip-demo-yokais-btn:hover {
+  background: #ede9fe;
+  border-color: #8b5cf6;
+  color: #5b21b6;
+}
+
+.zip-demo-dioses-btn {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.zip-demo-dioses-btn:hover {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+
+.zip-demo-exp12-btn {
+  background: #fdf4ff;
+  color: #86198f;
+  border-color: #f5d0fe;
+}
+
+.zip-demo-exp12-btn:hover {
+  background: #fae8ff;
+  border-color: #d946ef;
+  color: #701a75;
+}
+
+/* Barra de recursos, plantillas JSON y herramientas para creadores */
+.zip-template-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zip-template-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.zip-template-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.zip-template-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.zip-template-btn {
+  background: #0284c7;
+  color: #ffffff;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.18s ease;
+}
+
+.zip-template-btn:hover {
+  background: #0369a1;
+}
+
+.zip-template-btn-subtle {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.zip-template-btn-subtle:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.zip-template-guide-btn {
+  background: #ffffff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.18s ease;
+}
+
+.zip-template-guide-btn:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+}
+
+/* Guidelines Box */
+.zip-info-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.zip-info-title {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.82rem;
+}
+
+.zip-info-list {
+  padding-left: 1.15rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.zip-info-privacy {
+  font-size: 0.76rem;
+  color: #059669;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 20: MODAL DE GESTIÓN DEL MAZO ACTIVO (#zipManageModal)
+   ==========================================================================
+   Diálogo de administración para consultar la baraja en uso, cambiar de mazo,
+   descargar plantillas y eliminar cartas cargadas en memoria. */
+
+.zip-modal-dialog {
+  max-width: 580px !important;
+  width: 94% !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+}
+
+.modal-header-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.modal-header-text-group .modal-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.modal-header-text-group .modal-subtitle {
+  font-size: 0.84rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.zip-manage-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* Active Pack Banner */
+.zip-manage-info {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.zip-pack-icon-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.zip-pack-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.zip-pack-active-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #16a34a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.zip-pack-active-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+  animation: pulse-active 2.5s infinite;
+}
+
+@keyframes pulse-active {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.75; }
+}
+
+.zip-pack-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.zip-pack-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Sections */
+.zip-dialog-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.zip-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.zip-dialog-section-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #475569;
+}
+
+.zip-section-hint {
+  font-size: 0.74rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Deck Catalog List - Minimalist Clean Blocks */
+.deck-catalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.deck-catalog-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0.6rem 0.75rem 0.6rem 1rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deck-catalog-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+}
+
+.deck-catalog-card.is-active {
+    border-color: #0284c7;
+    background: #f8fafc;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1);
+}
+
+.deck-catalog-card .deck-title {
+        font-size: 0.88rem;
+    }
+
+    .deck-split-btn-group .btn-deck-load {
+        padding: 0.42rem 0.6rem;
+        font-size: 0.76rem;
+    }
+
+    .deck-split-btn-group .btn-deck-zip {
+        padding: 0.42rem 0.55rem;
+        font-size: 0.76rem;
+    }
+
+  .deck-upload-box-large {
+  border: 1.5px dashed #93c5fd;
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 2.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
+}
+
+.deck-upload-box-large:hover,
+.deck-upload-box-large.is-dragover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+  transform: translateY(-1px);
+}
+
+.deck-upload-large-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.deck-upload-box-large:hover .deck-upload-large-icon {
+  transform: translateY(-2px);
+}
+
+.deck-upload-large-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.deck-upload-large-title {
+  font-family: inherit;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.deck-upload-large-sub {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.btn-select-zip-large {
+    background: #0f172a;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.52rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+    transition: all 0.15s ease;
+}
+
+.btn-select-zip-large:hover {
+    background: #1e293b;
+    color: #38bdf8;
+    border-color: #334155;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.2);
+}
+
+/* Upload Custom Pack Box */
+.deck-upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.72rem 0.95rem;
+  border-radius: 12px;
+  border: 1.5px dashed #cbd5e1;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.deck-upload-box:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+}
+
+.deck-upload-box:focus {
+  outline: none;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.deck-upload-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: #f1f5f9;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.deck-upload-box:hover .deck-upload-icon-wrapper {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.deck-upload-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.deck-upload-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deck-upload-sub {
+  font-size: 0.74rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deck-upload-badge-btn {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.deck-upload-box:hover .deck-upload-badge-btn {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+/* Resources Bar */
+.zip-resources-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  flex-wrap: wrap;
+}
+
+.zip-resources-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  margin-right: 0.1rem;
+}
+
+.zip-resources-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.zip-resource-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #475569;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.28rem 0.58rem;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.zip-resource-chip:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.zip-resource-chip.link-btn {
+  font-family: inherit;
+  border-style: solid;
+}
+
+/* Danger Zone */
+.zip-dialog-section.danger-zone {
+  margin-top: 0.15rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-dialog-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 9px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-dialog-danger:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+@media (max-width: 520px) {
+  .zip-welcome-dialog {
+    padding: 1.6rem 1.1rem !important;
+  }
+
+  .deck-catalog-card {
+    padding: 0.65rem 0.85rem 0.65rem 1.1rem;
+    gap: 0.65rem;
+  }
+
+  .deck-catalog-card .deck-title {
+    font-size: 0.88rem;
+  }
+
+  .deck-split-btn-group .btn-deck-load {
+    padding: 0.38rem 0.65rem;
+    font-size: 0.76rem;
+  }
+
+  .deck-split-btn-group .btn-deck-zip {
+    padding: 0.38rem 0.6rem;
+    font-size: 0.76rem;
+  }
+
+  .deck-upload-box-large {
+    padding: 1.6rem 1rem;
+  }
+
+  .deck-upload-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .deck-upload-badge-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 21: MODAL DE GUÍA TÉCNICA PARA CREADORES (#templateGuideModal)
+   ==========================================================================
+   Especificación de formato para crear mazos compatibles: árbol de carpetas,
+   tabla de propiedades de cards.json y descarga directa de la plantilla. */
+
+.guide-modal-dialog {
+  max-width: 740px !important;
+  width: 92% !important;
+}
+
+.guide-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-top: 0.75rem;
+}
+
+.guide-intro {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.guide-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.guide-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.guide-tree-code {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: 0.9rem 1.15rem;
+  font-family: monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.guide-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.guide-table th {
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.guide-table td {
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: top;
+}
+
+.guide-table tr:last-child td {
+  border-bottom: none;
+}
+
+.guide-table tr:nth-child(even) td {
+  background: #fcfcfd;
+}
+
+.guide-table code {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #0284c7;
+}
+
+.guide-cta-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.guide-cta-text {
+  font-size: 0.84rem;
+  color: #14532d;
+  flex: 1;
+  min-width: 240px;
+}
+
+.guide-download-btn {
+  background: #059669 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+}
+
+.guide-download-btn:hover {
+  background: #047857 !important;
+}
+
+/* ==========================================================================
+   SECCIÓN 22: EXTRAS Y COMPONENTES AUXILIARES DEL MODAL DE DETALLE
+   ==========================================================================
+   Estilos complementarios para la barra de selección de idioma en el modal
+   de detalle, metadatos y botones de navegación secundaria. */
+
+.modal-card-lang-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #64748b;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.lang-separator {
+  color: #cbd5e1;
+}
+
+.tag-level,
+.tag-strength {
+  background: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.modal-copies-tag {
+  background: #f0f9ff !important;
+  border: 1px solid #bae6fd !important;
+  color: #0369a1 !important;
+  font-weight: 600 !important;
+}
+
+.modal-starter-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.modal-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.starter-meta-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: #e2e8f0;
+  color: #334155;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.starter-section-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.starter-variants-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.player-variant-chip {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.player-variant-chip:hover {
+  border-color: #0284c7;
+}
+
+.player-variant-chip.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+.player-variant-icon-wrap {
+  display: flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+.modal-translations-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.modal-translations-list {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-source-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+}
+
+.modal-source-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.modal-source-link {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.modal-source-link:hover {
+  text-decoration: underline;
+}
+
+/* Print Art Fit & Scale Controls */
+.print-cut-mode-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.print-art-config-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.print-art-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.print-mini-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.print-select-input {
+  flex: 1;
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.82rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+}
+
+.print-select-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+.print-scale-slider-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.print-range-input {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  accent-color: #0284c7;
+  cursor: pointer;
+}
+
+.print-scale-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #0284c7;
+  min-width: 42px;
+  text-align: right;
+  font-family: monospace;
+}
+
+.print-scale-presets-row {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.btn-micro-chip {
+  padding: 0.22rem 0.6rem;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-micro-chip:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+  background: #f0f9ff;
+}
+
+.btn-micro-chip.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   SECCIÓN 23: MODOS DE ENCUADRE Y ESCALADO DE ILUSTRACIONES SIN DEFORMACIÓN
+   ==========================================================================
+   Garantiza preservación estricta de la relación de aspecto (aspect-ratio):
+   - fit-cover: recorta automáticamente llenando el contenedor.
+   - fit-contain: ajusta la ilustración completa dentro del recuadro.
+   - fit-height: ajusta al 100% de la altura sin deformación.
+   - fit-width: ajusta al 100% del ancho con escalado natural. */
+.fit-contain,
+.fit-fit-contain,
+.c-art-image.fit-contain,
+.c-art-image.fit-fit-contain,
+.c-photo-img.fit-contain,
+.c-photo-img.fit-fit-contain,
+.mini-card-art img.fit-contain,
+.mini-card-art img.fit-fit-contain,
+.print-card-wrapper .c-art-image.fit-contain,
+.print-card-wrapper .c-art-image.fit-fit-contain,
+.print-card-wrapper .c-photo-card img.fit-contain,
+.print-card-wrapper .c-photo-card img.fit-fit-contain {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+}
+
+.fit-cover,
+.fit-fit-cover,
+.c-art-image.fit-cover,
+.c-art-image.fit-fit-cover,
+.c-photo-img.fit-cover,
+.c-photo-img.fit-fit-cover,
+.mini-card-art img.fit-cover,
+.mini-card-art img.fit-fit-cover,
+.print-card-wrapper .c-art-image.fit-cover,
+.print-card-wrapper .c-art-image.fit-fit-cover,
+.print-card-wrapper .c-photo-card img.fit-cover,
+.print-card-wrapper .c-photo-card img.fit-fit-cover {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+}
+
+.fit-height,
+.fit-fit-height,
+.c-art-image.fit-height,
+.c-art-image.fit-fit-height,
+.c-photo-img.fit-height,
+.c-photo-img.fit-fit-height,
+.mini-card-art img.fit-height,
+.mini-card-art img.fit-fit-height,
+.print-card-wrapper .c-art-image.fit-height,
+.print-card-wrapper .c-art-image.fit-fit-height,
+.print-card-wrapper .c-photo-card img.fit-height,
+.print-card-wrapper .c-photo-card img.fit-fit-height {
+  width: auto !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.fit-width,
+.fit-fit-width,
+.c-art-image.fit-width,
+.c-art-image.fit-fit-width,
+.c-photo-img.fit-width,
+.c-photo-img.fit-fit-width,
+.mini-card-art img.fit-width,
+.mini-card-art img.fit-fit-width,
+.print-card-wrapper .c-art-image.fit-width,
+.print-card-wrapper .c-art-image.fit-fit-width,
+.print-card-wrapper .c-photo-card img.fit-width,
+.print-card-wrapper .c-photo-card img.fit-fit-width {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  display: block !important;
+  margin: auto 0 !important;
+}
+
+/* Screen Mode: Always hide the native print container completely on screen */
+@media screen {
+  #printArea,
+  .print-area {
+    display: none !important;
+  }
+}
+
+/* Sheet Preview Cut Marks */
+.sheet-preview-a4.has-grid-marks .mini-preview-card {
+  outline: 1px solid #94a3b8 !important;
+}
+
+.sheet-preview-a4.has-cross-marks .mini-preview-card {
+  outline: none !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.sheet-preview-a4.has-no-marks .mini-preview-card {
+  outline: none !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Native Print Cut Styles */
+#printArea.print-cut-grid .print-card-wrapper {
+  border: 0.2mm solid #94a3b8 !important;
+  outline: none !important;
+}
+
+#printArea.print-cut-grid .print-strip-wrapper {
+  border: 0.2mm solid #64748b !important;
+  outline: none !important;
+}
+
+#printArea.print-cut-grid .print-card-wrapper.empty-slot,
+#printArea.print-cut-grid .print-strip-wrapper.empty-slot {
+  border: 0.2mm dashed #cbd5e1 !important;
+}
+
+#printArea.print-cut-crosses .print-card-wrapper,
+#printArea.print-cut-crosses .print-strip-wrapper,
+#printArea.print-cut-none .print-card-wrapper,
+#printArea.print-cut-none .print-strip-wrapper {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#printArea.print-cut-crosses .print-card-wrapper.empty-slot,
+#printArea.print-cut-crosses .print-strip-wrapper.empty-slot,
+#printArea.print-cut-none .print-card-wrapper.empty-slot,
+#printArea.print-cut-none .print-strip-wrapper.empty-slot {
+  border: none !important;
+}
+
+.print-cut-overlay-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+  z-index: 1000 !important;
+}
+
+.print-cut-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+  z-index: 1000 !important;
+}
+
+/* ==========================================================================
+   SECCIÓN 24: MAQUETACIÓN ESPECIALIZADA PARA MAZOS INICIALES Y PERROS DE MACROTORNEO
+   ==========================================================================
+   Vista dividida para mazos de inicio: agrupación visual de los 8 jugadores
+   con sus iconos identificativos y sección aislada para los perros del macrotorneo. */
+
+.cards-grid.is-starter-view {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2.25rem !important;
+  width: 100% !important;
+}
+
+/* 1. Barra de herramientas y subnavegación para mazos iniciales */
+.starter-toolbar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(78, 148, 108, 0.28);
+  border-radius: 16px;
+  padding: 1.15rem 1.45rem;
+  box-shadow: 0 4px 20px -3px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  animation: bannerFadeIn 0.22s ease-out;
+}
+
+.starter-toolbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.starter-toolbar-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.starter-toolbar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  letter-spacing: 0.01em;
+}
+
+.starter-toolbar-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.starter-toolbar-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.starter-stats-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.starter-stats-pill.macro-pill {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* Pastillas / chips segmentados de la barra de herramientas */
+.starter-toolbar-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.starter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.48rem 0.95rem;
+  border-radius: 9999px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.starter-chip:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.starter-chip.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+.starter-chip.active .starter-chip-symbol {
+  color: #ffffff !important;
+}
+
+.starter-chip-symbol {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starter-chip-symbol .player-icon-img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.starter-chip.active .starter-chip-symbol .player-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+.starter-chip.starter-chip-macro {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  color: #b45309;
+  font-weight: 700;
+}
+
+.starter-chip.starter-chip-macro:hover {
+  background: #fef3c7;
+  border-color: #d97706;
+}
+
+.starter-chip.starter-chip-macro.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #b45309;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.4);
+}
+
+/* 2. Tarjetas de sección agrupadas por jugador (1 a 8) */
+.starter-player-group {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 18px;
+  padding: 1.4rem 1.6rem 1.6rem 1.6rem;
+  box-shadow: 0 6px 22px -4px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: bannerFadeIn 0.25s ease-out;
+}
+
+.starter-player-group:hover {
+  box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.12);
+}
+
+.starter-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.starter-player-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.starter-player-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: 2px solid;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.starter-player-avatar .player-icon-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.starter-player-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.starter-player-subheading {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.starter-player-comp-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.starter-comp-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.starter-comp-pill.pill-novato {
+  background: #e0f2fe;
+  color: #0284c7;
+  border-color: #bae6fd;
+  font-weight: 800;
+}
+
+/* 3. Sección dedicada y aislada para perros del macrotorneo */
+.starter-macro-group {
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.98) 0%, rgba(254, 243, 199, 0.75) 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 20px;
+  padding: 1.5rem 1.7rem 1.8rem;
+  box-shadow: 0 10px 30px -4px rgba(217, 119, 6, 0.18);
+  position: relative;
+  overflow: hidden;
+  animation: bannerFadeIn 0.3s ease-out;
+}
+
+.starter-macro-group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24, #d97706);
+}
+
+.starter-macro-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.15rem;
+  margin-bottom: 1.45rem;
+  border-bottom: 1.5px dashed rgba(217, 119, 6, 0.35);
+}
+
+.starter-macro-header-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.starter-macro-trophy-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+  flex-shrink: 0;
+  border: 2px solid #fbbf24;
+}
+
+.starter-macro-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.starter-macro-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #b45309;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.25);
+}
+
+.starter-macro-count-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.starter-macro-title {
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: #78350f;
+  margin-bottom: 0.35rem;
+}
+
+.starter-macro-desc {
+  font-size: 0.90rem;
+  color: #92400e;
+  line-height: 1.5;
+  max-width: 860px;
+  font-weight: 500;
+}
+
+/* Modal tags & notices for Macrotournament & Player Starters */
+.tag-badge.modal-macro-pill {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+}
+
+.tag-badge.modal-player-pill {
+  background: #f1f5f9;
+  color: #0f172a !important;
+  font-weight: 700;
+  border: 1px solid #cbd5e1;
+}
+
+.modal-macro-notice {
+  background: #fffbeb !important;
+  border: 1.5px solid #f59e0b !important;
+  border-radius: 12px;
+  padding: 1rem 1.25rem !important;
+  margin-top: 1rem;
+}
+
+.modal-macro-notice .modal-section-title {
+  color: #92400e !important;
+  font-weight: 800 !important;
+}
+
+.modal-macro-notice-desc {
+  font-size: 0.88rem;
+  color: #78350f;
+  line-height: 1.5;
+  margin-top: 0.45rem;
+}
+
+.modal-starter-player-notice {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-radius: 12px;
+  padding: 1rem 1.25rem !important;
+  margin-top: 1rem;
+}
+
+.modal-starter-player-notice .modal-section-title {
+  color: #166534 !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 768px) {
+  .starter-toolbar {
+    padding: 0.95rem 1rem;
+  }
+  .starter-player-group {
+    padding: 1rem;
+  }
+  .starter-macro-group {
+    padding: 1.15rem 1rem;
+  }
+  .starter-macro-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN 25: MODAL EDITORIAL DE INFORMACIÓN Y RESUMEN DEL MAZO (#deckInfoModal)
+   ==========================================================================
+   Ficha editorial con diseño formal de torneo que resume el trasfondo del mazo,
+   distribución por niveles/fases, total de copias y notas del diseñador. */
+.faction-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deck-info-help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #94a3b8;
+  color: #1e293b;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  padding: 0;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.deck-info-help-btn:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.deck-info-help-btn:active {
+  transform: translateY(0);
+}
+
+/* Modal Dialog */
+.deck-info-modal-dialog {
+  max-width: 860px;
+  width: 94%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.deck-info-modal-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.deck-info-modal-body {
+  padding: 1.5rem 1.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #334155;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.deck-info-modal-footer {
+  padding: 1rem 1.75rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Technical Details Meta Bar */
+.deck-info-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+}
+
+.deck-info-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.deck-info-meta-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.deck-info-meta-value {
+  font-size: 0.92rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* Text Sections */
+.deck-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.deck-info-section-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #475569;
+  margin: 0;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding-bottom: 0.35rem;
+}
+
+.deck-info-paragraph {
+  margin: 0;
+  color: #334155;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* Factions Breakdown Cards */
+.deck-info-factions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.deck-info-faction-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.deck-info-faction-card:hover {
+  border-color: #cbd5e1;
+}
+
+.deck-info-faction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.deck-info-faction-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.deck-info-faction-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.deck-info-faction-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+.deck-info-faction-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.deck-info-faction-name {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.deck-info-faction-base {
+  font-size: 0.76rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.deck-info-faction-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+  background: #e2e8f0;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.deck-info-faction-body {
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.deck-info-faction-desc {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.deck-info-levels-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.deck-info-levels-table th,
+.deck-info-levels-table td {
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  border-top: 1px solid #f1f5f9;
+}
+
+.deck-info-levels-table th {
+  font-weight: 700;
+  color: #64748b;
+  background: #f8fafc;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.deck-info-lvl-badge {
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-align: center;
+  min-width: 22px;
+}
+
+.deck-info-lvl-A {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.deck-info-lvl-B {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.deck-info-lvl-C {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.deck-info-lvl-S {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.deck-info-lvl-R {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.deck-info-lvl-trainer {
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.deck-info-lvl-cards {
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   SECCIÓN 26: PORTADA Y HOJA EDITORIAL DE RESUMEN DEL MAZO PARA PDF (.deck-summary-cover)
+   ==========================================================================
+   Hoja de portada oficial A4 generada como página 1 del PDF imprimible.
+   Presenta el logotipo, metadatos del autor, desglose cromático y notas de juego. */
+.form-group-summary-page {
+  margin-top: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.deck-summary-sheet {
+    width: 794px;
+    height: 1123px;
+    box-sizing: border-box;
+    padding: 34px 38px 28px 38px;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-sheet-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 2.5px solid #0284c7;
+}
+
+.summary-sheet-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.summary-sheet-logo {
+    width: 44px;
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+.summary-sheet-brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.summary-sheet-brand-sub {
+    font-size: 0.78rem;
+    color: #0284c7;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-top: 2px;
+}
+
+.summary-sheet-badge {
+    background: #f0f9ff;
+    border: 1.5px solid #bae6fd;
+    color: #0369a1;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.summary-sheet-deck-header {
+    margin-top: 4px;
+}
+
+.summary-sheet-continuation-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 6px 0 10px 0;
+    border-bottom: 2px solid #e2e8f0;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.summary-sheet-continuation-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.summary-sheet-continuation-meta {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.summary-sheet-deck-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 2px 0;
+    letter-spacing: -0.02em;
+}
+
+.summary-sheet-deck-sub {
+    font-size: 0.88rem;
+    color: #64748b;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+
+.summary-sheet-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.summary-sheet-stat-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-sheet-stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+}
+
+.summary-sheet-stat-val {
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.summary-sheet-desc-box {
+    background: #f1f5f9;
+    border-left: 3.5px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 7px 11px;
+    margin-bottom: 4px;
+    font-size: 0.76rem;
+    color: #334155;
+    line-height: 1.4;
+}
+
+.summary-sheet-factions-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+}
+
+.summary-sheet-sec-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.summary-sheet-sec-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.summary-sheet-sec-hint {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.summary-sheet-factions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.summary-sheet-faction-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left-width: 4px;
+    border-radius: 8px;
+    padding: 6px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.summary-sheet-faction-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-width: 0;
+}
+
+.summary-sheet-faction-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    flex: 1;
+}
+
+.summary-sheet-fac-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.summary-sheet-fac-icon img {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+}
+
+.summary-sheet-fac-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.summary-sheet-fac-name {
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.15;
+}
+
+.summary-sheet-fac-base {
+    font-size: 0.62rem;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.summary-sheet-fac-right {
+    flex-shrink: 0;
+}
+
+.summary-sheet-fac-counts {
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.summary-sheet-faction-table-wrap {
+    width: 100%;
+    margin-top: 1px;
+}
+
+.summary-sheet-cards-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.64rem;
+    line-height: 1.22;
+}
+
+.summary-sheet-cards-table thead th {
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #94a3b8;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1px 2px 2px 2px;
+    text-align: left;
+}
+
+.summary-sheet-cards-table thead th.col-lvl {
+    width: 30px;
+    text-align: center;
+}
+
+.summary-sheet-cards-table thead th.col-dist {
+    width: 82px;
+    white-space: nowrap;
+    padding-right: 4px;
+}
+
+.summary-sheet-cards-table thead th.col-cards {
+    padding-left: 2px;
+}
+
+.summary-sheet-cards-table tbody tr {
+    border-bottom: 1px solid #f8fafc;
+}
+
+.summary-sheet-cards-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.summary-sheet-cards-table td {
+    padding: 1.5px 2px;
+    vertical-align: top;
+    color: #334155;
+}
+
+.summary-sheet-cards-table td.col-lvl {
+    width: 30px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.summary-sheet-cards-table td.col-dist {
+    width: 82px;
+    white-space: nowrap;
+    color: #64748b;
+    font-size: 0.60rem;
+    padding-right: 4px;
+}
+
+.summary-sheet-cards-table td.col-dist strong {
+    color: #0f172a;
+}
+
+.summary-sheet-cards-table td.col-cards {
+    color: #1e293b;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    padding-left: 2px;
+}
+
+.summary-sheet-lvl-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: #64748b;
+}
+
+.summary-sheet-lvl-pill.lvl-A {
+    background: #eab308;
+    color: #713f12;
+}
+
+.summary-sheet-lvl-pill.lvl-B {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+.summary-sheet-lvl-pill.lvl-C {
+    background: #ec4899;
+    color: #ffffff;
+}
+
+.summary-sheet-lvl-pill.lvl-S {
+    background: #10b981;
+    color: #ffffff;
+}
+
+.summary-sheet-lvl-pill.lvl-trainer {
+    background: #8b5cf6;
+    color: #ffffff;
+}
+
+.summary-sheet-footer {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: auto;
+}
+
+/* Soporte de impresión nativa (@media print) para hoja de portada y resumen */
+@media print {
+  .print-page.print-summary-page {
+    page-break-after: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 210mm;
+    height: 297mm;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .print-native-summary {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

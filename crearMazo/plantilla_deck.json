@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "title": "Challengers! - Nombre de la Expansión",
+  "description": "Descripción temática del mazo y correspondencia con mecánicas oficiales.",
+  "creator": "Tu Nombre o Comunidad Challengers!",
+  "collection": "Edición Ejemplo",
+  "collection_name": "Edición Ejemplo",
+  "game": "both",
+  "sets": {
+    "mi_facción": {
+      "id": "mi_facción",
+      "name": {
+        "es": "Mi Facción (Español)",
+        "en": "My Faction (English)",
+        "fr": "Ma Faction (Français)"
+      },
+      "game": "both",
+      "color_key": "mi_facción",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "icon_path": "icon_mi_facción.png"
+    }
+  },
+  "cards": [
+    {
+      "id": 401,
+      "game": "both",
+      "set_id": "mi_facción",
+      "level": "A",
+      "strength": "2",
+      "default_copies": 4,
+      "is_starter_card": false,
+      "card_image": "mi_carta_01.jpg",
+      "art_image": "mi_carta_01.jpg",
+      "icon_path": "icon_mi_facción.png",
+      "color_hex": "#1e40af",
+      "color_border": "#60a5fa",
+      "collection": "Edición Ejemplo",
+      "es": {
+        "name": "Nombre de la Carta",
+        "text": "Efecto en español."
+      },
+      "en": {
+        "name": "Card Name",
+        "text": "Effect in English."
+      },
+      "fr": {
+        "name": "Nom de la Carte",
+        "text": "Effet en français."
+      }
+    }
+  ]
+}
